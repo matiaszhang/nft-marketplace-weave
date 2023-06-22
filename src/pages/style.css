@@ -1,0 +1,741 @@
+.about-us-page {
+    background-color: #130b2b;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.about-us-page .div {
+    background-color: #130b2b;
+    border: 1px none;
+    height: 3262px;
+    opacity: 0;
+    overflow: hidden;
+    position: relative;
+    transform: scale(0.9);
+    width: 1440px;
+}
+
+.about-us-page .overlap {
+    height: 2858px;
+    left: -299px;
+    position: absolute;
+    top: -266px;
+    width: 1739px;
+}
+
+.about-us-page .ellipse {
+    background-color: #5d1475;
+    border-radius: 540px;
+    filter: blur(649.3px);
+    height: 1080px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1080px;
+}
+
+.about-us-page .frame {
+    align-items: center;
+    display: flex;
+    gap: 111px;
+    left: 399px;
+    position: absolute;
+    top: 326px;
+    width: fit-content;
+}
+
+.about-us-page .frame-2 {
+    align-items: center;
+    display: flex;
+    gap: 11.12px;
+    height: 38px;
+    justify-content: center;
+    position: relative;
+    width: 146px;
+}
+
+.about-us-page .img {
+    height: 38px;
+    margin-left: -0.06px;
+    min-width: 38px;
+    position: relative;
+}
+
+.about-us-page .text-wrapper {
+    color: #ffffff;
+    font-family: "Titillium Web", Helvetica;
+    font-size: 22.2px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 29.7px;
+    margin-right: -0.06px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .frame-3 {
+    align-items: center;
+    display: flex;
+    gap: 95px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .navbar {
+    align-items: flex-start;
+    display: flex;
+    gap: 24px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-2 {
+    color: #ffffffd9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-3 {
+    color: #ffffffd9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-4 {
+    color: #ffffffd9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-5 {
+    color: #ffffff;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-6 {
+    color: #ffffffd9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-7 {
+    color: #ffffffd9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .frame-4 {
+    height: 60px;
+    min-width: 186px;
+    position: relative;
+}
+
+.about-us-page .group {
+    height: 1884px;
+    left: 299px;
+    position: absolute;
+    top: 974px;
+    width: 1440px;
+}
+
+.about-us-page .overlap-group {
+    height: 1884px;
+    position: relative;
+}
+
+.about-us-page .frame-5 {
+    background-color: #0d071d;
+    height: 521px;
+    left: 0;
+    position: absolute;
+    top: 401px;
+    width: 1440px;
+}
+
+.about-us-page .frame-6 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    height: 1884px;
+    left: 100px;
+    position: absolute;
+    top: 0;
+    width: fit-content;
+}
+
+.about-us-page .frame-7 {
+    align-items: flex-start;
+    display: flex;
+    gap: 50px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .weavenft-marketplace {
+    color: #ffffff;
+    font-family: "Titillium Web", Helvetica;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 48px;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .our-aim-is-to {
+    color: #ffffffd9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    height: 388px;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: -1px;
+    position: relative;
+    text-align: justify;
+    width: 819px;
+}
+
+.about-us-page .frame-8 {
+    align-items: flex-start;
+    display: flex;
+    gap: 117px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .what-is-weavenft {
+    color: #ffffff;
+    font-family: "Titillium Web", Helvetica;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 48px;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .at-weavenft {
+    color: #ffffffd9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    height: 483px;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: -1px;
+    position: relative;
+    text-align: justify;
+    width: 819px;
+}
+
+.about-us-page .frame-9 {
+    align-items: flex-start;
+    display: flex;
+    gap: 50px;
+    height: 890px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .weavenft-marketplace-2 {
+    color: #ffffff;
+    font-family: "Titillium Web", Helvetica;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 48px;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .empowerment-we {
+    color: #ffffffd9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    height: 973px;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-bottom: -82px;
+    margin-top: -1px;
+    position: relative;
+    text-align: justify;
+    width: 819px;
+}
+
+.about-us-page .frame-wrapper {
+    background-color: #dfd0e3b2;
+    background-image: url(https://generation-sessions.s3.amazonaws.com/7343f833b5d46260de2af8cd8a734e8d/img/frame-626773.png);
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 324px;
+    left: 299px;
+    position: absolute;
+    top: 590px;
+    width: 1440px;
+}
+
+.about-us-page .frame-10 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 526px;
+    position: relative;
+    top: 88px;
+    width: fit-content;
+}
+
+.about-us-page .frame-11 {
+    align-items: center;
+    display: flex;
+    gap: 30px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .frame-12 {
+    height: 120px;
+    min-width: 120px;
+    position: relative;
+}
+
+.about-us-page .weavenft-marketplace-3 {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(180deg, rgb(182, 17, 107) 0%, rgb(59, 21, 120) 100%);
+    background-clip: text;
+    color: transparent;
+    font-family: "Titillium Web", Helvetica;
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 58px;
+    position: relative;
+    text-fill-color: transparent;
+    width: fit-content;
+}
+
+.about-us-page .p {
+    color: #130b2b;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: relative;
+    white-space: nowrap;
+    width: 245px;
+}
+
+.about-us-page .h-1 {
+    color: #ffffff;
+    font-family: "Titillium Web", Helvetica;
+    font-size: 64px;
+    font-weight: 700;
+    left: 875px;
+    letter-spacing: 0;
+    line-height: 84px;
+    position: absolute;
+    top: 445px;
+    white-space: nowrap;
+    width: 288px;
+}
+
+.about-us-page .div-wrapper {
+    background-color: #0d071d;
+    height: 570px;
+    left: 0;
+    position: absolute;
+    top: 2692px;
+    width: 1440px;
+}
+
+.about-us-page .frame-13 {
+    align-items: flex-start;
+    display: flex;
+    gap: 277px;
+    left: 100px;
+    position: relative;
+    top: 60px;
+    width: fit-content;
+}
+
+.about-us-page .frame-14 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .frame-15 {
+    align-items: center;
+    display: flex;
+    gap: 16.39px;
+    height: 56px;
+    justify-content: center;
+    position: relative;
+    width: 215px;
+}
+
+.about-us-page .frame-16 {
+    height: 56px;
+    margin-left: -0.2px;
+    min-width: 56px;
+    position: relative;
+}
+
+.about-us-page .text-wrapper-8 {
+    color: #ffffff;
+    font-family: "Titillium Web", Helvetica;
+    font-size: 32.8px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 43.7px;
+    margin-right: -0.2px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .frame-17 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-9 {
+    color: #ffffffd9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 26px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .frame-18 {
+    height: 20px;
+    min-width: 92.09px;
+    position: relative;
+}
+
+.about-us-page .frame-19 {
+    align-items: flex-start;
+    display: flex;
+    gap: 100px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .frame-20 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-10 {
+    color: #f8f8f9;
+    font-family: "Titillium Web", Helvetica;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 56px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .frame-21 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-11 {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-12 {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-13 {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-14 {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-15 {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: relative;
+    white-space: nowrap;
+    width: 118px;
+}
+
+.about-us-page .text-wrapper-16 {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: relative;
+    white-space: nowrap;
+    width: 118px;
+}
+
+.about-us-page .text-wrapper-17 {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: relative;
+    white-space: nowrap;
+    width: 118px;
+}
+
+.about-us-page .frame-22 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-18 {
+    color: #f8f8f9;
+    font-family: "Titillium Web", Helvetica;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 56px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .frame-23 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: relative;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-19 {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .about-contact {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-20 {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .frame-24 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    width: 189px;
+}
+
+.about-us-page .text-wrapper-21 {
+    color: #f8f8f9;
+    font-family: "Titillium Web", Helvetica;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 56px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .frame-25 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-right: -4px;
+    position: relative;
+    width: 193px;
+}
+
+.about-us-page .text-wrapper-22 {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .help-about {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.about-us-page .text-wrapper-23 {
+    color: #f8f8f9;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
