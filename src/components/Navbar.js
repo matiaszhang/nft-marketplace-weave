@@ -1,96 +1,113 @@
-import { NavLink } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { useRef } from "react";
-import "./navbar.css";
 import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 
-function Navbar() {
-  const navRef = useRef(null);
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const [togglerNav, setTogglerNav] = useState(false);
-
-  const clickHandler = () => {
-    setTogglerNav(!togglerNav);
-  };
-
-  const showNavbar = () => {
-    navRef.current.classList.toggle("responsive_nav");
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
-    <header className=" flex justify-between p-[60px] bg-gradient-to-r from-fuchsia-900 to-slate-950 ">
-      <img
-        className="w-[100px] h-[40px] md:w-auto"
-        src="./images/logo.png"
-        alt="logo"
-      />
-      <nav className=" md:items-center md:flex justify-between" ref={navRef}>
-        <div className="flex flex-col md:flex-row justify-between gap-2 md:gap-0">
-          <NavLink
-            className="nav-link text-white text-opacity-90 text-[20px] font-normal"
-            onClick={clickHandler}
-            to="/"
+    <header
+      className="bg-gradient-to-r from-fuchsia-900
+         to-slate-950 sticky top-0 z-10"
+    >
+      <nav className="container   mx-auto flex items-center justify-between py-4 px-8 md:px-16">
+        <div className="flex items-center">
+          <img
+            className="w-[110px] md:w-auto"
+            src="./images/logo.png"
+            alt="logo"
+          />
+        </div>
+
+        <div className="hidden md:flex md:items-center">
+          <a
+            className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500"
+            href="/"
           >
             Home
-          </NavLink>
-          <NavLink
-            className="nav-link text-white text-opacity-90
-               text-[20px] font-normal"
-            onClick={clickHandler}
-            to="/about"
+          </a>
+          <a
+            className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500"
+            href="/about"
           >
-            About Us
-          </NavLink>
-          <NavLink
-            className="nav-link text-white text-opacity-90 
-              text-[20px] font-normal"
-            onClick={clickHandler}
-            to="/contact"
+            About
+          </a>
+          <a
+            className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500"
+            href="/services"
+          >
+            Services
+          </a>
+          <a
+            className="text-white sm::text-[20px] font-semibold hover:text-gray-500"
+            href="/contact"
           >
             Contact
-          </NavLink>
-          <NavLink
-            className="nav-link text-white text-opacity-90
-               text-[20px] font-normal"
-            onClick={clickHandler}
-            to="/about"
-          >
-            faq
-          </NavLink>
-          <NavLink
-            className="nav-link text-white text-opacity-90 
-              text-[20px] font-normal"
-            onClick={clickHandler}
-            to="/contact"
-          >
-            explore
-          </NavLink>
+          </a>
         </div>
 
-        <div>
-          {/** connect wallet */}
-
-          <button
-            className="text-[12px] md:text-[20px] font-semibold 
-         text-white h-[50px]  w-[110px] md:w-[186px] px-[2px] 
-          py-[2px] md:py-[10px] md:px-[20px] 
-          bg-gradient-to-br from-pink-700 to-violet-950 rounded-lg 
-          justify-center items-center gap-2 flex"
-          >
-            Connect wallet
+        <div className="hidden md:flex items-center">
+          <button className="text-white text-sm font-semibold bg-gradient-to-br from-pink-700 to-violet-950  hover:bg-pink-900 py-2 px-4 rounded-lg">
+            Connect Wallet
           </button>
         </div>
-        {/** close icon connection */}
-        <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-          <FaTimes />
-        </button>
+
+        <div className="md:hidden">
+          <button className="text-white" onClick={toggleMenu}>
+            {isOpen ? (
+              <FaTimes className="text-2xl" />
+            ) : (
+              <FaBars className="text-2xl" />
+            )}
+          </button>
+        </div>
       </nav>
-      {/**show icon connection */}
-      <button className="nav-btn text-wh" onClick={showNavbar}>
-        <FaBars />
-      </button>
+
+      {isOpen && (
+        <div
+          className="fixed top-0  right-0 bottom-0 left-0 bg-gradient-to-r from-fuchsia-900
+         to-slate-950 flex flex-col items-center justify-center"
+        >
+          <button
+            className="text-white absolute top-4 right-4"
+            onClick={toggleMenu}
+          >
+            <FaTimes className="text-2xl" />
+          </button>
+          <button className="text-white text-sm font-semibold bg-gradient-to-br from-pink-700 to-violet-950  hover:bg-pink-900 py-2 px-4 rounded-lg">
+            Connect Wallet
+          </button>
+          <a
+            className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"
+            href="/"
+          >
+            Home
+          </a>
+          <a
+            className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"
+            href="/about"
+          >
+            About Us
+          </a>
+          <a
+            className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"
+            href="/services"
+          >
+            faq
+          </a>
+          <a
+            className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"
+            href="/contact"
+          >
+            Contact
+          </a>
+        </div>
+      )}
     </header>
   );
-}
+};
 
 export default Navbar;

@@ -5,11 +5,11 @@ import { HiOutlineMail } from "react-icons/hi";
 function Footer() {
   return (
     <div
-      className="px-[40px] md:px-[60px] py-[60px] bg-gradient-to-r from-fuchsia-900
-         to-slate-950 grid grid-cols-1 
+      className="px-[30px] md:px-[100px] py-[60px] bg-gradient-to-r from-fuchsia-900
+         to-slate-950  grid grid-cols-1 
          md:flex md:flex-row gap-4"
     >
-      <div className="md:flex md:flex-row gap-4">
+      <div className="md:flex flex-wrap md:flex-row gap-4">
         <div className="md:w-[519px] md:h-[88px] md:mt-[20px]">
           <img
             className="w-[110px] md:w-auto"
