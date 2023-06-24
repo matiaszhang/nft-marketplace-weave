@@ -125,7 +125,7 @@ function WalletConnect() {
            hover:bg-pink-900 py-2 px-4 rounded-lg"
             onClick={handleLoginClick}
           >
-            Connect Wallet
+            {!initDb ? "please wait.." : "Connect Wallet"}
           </button>
         )}
       </div>
