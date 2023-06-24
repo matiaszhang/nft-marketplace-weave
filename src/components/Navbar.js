@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-
+import WalletConnect from "../Blockchain_Service/connect_wallet";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -50,9 +50,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center">
-          <button className="text-white text-sm font-semibold bg-gradient-to-br from-pink-700 to-violet-950  hover:bg-pink-900 py-2 px-4 rounded-lg">
-            Connect Wallet
-          </button>
+          <WalletConnect />
         </div>
 
         <div className="md:hidden">
@@ -77,9 +75,7 @@ const Navbar = () => {
           >
             <FaTimes className="text-2xl" />
           </button>
-          <button className="text-white text-sm font-semibold bg-gradient-to-br from-pink-700 to-violet-950  hover:bg-pink-900 py-2 px-4 rounded-lg">
-            Connect Wallet
-          </button>
+          <WalletConnect />
           <a
             className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"
             href="/"
