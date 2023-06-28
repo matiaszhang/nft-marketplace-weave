@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import { FaBars, FaTimes } from "react-icons/fa";
 import WalletConnect from "../Blockchain_Service/connect_wallet";
 const Navbar = () => {
@@ -11,9 +12,9 @@ const Navbar = () => {
   return (
     <header
       className="bg-gradient-to-r from-fuchsia-900
-         to-slate-950 sticky top-0 z-10"
+         to-slate-950 sticky top-0 z-40"
     >
-      <nav className="container   mx-auto flex items-center justify-between py-4 px-8 md:px-16">
+      <nav className="container   mx-auto flex items-center justify-between py-4 px-8 md:px-10">
         <div className="flex items-center">
           <img
             className="w-[110px] md:w-auto"
@@ -49,7 +50,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center md:pb-4">
           <WalletConnect />
         </div>
 
