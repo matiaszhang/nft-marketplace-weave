@@ -1,7 +1,36 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Details from "../components/DetailsWeave";
+import data from "../utils/data";
+import { useState } from "react";
 
 function Home() {
+  /**Why WeaveNft card slider starts here */
+  const [startIndex, setStartIndex] = useState(0);
+
+  const handlePrevButtonClick = () => {
+    if (startIndex > 0) {
+      setStartIndex(startIndex - 3);
+    }
+  };
+
+  const handleNextButtonClick = () => {
+    if (startIndex + 3 < data.length) {
+      setStartIndex(startIndex + 3);
+    }
+  };
+
+  const showPrevButton = startIndex > 0;
+  const showNextButton = startIndex + 3 < data.length;
+
+  const details = data
+    .slice(startIndex, startIndex + 3)
+    .map((item) => (
+      <Details img={item.imgSrc} title={item.title} content={item.content} />
+    ));
+
+  /** Why weaveNft card slider stops here */
+
   return (
     <div>
       <Navbar />
@@ -147,13 +176,99 @@ function Home() {
       </div>
 
       {/* second section starts */}
+      <div className="bg-[#130B2B] -z-40 py-[100px]">
+        <div className="container px-8 mx-auto">
+          <h2 className="text-white pt-[100px] text-center text-[22px] sm:text-[34px] font-bold leading-10">
+            Why WeaveNFT Marketplace?
+          </h2>
+
+          <div className="inset-0">
+            {showPrevButton && (
+              <button
+                className="btn-prev z-20 mt-[250px] absolute bg-opacity-70 left-7 w-10 h-10 sm:left-10 bg-white p-2 rounded-full shadow-lg hover:cursor-pointer"
+                onClick={handlePrevButtonClick}
+              >
+                &lt;
+              </button>
+            )}
+
+            {showNextButton && (
+              <button
+                className="btn-next z-20 mt-[250px] absolute bg-opacity-70 right-7 w-10 h-10 sm:right-10 bg-white p-2 bg-white shadow-lg rounded-full hover:cursor-pointer"
+                onClick={handleNextButtonClick}
+              >
+                &gt;
+              </button>
+            )}
+          </div>
+          <div
+            className=" overflow-hidden  flex 
+        justify-center"
+          >
+            {details}
+          </div>
+        </div>
+      </div>
+
+      {/** Third section starts */}
       <div
-        className="bg-gradient-to-r from-fuchsia-900
-         to-slate-950 -z-40"
+        className=" bg-gradient-to-r from-fuchsia-900
+         to-slate-950 pb-[100px] "
       >
-        <h2 className="text-white text-center text-[22px] sm:text-[34px] font-bold leading-10">
-          Why WeaveNFT Marketplace?
+        <div className="px-5">
+          <h2 className="pt-[100px] text-white text-center text-[28px] sm:text-[40px] font-bold leading-10">
+            Join WeaveNFT Marketplace today{" "}
+          </h2>
+          <p className="pb-[32px] pt-[26px] text-center text-white text-opacity-60 text-[17px] font-normal leading-7">
+            Become part of a thriving community of artists, collectors, and
+            enthusiasts. <br /> Experience the future of digital ownership and
+            immerse yourself in the world <br /> of unique and valuable NFTs.
+          </p>
+          <div className="flex justify-center">
+            <button
+              className="text-white text-sm font-semibold 
+          bg-gradient-to-br from-pink-700 to-violet-950 
+           hover:bg-pink-900 py-2 px-2 sm:py-2 sm:px-4 rounded-lg"
+            >
+              Join WeaveNFT
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/**Fourth section */}
+      <div className="bg-[#130B2B] pb-[32px] pt-[80px]">
+        <h2 className=" text-center text-gray-50 text-[28px] sm:text-[40px] font-bold leading-10">
+          Top seller
         </h2>
+        <p className="pt-[26px] text-center text-white text-opacity-60 text-[17px] font-normal leading-7">
+          We present to you the best sellers of the month
+        </p>
+      </div>
+
+      {/**Fifth  section*/}
+      <div
+        className=" bg-gradient-to-r from-fuchsia-900
+         to-slate-950"
+      >
+        <div className="container px-8 mx-auto grid grid-rows-5 grid-flow-col gap-4">
+          <div>
+            <p className="text-white text-[24px] pt-[50px] font-normal leading-loose">
+              01
+            </p>
+            <div>
+              <img src="./images/Ellipse 8 (2).png" alt="seller" />
+              <div className="flex">
+                <h3 className="text-gray-50 text-[24px] font-bold leading-loose">
+                  McCoy
+                </h3>
+                <p className="text-gray-50 text-[20px] font-normal leading-7">
+                  899.03 ETH
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />
