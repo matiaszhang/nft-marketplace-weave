@@ -13,14 +13,14 @@ function Footer() {
       <div className="md:flex flex-wrap md:flex-row gap-4">
         <div className="md:w-[519px] md:h-[88px] md:mt-[20px]">
           <img
-            className="w-[110px] md:w-auto"
+            className="w-[110px] md:w-auto cursor-pointer"
             src="./images/logo.png"
             alt="logo"
           />
           <p className="text-opacity-90 py-[15px] text-white text-[10px] md:text-[18px] font-normal">
             Sculpting the Future of Digital Art
           </p>
-          <div className="flex flex-row  space-x-5 text-white">
+          <div className="flex flex-row cursor-pointer space-x-5 text-white">
             <FaTwitter />
             <SiDiscord />
             <HiOutlineMail />
