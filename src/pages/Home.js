@@ -634,6 +634,11 @@ function Home() {
         </div>
       </div>
 
+      {/** Sixth section, NFT Section */}
+      <div className="">
+        <div className="container mx-auto px-auto"></div>
+      </div>
+
       {/**Seventh section */}
       <div
         className="bg-gradient-to-r from-fuchsia-900
