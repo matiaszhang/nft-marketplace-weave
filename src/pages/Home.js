@@ -3,6 +3,8 @@ import Footer from "../components/Footer";
 import Details from "../components/DetailsWeave";
 import data from "../utils/data";
 import { useState, useEffect } from "react";
+import Nfts from "../components/NftExplore/Nfts";
+import { Link } from "react-router-dom";
 
 function Home() {
   /**Why WeaveNft card slider starts here */
@@ -87,12 +89,14 @@ function Home() {
               >
                 Join WeaveNFT
               </button>
-              <button
-                className="text-slate-900 text-sm font-semibold 
+              <Link to="/about">
+                <button
+                  className="text-slate-900 text-sm font-semibold 
            border-2  border-fuchsia-900 py-2 px-4 rounded-lg"
-              >
-                Learn More
-              </button>
+                >
+                  Learn More
+                </button>
+              </Link>
             </div>
             <div className=" flex flex-row py-[36px] gap-10">
               <div className="w-[168px] h-[95.52px] border-r-[1px] border-fuchsia-900">
@@ -141,12 +145,12 @@ function Home() {
                     alt="back star"
                   />
                 </div>
-                <div className="w-[280px] h-[249px] sm:w-[423px] sm:h-[369px]">
+                <div className=" w-[280px] h-[249px] sm:w-[423px] sm:h-[369px] border-2 border-white border-solid rounded">
                   <img src="./images/Frame 13.png" alt="trending NFT" />
                 </div>
               </div>
               <div
-                className="w-[280px] h-[156px] sm:w-[423px] sm:h-[186px] 
+                className="border-2 border-white border-solid w-[280px] h-[156px] sm:w-[423px] sm:h-[186px] 
               bg-gradient-to-r
            from-fuchsia-900 to-slate-950 
           rounded backdrop-blur-[100px] bg-opacity-50"
@@ -202,7 +206,7 @@ function Home() {
         </div>
       </div>
 
-      {/* second section starts */}
+      {/* second section starts why */}
       <div className="bg-[#130B2B] -z-40 py-[100px]">
         <div className="container px-8 mx-auto">
           <h2 className="text-white pt-[100px] text-center text-[22px] sm:text-[34px] font-bold leading-10">
@@ -214,7 +218,7 @@ function Home() {
               <button
                 className="btn-prev z-20 mt-[140px] md:mt-[250px] 
                 absolute bg-opacity-70 left-7 w-10 
-                h-10 sm:left-10 bg-white text-white p-2 
+                h-10 sm:left-10 bg-[#D9DDDC] text-white p-2 
                 rounded-full shadow-lg 
                 hover:cursor-pointer"
                 onClick={handlePrevButtonClick}
@@ -227,7 +231,7 @@ function Home() {
               <button
                 className="btn-next z-20 mt-[140px] sm:mt-[250px] 
                 absolute bg-opacity-70 right-7 w-10 h-10 
-                sm:right-10 bg-white p-2 text-white 
+                sm:right-10 bg-[#D9DDDC] p-2 text-white 
                 shadow-lg rounded-full
                  hover:cursor-pointer"
                 onClick={handleNextButtonClick}
@@ -288,7 +292,7 @@ function Home() {
       >
         <div
           className="container px-8 mx-auto 
-        grid grid-rows-5 grid-cols-3  "
+        grid grid-rows-5 grid-cols-3 pb-[30px] "
         >
           {/** seller 1 */}
           <div className="flex cursor-pointer">
@@ -635,9 +639,8 @@ function Home() {
       </div>
 
       {/** Sixth section, NFT Section */}
-      <div className="">
-        <div className="container mx-auto px-auto"></div>
-      </div>
+
+      <Nfts />
 
       {/**Seventh section */}
       <div
