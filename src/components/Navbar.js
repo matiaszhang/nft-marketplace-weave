@@ -36,11 +36,12 @@ const Navbar = () => {
           >
             About
           </a>
+
           <a
             className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500"
-            href="/services"
+            href="/Create"
           >
-            Services
+            Create
           </a>
           <a
             className="text-white sm::text-[20px] font-semibold hover:text-gray-500"
@@ -90,10 +91,10 @@ const Navbar = () => {
             About Us
           </a>
           <a
-            className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"
-            href="/services"
+            className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500"
+            href="/Create"
           >
-            faq
+            Create
           </a>
           <a
             className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"

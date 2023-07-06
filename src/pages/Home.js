@@ -5,6 +5,7 @@ import data from "../utils/data";
 import { useState, useEffect } from "react";
 import Nfts from "../components/NftExplore/Nfts";
 import { Link } from "react-router-dom";
+import HomeNext from "../Blockchain_Service/NextIndex";
 
 function Home() {
   /**Why WeaveNft card slider starts here */
@@ -82,6 +83,7 @@ function Home() {
               transparency and security.{" "}
             </p>
             <div className="space-x-6">
+              <HomeNext />
               <button
                 className="text-white text-sm font-semibold 
           bg-gradient-to-br from-pink-700 to-violet-950 

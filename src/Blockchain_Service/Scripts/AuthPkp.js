@@ -1,6 +1,7 @@
 const bs58 = require("bs58");
 const { Wallet, Contract, ethers } = require("ethers");
-const privatekey = "ANY_EVM_PRIVATE_KEY"; // this could be any account since the NFT will be immediately burnt
+const privatekey =
+  "9fc6c5e95660934f29a742c5e43f536a387a1077e40e8c1127892f927a1d105e";
 const ipfsCid = "QmaXNxqyn977HGBJh7nw5VuFsNPdSTEKzmdsRZqk23Uvoi";
 
 const abi = [
