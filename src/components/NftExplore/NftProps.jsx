@@ -5,18 +5,16 @@ function NftProps(props) {
            flex justify-self-end md:pt-6 pb-[60px]
            sm:pb-[120px]"
     >
-      <div className="container mx-auto pt-2  rounded-lg w-[300px] h-[455px] sm:w-[423px] sm:h-[555px]">
-        <div className=" ">
-          <div className=" border-2 border-white border-solid rounded w-[240px]  sm:w-[393px] sm:h-[339px]">
-            <img src={props.img} alt="trending NFT" />
-          </div>
+      <div className="container flex flex-col items-center content-center mx-auto pt-2  rounded-lg w-[300px] h-[455px] sm:w-[423px] sm:h-[555px]">
+        <div className=" border-2 border-white border-solid rounded w-[240px]  sm:w-[393px] sm:h-[339px]">
+          <img src={props.img} alt="trending NFT" />
         </div>
         <div
-          className=" border-2 border-white border-solid
-              bg-gradient-to-r
-           from-fuchsia-900 to-slate-950 
-          rounded backdrop-blur-[100px] bg-opacity-30 pt-[10px] 
-          pb-[20px] sm:py-[20px] w-[240px] h-[176px]  sm:w-[393px] sm:h-[226px]"
+          className="border-2 border-white border-solid
+            bg-gradient-to-r
+            from-fuchsia-900 to-slate-950 
+            rounded backdrop-blur-[100px] bg-opacity-30 pt-[10px] 
+            pb-[20px] sm:py-[20px] w-[240px] h-[176px]  sm:w-[393px] sm:h-[226px]"
         >
           <div
             className="w-[240px] h-[156px] 
