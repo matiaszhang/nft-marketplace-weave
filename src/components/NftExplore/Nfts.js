@@ -1,6 +1,9 @@
+import { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import NftProps from "./NftProps";
 import nftDummy from "../../utils/Nft_Dummy_Data";
-import { useState, useEffect } from "react";
+
+import "swiper/css";
 
 export default function Nfts() {
   const [startInd, setStartInd] = useState(0);
@@ -72,12 +75,8 @@ export default function Nfts() {
           <div className="inset-0">
             {showPrevButton && (
               <button
-                className="btn-prev z-20 mt-[140px] md:mt-[250px] 
-                absolute bg-opacity-70 left-7 w-10 
-                h-10 sm:left-5 bg-[#D9DDDC] text-white p-2 
-                rounded-full shadow-lg 
-                hover:cursor-pointer"
-                onClick={handlePrevButtonClicks}
+                className="btn-prev z-20 mt-[140px] md:mt-[250px] absolute bg-opacity-70 left-7 w-10 h-10 sm:left-5 bg-[#D9DDDC] text-white p-2 rounded-full shadow-lg hover:cursor-pointer"
+                // onClick={handlePrevButtonClicks}
               >
                 &lt;
               </button>
@@ -90,19 +89,37 @@ export default function Nfts() {
                 sm:right-5 bg-[#D9DDDC] p-2 text-white 
                 shadow-lg rounded-full
                  hover:cursor-pointer"
-                onClick={handleNextButtonClicks}
+                // onClick={handleNextButtonClicks}
               >
                 &gt;
               </button>
             )}
           </div>
 
-          <div
-            className=" sm:px-4 flex 
-        justify-center  "
+          <Swiper
+            slidesPerView={3}
+            slidesPerGroup={1}
+            spaceBetween={0}
+            loop={true}
+            navigation={{
+              prevEl: ".btn-prev",
+              nextEl: ".btn-next",
+            }}
           >
-            {nft}
-          </div>
+            {nftDummy.map((items) => (
+              <SwiperSlide key={items.id}>
+                <NftProps
+                  key={items.id}
+                  img={items.imgSrc}
+                  title={items.title}
+                  active={items.active}
+                  content={items.content}
+                  deadline={items.deadline}
+                  currentBid={items.currentBid}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </div>
