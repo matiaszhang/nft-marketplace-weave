@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function Nfts() {
   const [startInd, setStartInd] = useState(0);
-  const [itemsPerPages, setItemsPerPages] = useState(3);
+  const [itemsPerPages, setItemsPerPages] = useState(1);
 
   const handlePrevButtonClicks = () => {
     if (startInd > 0) {
@@ -23,13 +23,13 @@ export default function Nfts() {
 
   useEffect(() => {
     const handleResize = () => {
-      const newItemsPerPages = window.innerWidth >= 640 ? 3 : 1;
-      setItemsPerPages(newItemsPerPages);
+      const newItemsPerPage = window.innerWidth >= 640 ? 3 : 1;
+      setItemsPerPages(newItemsPerPage);
     };
 
     handleResize();
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -40,6 +40,7 @@ export default function Nfts() {
     .slice(startInd, startInd + itemsPerPages)
     .map((items) => (
       <NftProps
+        key={items.id}
         img={items.imgSrc}
         title={items.title}
         active={items.active}

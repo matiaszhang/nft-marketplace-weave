@@ -10,7 +10,7 @@ import HomeNext from "../Blockchain_Service/NextIndex";
 function Home() {
   /**Why WeaveNft card slider starts here */
   const [startIndex, setStartIndex] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [itemsPerPage, setItemsPerPage] = useState(1);
 
   const handlePrevButtonClick = () => {
     if (startIndex > 0) {
@@ -40,8 +40,7 @@ function Home() {
     };
 
     handleResize();
-
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
       window.removeEventListener("resize", handleResize);
