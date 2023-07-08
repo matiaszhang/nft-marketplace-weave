@@ -84,13 +84,13 @@ function Home() {
             </p>
             <div className="space-x-6">
               <HomeNext />
-              <button
+              {/* <button
                 className="text-white text-sm font-semibold 
           bg-gradient-to-br from-pink-700 to-violet-950 
            hover:bg-pink-900 py-2 px-2 sm:py-2 sm:px-4 rounded-lg"
               >
                 Join WeaveNFT
-              </button>
+              </button> */}
               <Link to="/about">
                 <button
                   className="text-slate-900 text-sm font-semibold 

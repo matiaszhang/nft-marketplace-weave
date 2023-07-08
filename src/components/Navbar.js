@@ -91,7 +91,7 @@ const Navbar = () => {
             About Us
           </a>
           <a
-            className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500"
+            className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"
             href="/Create"
           >
             Create
