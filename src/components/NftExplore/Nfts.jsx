@@ -42,7 +42,7 @@ export default function Nfts() {
             </div>
           </div>
 
-          <CustomSwiper slidesPerView={3} slidesPerGroup={1} spaceBetween={0} loop={true}>
+          <CustomSwiper slidesPerView={3} slidesPerGroup={1} spaceBetween={1} loop={true}>
             {nftDummy.map((items) => (
               <SwiperSlide key={items.id}>
                 <NftProps
