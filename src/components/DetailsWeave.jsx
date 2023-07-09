@@ -1,6 +1,6 @@
 const Details = (props) => {
   return (
-    <div className="py-[28px] px-[20px] sm:w-[395px] mx-auto">
+    <div className="py-[28px] px-[20px] sm:w-[395px] w-[240px] mx-auto">
       <div className=" bg-zinc-300 rounded-lg shadow-lg">
         <div className="flex justify-center">
           <div className="pt-4 w-[40px] h-[40px] sm:w-[60px] sm:h-[60px]">
