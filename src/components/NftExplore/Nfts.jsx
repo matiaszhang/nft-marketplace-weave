@@ -27,7 +27,7 @@ export default function Nfts() {
   return (
     <div>
       <div className="bg-[#130B2B]">
-        <div className="container relative px-4 mx-auto">
+        <div className="container px-4 mx-auto md:pt-6 pb-[60px] sm:pb-[120px]">
           <div className="pb-[30px]">
             <h1 className="text-center text-white pt-[70px] text-[20px] sm:text-[44px] font-bold leading-10">
               Trendsetters' Paradise
@@ -41,22 +41,23 @@ export default function Nfts() {
               </p>
             </div>
           </div>
-
-          <CustomSwiper slidesPerView={3} slidesPerGroup={1} spaceBetween={1} loop={true}>
-            {nftDummy.map((items) => (
-              <SwiperSlide key={items.id}>
-                <NftProps
-                  key={items.id}
-                  img={items.imgSrc}
-                  title={items.title}
-                  active={items.active}
-                  content={items.content}
-                  deadline={items.deadline}
-                  currentBid={items.currentBid}
-                />
-              </SwiperSlide>
-            ))}
-          </CustomSwiper>
+          <div className="relative">
+            <CustomSwiper slidesPerView={3} slidesPerGroup={1} spaceBetween={1} loop={true}>
+              {nftDummy.map((items) => (
+                <SwiperSlide key={items.id}>
+                  <NftProps
+                    key={items.id}
+                    img={items.imgSrc}
+                    title={items.title}
+                    active={items.active}
+                    content={items.content}
+                    deadline={items.deadline}
+                    currentBid={items.currentBid}
+                  />
+                </SwiperSlide>
+              ))}
+            </CustomSwiper>
+          </div>
         </div>
       </div>
     </div>
