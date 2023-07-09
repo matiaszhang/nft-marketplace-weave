@@ -1,11 +1,7 @@
 function NftProps(props) {
   return (
-    <div
-      className="cursor-pointer container mx-auto
-           flex justify-self-end md:pt-6 pb-[60px]
-           sm:pb-[120px]"
-    >
-      <div className="container flex flex-col items-center content-center mx-auto pt-2  rounded-lg w-[300px] h-[455px] sm:w-[423px] sm:h-[555px]">
+    <div className="cursor-pointer container mx-auto flex justify-self-end">
+      <div className="container flex flex-col items-center content-center mx-auto pt-2  rounded-lg w-[300px] sm:w-[423px]">
         <div className=" border-2 border-white border-solid rounded w-[240px]  sm:w-[393px] sm:h-[339px]">
           <img src={props.img} alt="trending NFT" />
         </div>
