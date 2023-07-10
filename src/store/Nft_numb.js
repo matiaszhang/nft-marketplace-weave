@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 import { NftContext } from "./NftContext";
 //  component to display the length or numbers of nfts saved in the store
+//this is a random component not related to the project
 
 export default function Nft_number() {
   const [Nfts, setNfts] = useContext(NftContext);

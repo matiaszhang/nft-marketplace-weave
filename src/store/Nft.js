@@ -1,4 +1,5 @@
 import React from "react";
+//this is a random component not related to the project
 export default function Nft(props) {
   return (
     <div>

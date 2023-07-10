@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { NftContext } from "./NftContext";
 //component that allows to add the data to the store
+//this is a random component not related to the project
 
 export default function AddNft() {
   //creating a state for our input field
@@ -20,7 +21,8 @@ export default function AddNft() {
   const AddNfts = (e) => {
     e.preventDefault();
     // ...preMovies makes a copy of  the previously saved movies
-    setMovies((prevNfts) => [...prevNfts, { name: name, price: price }]);
+    setMovies((prevNfts) => [...prevNfts, 
+      { name: name, price: price }]);
   };
 
   return (

@@ -1,5 +1,5 @@
 const { Signature } = require("ethers");
-const LitJsSdk = require("@lit-protocol/lit-node-client-nodejs");
+const LitJsSdk = require("@lit-protocol/lit-node-client");
 
 const pkp_address = process.env.NEXT_PUBLIC_PKP_ADDRESS;
 const publicKey = process.env.NEXT_PUBLIC_PKP_PUBLIC_KEY;

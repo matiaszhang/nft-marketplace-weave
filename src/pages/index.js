@@ -1,15 +1,7 @@
-import SDK from "weavedb-sdk";
 import { publicKey } from "eth-crypto";
-import {
-  SigningKey,
-  getBytes,
-  verifyMessage,
-  hashMessage,
-  BrowserProvider,
-} from "ethers";
+import SDK from "weavedb-sdk";
 import { mergeLeft, isEmpty, isNil } from "ramda";
-
-//connecting weaveDB
+import { SigningKey, getBytes, hashMessage, BrowserProvider } from "ethers";
 
 export async function connectWithWeaveDB() {
   const contractTxId = "9QG_4AHNo6sOuHQaH8h-7NVJpmZ3LWnStnDJrssDdUg";
@@ -18,12 +10,10 @@ export async function connectWithWeaveDB() {
   return sdk;
 }
 
-//Getting a public key of the connected account
-
 export async function getPubKey(identity) {
   const signer = await new BrowserProvider(window.ethereum).getSigner();
   const addr = await signer.getAddress();
-  const message = `NextID\nPlatform: twitter\nIdentity: ${identity}\nTimestamp: ${Date.now()}\nWallet Address: ${addr}`;
+  const message = `Next.ID\nPlatform: twitter\nIdentity: ${identity}\nTimestamp: ${Date.now()}\nWallet Address: ${addr}`;
   const pubKey = SigningKey.recoverPublicKey(
     getBytes(hashMessage(message)),
     await signer.signMessage(message)
@@ -32,8 +22,6 @@ export async function getPubKey(identity) {
   const public_key = `0x${compressed}`;
   return { public_key, addr, signer };
 }
-
-//Check if the given public key is the owner of the twitter identity via Next.ID.
 
 export async function isOwner(identity, public_key) {
   const proofs = await fetch(
@@ -53,10 +41,6 @@ export async function isOwner(identity, public_key) {
   }
   return false;
 }
-
-//If isOwner returns false,
-//linking the public key to the twitter identity via Next.ID.
-// The first step is to sign the generated payload
 
 export async function signPayload(identity, public_key, signer) {
   const res = await fetch("https://proof-service.next.id/v1/proof/payload", {
@@ -82,9 +66,6 @@ export async function signPayload(identity, public_key, signer) {
   };
 }
 
-//The user is expected to tweet the generated tweet with the signature
-//get the status id of the tweet.
-// NextId verify the ownership by checking the tweet.
 export async function verifyProof(statusID, nextID) {
   try {
     const verify = await fetch("https://proof-service.next.id/v1/proof", {
@@ -104,8 +85,6 @@ export async function verifyProof(statusID, nextID) {
   } catch (e) {}
   return false;
 }
-
-//createTempAddress with weaveDB
 
 export async function createTempAddress(handle, signer, sdk) {
   // sign a query to link a temporary address to the twitter handle
