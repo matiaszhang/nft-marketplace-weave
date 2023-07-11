@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { SwiperSlide } from "swiper/react";
 import CustomSwiper from "../elements/Swiper";
 import NftProps from "./NftProps";
@@ -7,23 +6,6 @@ import nftDummy from "../../utils/Nft_Dummy_Data";
 import "swiper/css";
 
 export default function Nfts() {
-  const [itemsPerPages, setItemsPerPages] = useState(1);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const newItemsPerPage = window.innerWidth >= 640 ? 3 : 1;
-      setItemsPerPages(newItemsPerPage);
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize, { passive: true });
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <div>
       <div className="bg-[#130B2B]">
