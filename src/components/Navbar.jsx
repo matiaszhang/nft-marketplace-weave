@@ -16,37 +16,21 @@ const Navbar = () => {
     >
       <nav className="container   mx-auto flex items-center justify-between py-4 px-8 md:px-10">
         <div className="flex items-center cursor-pointer">
-          <img
-            className="w-[110px] md:w-auto"
-            src="./images/logo.png"
-            alt="logo"
-          />
+          <img className="w-[110px] md:w-auto" src="/images/logo.png" alt="logo" />
         </div>
 
         <div className="hidden md:flex md:items-center">
-          <a
-            className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500"
-            href="/"
-          >
+          <a className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500" href="/">
             Home
           </a>
-          <a
-            className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500"
-            href="/about"
-          >
+          <a className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500" href="/about">
             About
           </a>
 
-          <a
-            className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500"
-            href="/Create"
-          >
+          <a className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500" href="/Create">
             Create
           </a>
-          <a
-            className="text-white sm::text-[20px] font-semibold hover:text-gray-500"
-            href="/contact"
-          >
+          <a className="text-white sm::text-[20px] font-semibold hover:text-gray-500" href="/contact">
             Contact
           </a>
         </div>
@@ -57,11 +41,7 @@ const Navbar = () => {
 
         <div className="md:hidden">
           <button className="text-white" onClick={toggleMenu}>
-            {isOpen ? (
-              <FaTimes className="text-2xl" />
-            ) : (
-              <FaBars className="text-2xl" />
-            )}
+            {isOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
           </button>
         </div>
       </nav>
@@ -71,35 +51,20 @@ const Navbar = () => {
           className="fixed top-0  right-0 bottom-0 left-0 bg-gradient-to-r from-fuchsia-900
          to-slate-950 flex flex-col items-center justify-center"
         >
-          <button
-            className="text-white absolute top-4 right-4"
-            onClick={toggleMenu}
-          >
+          <button className="text-white absolute top-4 right-4" onClick={toggleMenu}>
             <FaTimes className="text-2xl" />
           </button>
           <WalletConnect />
-          <a
-            className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"
-            href="/"
-          >
+          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/">
             Home
           </a>
-          <a
-            className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"
-            href="/about"
-          >
+          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/about">
             About Us
           </a>
-          <a
-            className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"
-            href="/Create"
-          >
+          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/Create">
             Create
           </a>
-          <a
-            className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500"
-            href="/contact"
-          >
+          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/contact">
             Contact
           </a>
         </div>

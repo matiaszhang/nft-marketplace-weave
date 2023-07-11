@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+
 import Details from "../components/DetailsWeave";
 import data from "../utils/data";
 import Nfts from "../components/NftExplore/Nfts";
@@ -19,8 +19,6 @@ function Home() {
 
   return (
     <div>
-      <Navbar />
-
       {/* first section starts */}
 
       <div className=" bg-clip-content bg-cover " style={containerStyle}>
@@ -35,14 +33,10 @@ function Home() {
             >
               Unlock Your Artistic Potential <br />
               in the Decentralized <br />
-              <span className="border-double border-4 rounded-lg border-fuchsia-900">
-                NFT
-              </span>{" "}
-              Universe
+              <span className="border-double border-4 rounded-lg border-fuchsia-900">NFT</span> Universe
             </h1>
             <p className="py-[36px] text-slate-900 text-[14px] sm:text-[24px] font-normal leading-loose">
-              Showcase, sell and trade unique digital assets <br /> with
-              transparency and security.{" "}
+              Showcase, sell and trade unique digital assets <br /> with transparency and security.{" "}
             </p>
             <div className="flex flex-row space-x-6">
               <div className="">
@@ -73,9 +67,7 @@ function Home() {
                   169k
                   <br />
                 </span>
-                <span className="text-slate-900 px-4 text-[15px] sm:text-[20px] font-normal leading-7">
-                  Users
-                </span>
+                <span className="text-slate-900 px-4 text-[15px] sm:text-[20px] font-normal leading-7">Users</span>
               </div>
 
               <div className="w-[168px] h-[95.52px] border-r-[1px] border-fuchsia-900">
@@ -83,9 +75,7 @@ function Home() {
                   22k
                   <br />
                 </span>
-                <span className="text-slate-900 px-2 text-[15px] sm:text-[20px] font-normal leading-7">
-                  Artist{" "}
-                </span>
+                <span className="text-slate-900 px-2 text-[15px] sm:text-[20px] font-normal leading-7">Artist </span>
               </div>
 
               <div className="w-[168px] h-[95.52px] border-r-[1px] border-fuchsia-900">
@@ -93,9 +83,7 @@ function Home() {
                   40k
                   <br />
                 </span>
-                <span className="text-slate-900  text-[15px] sm:text-[20px] font-normal leading-7">
-                  Collections
-                </span>
+                <span className="text-slate-900  text-[15px] sm:text-[20px] font-normal leading-7">Collections</span>
               </div>
             </div>
           </div>
@@ -181,19 +169,10 @@ function Home() {
           Why WeaveNFT Marketplace?
         </h2>
         <div className="container relative px-8 mx-auto">
-          <CustomSwiper
-            slidesPerView={3}
-            slidesPerGroup={1}
-            spaceBetween={1}
-            loop={true}
-          >
+          <CustomSwiper slidesPerView={3} slidesPerGroup={1} spaceBetween={1} loop={true}>
             {data.map((item) => (
               <SwiperSlide key={item.id}>
-                <Details
-                  img={item.imgSrc}
-                  title={item.title}
-                  content={item.content}
-                />
+                <Details img={item.imgSrc} title={item.title} content={item.content} />
               </SwiperSlide>
             ))}
           </CustomSwiper>
@@ -210,9 +189,8 @@ function Home() {
             Join WeaveNFT Marketplace today{" "}
           </h2>
           <p className="pb-[32px] pt-[26px] text-center text-white text-opacity-60 text-[17px] font-normal leading-7">
-            Become part of a thriving community of artists, collectors, and
-            enthusiasts. <br /> Experience the future of digital ownership and
-            immerse yourself in the world <br /> of unique and valuable NFTs.
+            Become part of a thriving community of artists, collectors, and enthusiasts. <br /> Experience the future of
+            digital ownership and immerse yourself in the world <br /> of unique and valuable NFTs.
           </p>
           <div className="flex justify-center">
             <SignInOptions />
@@ -222,9 +200,7 @@ function Home() {
 
       {/**Fourth section */}
       <div className="bg-[#130B2B] pb-[32px] pt-[80px]">
-        <h2 className=" text-center text-gray-50 text-[28px] sm:text-[40px] font-bold leading-10">
-          Top seller
-        </h2>
+        <h2 className=" text-center text-gray-50 text-[28px] sm:text-[40px] font-bold leading-10">Top seller</h2>
         <p className="pt-[26px] text-center text-white text-opacity-60 text-[17px] font-normal leading-7">
           We present to you the best sellers of the month
         </p>
@@ -252,12 +228,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (2).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  McCoy
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  899.03 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">McCoy</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">899.03 ETH</p>
               </div>
             </div>
           </div>
@@ -274,12 +246,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (3).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Webb
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  779.58 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Webb</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">779.58 ETH</p>
               </div>
             </div>
           </div>
@@ -296,12 +264,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (4).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Miles
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  739.65 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Miles</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">739.65 ETH</p>
               </div>
             </div>
           </div>
@@ -318,12 +282,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (5).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Wade Warren
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  710.68 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Wade Warren</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">710.68 ETH</p>
               </div>
             </div>
           </div>
@@ -341,12 +301,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (6).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Devon Lane
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  630.44 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Devon Lane</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">630.44 ETH</p>
               </div>
             </div>
           </div>
@@ -364,12 +320,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (7).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Marvin McKinney
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  601.13 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Marvin McKinney</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">601.13 ETH</p>
               </div>
             </div>
           </div>
@@ -387,12 +339,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (8).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Fisher
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  589.99 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Fisher</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">589.99 ETH</p>
               </div>
             </div>
           </div>
@@ -410,12 +358,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (9).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Kristin Watson
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  576.28 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Kristin Watson</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">576.28 ETH</p>
               </div>
             </div>
           </div>
@@ -433,12 +377,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (10).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Bessie
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  475.22 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Bessie</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">475.22 ETH</p>
               </div>
             </div>
           </div>
@@ -456,12 +396,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (11).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Ronald Richards
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  450.54 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Ronald Richards</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">450.54 ETH</p>
               </div>
             </div>
           </div>
@@ -479,12 +415,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (12).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Cody
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  351.02 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Cody</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">351.02 ETH</p>
               </div>
             </div>
           </div>
@@ -502,12 +434,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (13).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Cooper
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  328.85 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Cooper</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">328.85 ETH</p>
               </div>
             </div>
           </div>
@@ -525,12 +453,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (14).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Larry_39
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  293.01 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Larry_39</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">293.01 ETH</p>
               </div>
             </div>
           </div>
@@ -548,12 +472,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (15).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Savannah
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  219.78 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Savannah</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">219.78 ETH</p>
               </div>
             </div>
           </div>
@@ -571,12 +491,8 @@ function Home() {
                 <img src="./images/Ellipse 8 (16).png" alt="seller" />
               </div>
               <div className="pl-[16px]">
-                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">
-                  Nguyen
-                </h3>
-                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">
-                  105.55 ETH
-                </p>
+                <h3 className="text-gray-50 text-[9px] sm:text-[19px] font-bold sm:leading-loose">Nguyen</h3>
+                <p className="text-gray-50 text-[6px] sm:text-[15px] font-normal sm:leading-7">105.55 ETH</p>
               </div>
             </div>
           </div>
@@ -597,9 +513,8 @@ function Home() {
             Subscribe to our mailing list
           </h2>
           <p className="pt-[32px] text-center text-white text-opacity-80  sm:text-[18px] font-normal leading-7">
-            Stay informed about the latest feature releases, NFT drops, and
-            valuable tips <br /> and tricks for navigating the WeaveNFT
-            Marketplace. 
+            Stay informed about the latest feature releases, NFT drops, and valuable tips <br /> and tricks for
+            navigating the WeaveNFT Marketplace. 
           </p>
           <div className="flex justify-center align-center pt-[30px]">
             <div className="flex">
@@ -626,9 +541,7 @@ function Home() {
       {/** Eight section */}
       <div className="bg-[#130B2B]">
         <div className="py-[100px] container mx-auto px-8">
-          <h2 className="text-gray-50  text-center text-[23px] sm:text-[44px] font-bold leading-10">
-            Our Partners
-          </h2>
+          <h2 className="text-gray-50  text-center text-[23px] sm:text-[44px] font-bold leading-10">Our Partners</h2>
           <p className="text-gray-50 text-center text-[13px] sm:text-[20px] py-[22px] font-normal leading-7">
             Meet our well renowned and regonised partners
           </p>
@@ -648,7 +561,6 @@ function Home() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
