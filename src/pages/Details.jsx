@@ -1,12 +1,13 @@
-import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
+import { faArrowTrendUp, faChartLine, faEllipsis, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "../components/elements/Button";
 import Typography from "../components/elements/Typography";
+import Accordion from "../components/elements/Accordion";
 
 const NFTDetails = () => {
   return (
-    <div className="flex flex-col text-white">
-      <div className="flex flex-row justify-center p-[100px] gap-[100px]">
+    <div className="flex flex-col text-white p-[100px] gap-[100px]">
+      <div className="flex flex-row justify-center gap-[100px]">
         <div
           className="w-[523px] h-[685px] bg-cover bg-center border-x-2 border-white-500 rounded-lg"
           style={{ backgroundImage: `url("/images/Frame 1.png")` }}
@@ -43,11 +44,23 @@ const NFTDetails = () => {
               </div>
             </div>
             <div className="flex flex-row gap-2">
-              <Button className="grow h-[60px]">Place bid</Button>
-              <Button className="grow h-[60px]">Make an offer</Button>
+              <Button className="basis-1/2 h-[60px]">Place bid</Button>
+              <Button className="basis-1/2 h-[60px]">Make an offer</Button>
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex flex-row justify-center gap-[100px]">
+        <Accordion className="w-[523px]" icon={faArrowTrendUp} title="Bidding Activities">
+          <div className="text-white">asdf</div>
+          <div className="text-white">asdf</div>
+          <div className="text-white">asdf</div>
+          <div className="text-white">asdf</div>
+        </Accordion>
+        <Accordion className="w-[617px]" icon={faInfoCircle} title="Details">
+          <div className="text-white">asdf</div>
+          <div className="text-white">asdf</div>
+        </Accordion>
       </div>
     </div>
   );
