@@ -1,10 +1,10 @@
-
 import { useRef } from "react";
 import { Swiper } from "swiper/react";
 
-import "swiper/css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
+import "swiper/css";
 
 const CustomSwiper = ({ slidesPerView = 1, spaceBetween = 0, slidesPerGroup = 1, loop = false, children }) => {
   const swiperRef = useRef();
