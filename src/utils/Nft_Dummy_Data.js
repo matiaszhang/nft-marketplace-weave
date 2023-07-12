@@ -1,6 +1,6 @@
 const nftDummy = [
   {
-    imgSrc: "./images/Frame 1.png",
+    imgSrc: "/images/Frame 1.png",
     id: 1,
     title: " TechUniverse",
     active: "",
@@ -10,37 +10,34 @@ const nftDummy = [
     currentBid: "0.32ETH",
   },
   {
-    imgSrc: "./images/Frame 2.png",
+    imgSrc: "/images/Frame 2.png",
     id: 2,
     title: "DigitalSpectrum",
     active: "For sale",
-    content:
-      "A diverse collection of NFTs spanning a wide spectrum of artistic styles, genres, themes and a lot more.",
+    content: "A diverse collection of NFTs spanning a wide spectrum of artistic styles, genres, themes and a lot more.",
     deadline: "04:40:56",
     currentBid: "7.8 ETH",
   },
   {
-    imgSrc: "./images/Frame 6.png",
+    imgSrc: "/images/Frame 6.png",
     id: 3,
     title: "Illustria",
     active: "",
-    content:
-      "Transporting viewers to an enchanting realm of imagination and fantasy through captivating NFT artworks.",
+    content: "Transporting viewers to an enchanting realm of imagination and fantasy through captivating NFT artworks.",
     deadline: "04:40:56",
     currentBid: "0.32 ETH",
   },
   {
-    imgSrc: "./images/Frame 3.png",
+    imgSrc: "/images/Frame 3.png",
     id: 4,
     title: "ArtVerse",
     active: "",
-    content:
-      "An expansive virtual universe for artists and collectors to explore and exchange diverse NFT artworks.",
+    content: "An expansive virtual universe for artists and collectors to explore and exchange diverse NFT artworks.",
     deadline: "04:40:56",
     currentBid: "0.32 ETH",
   },
   {
-    imgSrc: "./images/Frame 4.png",
+    imgSrc: "/images/Frame 4.png",
     id: 5,
     title: "ChromaMosaic",
     active: "",
@@ -50,7 +47,7 @@ const nftDummy = [
     currentBid: "0.32 ETH",
   },
   {
-    imgSrc: "./images/Frame 5.png",
+    imgSrc: "/images/Frame 5.png",
     id: 6,
     title: "ArtVerse",
     active: "",
