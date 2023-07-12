@@ -8,8 +8,6 @@ import ListItem from "../components/elements/ListItem";
 import classNames from "classnames";
 import nftDummy from "../utils/Nft_Dummy_Data";
 import NftProps from "../components/NftExplore/NftProps";
-import { SwiperSlide } from "swiper/react";
-import CustomSwiper from "../components/elements/Swiper";
 
 const NFTDetails = () => {
   return (
