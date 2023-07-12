@@ -52,8 +52,12 @@ const NFTDetails = () => {
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-2">
-                <Button className="basis-full h-[60px]">Place bid</Button>
-                <Button className="basis-full h-[60px]">Make an offer</Button>
+                <Button variant="primary" className="basis-full h-[60px]">
+                  Place bid
+                </Button>
+                <Button variant="outline" className="basis-full h-[60px]">
+                  Make an offer
+                </Button>
               </div>
             </div>
           </Card>
