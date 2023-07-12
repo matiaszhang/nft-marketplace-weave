@@ -1,6 +1,3 @@
-import { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
-
 import Details from "../components/DetailsWeave";
 import data from "../utils/data";
 import Nfts from "../components/NftExplore/Nfts";
@@ -10,7 +7,7 @@ import { SwiperSlide } from "swiper/react";
 import SignInOptions from "../components/elements/SignInOptions";
 
 function Home() {
-  /** Why weaveNft card slider stops here */
+  
   const backgroundImageUrl = "./images/Vector%2013.png";
 
   const containerStyle = {

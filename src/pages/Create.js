@@ -1,5 +1,3 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { useDropzone } from "react-dropzone";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
@@ -77,7 +75,7 @@ export default function Create(props) {
 
   return (
     <div>
-      <Navbar />
+      
       <div
         className="bg-gradient-to-r from-fuchsia-900
          to-slate-950"
@@ -287,8 +285,6 @@ export default function Create(props) {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

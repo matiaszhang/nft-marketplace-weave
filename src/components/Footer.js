@@ -5,13 +5,16 @@ import { HiOutlineMail } from "react-icons/hi";
 function Footer() {
   return (
     <div
-      className="px-[30px] md:px-[80px] py-[60px] bg-gradient-to-r
+      className="px-[30px] md:px-[80px] py-[60px]
+       bg-gradient-to-r
        from-fuchsia-900
          to-slate-950  grid grid-cols-1 
          md:flex md:flex-row gap-4"
     >
-      <div className="md:flex flex-wrap md:flex-row gap-4">
-        <div className="md:w-[519px] md:h-[88px] md:mt-[20px]">
+      <div className="md:flex flex-wrap md:flex-row 
+      gap-4">
+        <div className="md:w-[519px] md:h-[88px] 
+        md:mt-[20px]">
           <img className="w-[110px] md:w-auto cursor-pointer" src="/images/logo.png" alt="logo" />
           <p className="text-opacity-90 py-[15px] text-white text-[10px] md:text-[18px] font-normal">
             Sculpting the Future of Digital Art
