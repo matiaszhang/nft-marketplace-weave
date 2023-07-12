@@ -1,8 +1,7 @@
 import React from "react";
 import "../index.css";
 import { useState } from "react";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+
 
 function About() {
   const [expanded, setExpanded] = useState(false);
@@ -14,7 +13,7 @@ function About() {
   return (
     <>
       <div>
-        <Navbar />
+        
         <div
           className="pb-[60px] pt-[10px] bg-gradient-to-r from-fuchsia-900
          to-slate-950 "
@@ -235,7 +234,6 @@ function About() {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );
