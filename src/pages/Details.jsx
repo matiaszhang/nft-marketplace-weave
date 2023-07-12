@@ -8,8 +8,6 @@ import ListItem from "../components/elements/ListItem";
 import classNames from "classnames";
 import nftDummy from "../utils/Nft_Dummy_Data";
 import NftProps from "../components/NftExplore/NftProps";
-import { SwiperSlide } from "swiper/react";
-import CustomSwiper from "../components/elements/Swiper";
 
 const NFTDetails = () => {
   return (
@@ -63,7 +61,7 @@ const NFTDetails = () => {
           </Card>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row justify-center items-center gap-[50px] xl:gap-[100px]">
+      <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-[50px] xl:gap-[100px]">
         <Accordion className="max-w-[617px] w-full lg:max-w-[523px]" icon={faArrowTrendUp} title="Bidding Activities">
           {Array.apply("", Array(4)).map((_, idx) => (
             <ListItem
