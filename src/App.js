@@ -2,12 +2,14 @@ import { Outlet, Route, RouterProvider, createBrowserRouter, createRoutesFromEle
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Create from "./pages/Create";
+import Explore from "./pages/explore";
 import Navbar from "./components/Navbar";
 import {NFTDetails, detailsLoader} from "./pages/Details";
 import Footer from "./components/Footer";
 
 import "./App.css";
 import Artist from "./pages/Artist";
+
 
 
 export default function App() {
@@ -18,6 +20,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/Create" element={<Create />} />
+        <Route path="/explore" element={<Explore />} />
         <Route path="/explore/nft/:id" loader={detailsLoader} element={<NFTDetails />} />
         <Route path="/explore/Artist" element={<Artist />} />
       </Route>

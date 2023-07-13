@@ -1,8 +1,9 @@
 import classNames from "classnames";
 
-const Button = ({ variant = "primary", className, children }) => {
+const Button = ({ onClick, variant = "primary", className, children }) => {
   return (
     <button
+      onClick={onClick}
       className={classNames(
         {
           "bg-gradientPrimary hover:bg-gradientSecondary bg-origin-border  border-transparent": variant === "primary",

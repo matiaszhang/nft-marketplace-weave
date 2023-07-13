@@ -1,13 +1,30 @@
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowTrendUp, faEllipsis, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { Button, Typography, Accordion, Card, ListItem } from "../components/elements";
+import {
+  faArrowTrendUp,
+  faEllipsis,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  Button,
+  Typography,
+  Accordion,
+  Card,
+  ListItem,
+} from "../components/elements";
 import nftDummy from "../utils/Nft_Dummy_Data";
 import NftProps from "../components/NftExplore/NftProps";
-
+import { useContext } from "react";
+import { NftContext } from "../store/NftContext";
 import { useParams } from "react-router-dom";
+import Modal from "../components/elements/Modal/modal";
 
 export const NFTDetails = () => {
+  const { setModal } = useContext(NftContext);
+
+  const openModal = () => {
+    setModal("scale-100");
+  };
 
   const { id } = useParams();
   const details = nftDummy.find((item) => item.id === parseInt(id));
@@ -19,11 +36,10 @@ export const NFTDetails = () => {
   return (
     <div className="flex flex-col text-white p-[50px] xl:p-[70px] laptop:p-[100px] gap-[50px] xl:gap-[100px] h-full">
       <div className="flex flex-col lg:flex-row justify-center items-center gap-[50px] xl:gap-[100px] h-full">
-        <div
-          className="max-w-[523px] w-full h-[617px] lg:h-full bg-cover bg-center border-x-2 border-white-500 rounded-lg">
-            <img src={details.imgSrc} alt="just for tet" />
+        <div className="max-w-[523px] w-full h-[617px] lg:h-full bg-cover bg-center border-x-2 border-white-500 rounded-lg">
+          <img src={details.imgSrc} alt="just for tet" />
         </div>
-        
+
         <div className="flex flex-col gap-6 max-w-[617px] w-full">
           <div className="flex flex-row justify-between items-center w-full">
             <div className="flex flex-row gap-3 items-center">
@@ -58,12 +74,51 @@ export const NFTDetails = () => {
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-2">
-                <Button variant="primary" className="basis-full h-[60px]">
+                <Button
+                  onClick={openModal}
+                  variant="primary"
+                  className="basis-full h-[60px]"
+                >
                   Place bid
                 </Button>
                 <Button variant="outline" className="basis-full h-[60px]">
-                  Make an offer
+                  Buyout Price <span>20 ETH</span>
                 </Button>
+
+                <Modal>
+                  <Typography
+                    type="h7"
+                    className="text-center !text-slate-900 font-normal leading-snug"
+                  >
+                    Place Bid <span>{details.title}</span>
+                  </Typography>
+                  <p
+                    className="text-black 
+                  text-center"
+                  >
+                    Review the information below to ensure it is what you want
+                  </p>
+
+                  {/** placeing a bid */}
+                  <div className="text-black pt-5  flex  justify-between">
+                    <p className="text-slate-700 text-base font-semibold leading-snug">Current Bid</p>
+                    <p className="text-slate-900 text-base font-semibold leading-snug">7.8 ETH</p>
+                  </div>
+                  <div className="text-black pt-2 pb-5  flex  justify-between">
+                    <p className="text-slate-700 text-base font-semibold leading-snug">Minimum Markup</p>
+                    <p className="text-slate-900 text-base font-semibold leading-snug">0 ETH</p>
+                  </div>
+
+                  <hr style={{ borderColor: 'gray' }} />
+
+
+                  <p className="py-3 flex justify-end  py-2 text-slate-900 text-base font-semibold leading-snug">Available balance: <span>739.65 ETH</span></p>
+
+                  {/**button */}
+                  <Button>
+                  Bid Now
+                  </Button>
+                </Modal>
               </div>
             </div>
           </Card>
@@ -131,10 +186,6 @@ export const NFTDetails = () => {
     </div>
   );
 };
-
-
-
-
 
 export const detailsLoader = async () => {
   try {

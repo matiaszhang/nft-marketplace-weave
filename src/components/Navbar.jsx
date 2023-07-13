@@ -30,8 +30,8 @@ const Navbar = () => {
           <a className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500" href="/Create">
             Create
           </a>
-          <a className="text-white sm::text-[20px] font-semibold hover:text-gray-500" href="/contact">
-            Contact
+          <a className="text-white sm::text-[20px] font-semibold hover:text-gray-500" href="/explore">
+            Explore
           </a>
         </div>
 
@@ -64,8 +64,8 @@ const Navbar = () => {
           <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/Create">
             Create
           </a>
-          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/contact">
-            Contact
+          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/explore">
+            explore
           </a>
         </div>
       )}
