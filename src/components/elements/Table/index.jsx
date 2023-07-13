@@ -9,10 +9,13 @@ const Table = ({ className, headers, data, emptyLabel, indexCol = "id" }) => {
             {headers.map((header, index) => (
               <th
                 key={index}
-                className={classNames("font-normal text-2xl text-white/[0.6] pb-10", {
-                  "text-start": headers.length !== index + 1,
-                  "text-end": headers.length === index + 1,
-                })}
+                className={classNames(
+                  "font-normal text-lg sm:text-xl lg:text-2xl text-white/[0.6] pb-4 sm:pb-6 lg:pb-10",
+                  {
+                    "text-start": headers.length !== index + 1,
+                    "text-end": headers.length === index + 1,
+                  }
+                )}
                 style={header?.style}
               >
                 {header.renderHeader ? header.renderHeader(header) : <div className="">{header.title}</div>}
@@ -33,7 +36,7 @@ const Table = ({ className, headers, data, emptyLabel, indexCol = "id" }) => {
                     {header.renderCell ? (
                       header.renderCell(row, header, indexCol)
                     ) : (
-                      <div className="text-xl">{row[header.field]}</div>
+                      <div className="text-sm sm:text-base lg:text-xl">{row[header.field]}</div>
                     )}
                   </td>
                 ))}

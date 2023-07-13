@@ -2,16 +2,16 @@ import { Button, Typography } from "components/elements";
 
 const Updates = () => {
   return (
-    <div className="flex flex-row justify-between gap-28">
-      <div className="relative mt-7">
-        <img src="/images/UpdateHero.svg" alt="hero" />
+    <div className="flex flex-col lg:flex-row justify-between items-center gap-28">
+      <div className="relative mt-7 flex items-center lg:min-w-[500px]">
+        <img src="/images/UpdateHero.svg" className="w-full" alt="hero" />
         <img src="/images/camera.svg" className="absolute -right-7 -top-7 cursor-pointer" alt="hero" />
       </div>
-      <div className="flex flex-col max-w-[600px]">
+      <div className="flex flex-col">
         <Typography className="text-[#F8F8FA]" type="h7">
           Donors should take note of the update below
         </Typography>
-        <p className="text-xl mt-7 text-white">
+        <p className="text-base sm:text-lg lg:text-xl mt-7 text-white">
           We are thrilled to share that TechUniverse NFTs will now come with a unique utility feature. As a bidder, once
           you secure a TechUniverse NFT, you will gain exclusive access to private events, tech conferences, and
           workshops related to the cutting-edge concepts represented in the NFTs. Immerse yourself in the world of

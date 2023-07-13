@@ -7,7 +7,7 @@ const Tab = ({ className, children }) => {
 
   return (
     <div className={classNames("flex flex-col", className)}>
-      <div className="flex flex-row gap-[60px]">
+      <div className="flex flex-row gap-[60px] whitespace-nowrap overflow-x-auto py-2">
         {children?.map((child) => {
           const { label, index } = child.props;
           return (
@@ -15,7 +15,7 @@ const Tab = ({ className, children }) => {
               {active === index ? (
                 <Typography type="h6">{label}</Typography>
               ) : (
-                <p className="text-white/[0.7] text-2xl">{label}</p>
+                <p className="text-white/[0.7] text-lg sm:text-xl lg:text-2xl">{label}</p>
               )}
             </button>
           );
