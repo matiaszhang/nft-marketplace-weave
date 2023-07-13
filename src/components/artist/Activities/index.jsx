@@ -1,7 +1,7 @@
-import { faCartShopping, faRightLeft, faTag } from "@fortawesome/free-solid-svg-icons";
+import Table from "components/elements/Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-const { default: Table } = require("components/elements/Table");
+import { faCartShopping, faRightLeft, faTag } from "@fortawesome/free-solid-svg-icons";
+import { dummyActivities } from "constant/dummyData";
 
 const Activities = () => {
   const columns = [
@@ -39,55 +39,7 @@ const Activities = () => {
     { title: "Time", field: "time" },
   ];
 
-  const dummyData = [
-    {
-      activities: "Bid",
-      title: "CinematicElegance",
-      nft: "/images/Frame 2.png",
-      owner: "From: Kristin Watson",
-      price: "3.478 ETH",
-      quantity: "1",
-      time: "Yesterday 7:15pm",
-    },
-    {
-      activities: "Purchased",
-      title: "PixelPalette",
-      nft: "/images/Frame 3.png",
-      owner: "From: Webb",
-      price: "5.9 ETH",
-      quantity: "1",
-      time: "6/7/2023 1:34pm",
-    },
-    {
-      activities: "Minted",
-      title: "PixelCouture",
-      nft: "/images/Frame 4.png",
-      price: "On bid",
-      owner: "Owner",
-      quantity: "1",
-      time: "6/7/2023 1:34pm",
-    },
-    {
-      activities: "Fractionally owned",
-      title: "ChromaTracks",
-      nft: "/images/Frame 5.png",
-      price: "2.934 ETH",
-      owner: "Fractional ownership",
-      quantity: "1",
-      time: "2/6/2023 3:12pm",
-    },
-    {
-      activities: "Changed price",
-      title: "ArtAlchemy",
-      nft: "/images/Frame 6.png",
-      price: "2.8 ETH",
-      owner: "Owner",
-      quantity: "1",
-      time: "9/5/2023 9:09pm",
-    },
-  ];
-
-  return <Table headers={columns} data={dummyData} />;
+  return <Table headers={columns} data={dummyActivities} />;
 };
 
 export default Activities;
