@@ -2,40 +2,34 @@ import { SwiperSlide } from "swiper/react";
 import CustomSwiper from "../elements/Swiper";
 import NftProps from "./NftProps";
 import nftDummy from "../../utils/Nft_Dummy_Data";
-
+import { Link } from 'react-router-dom';
 import "swiper/css";
+import NftCollection from "./Header/NftCollection";
+
+
 
 export default function Nfts() {
   return (
     <div>
       <div className="bg-[#130B2B]">
         <div className="container px-4 mx-auto md:pt-6 pb-[60px] sm:pb-[120px]">
-          <div className="pb-[30px]">
-            <h1 className="text-center text-white pt-[70px] text-[20px] sm:text-[44px] font-bold leading-10">
-              Trendsetters' Paradise
-            </h1>
-            <div className="text-white pt-[17px] flex justify-between">
-              <h3 className="text-white text-[16px] sm:text-[28px] font-bold leading-9">
-                Meticulously curated NFT collections
-              </h3>
-              <p className="text-white text-opacity-80 text-[8px] sm:text-[20px] font-semibold leading-9">
-                View all collections
-              </p>
-            </div>
-          </div>
+          <NftCollection />
+          
           <div className="relative">
             <CustomSwiper slidesPerView={3} slidesPerGroup={1} spaceBetween={1} loop={true}>
-              {nftDummy.map((items) => (
-                <SwiperSlide key={items.id}>
+              {nftDummy.map((nft) => (
+                <SwiperSlide key={nft.id}>
+                  <Link to={`/explore/nft/${nft.id}`}>
                   <NftProps
-                    key={items.id}
-                    img={items.imgSrc}
-                    title={items.title}
-                    active={items.active}
-                    content={items.content}
-                    deadline={items.deadline}
-                    currentBid={items.currentBid}
+                    key={nft.id}
+                    img={nft.imgSrc}
+                    title={nft.title}
+                    active={nft.active}
+                    content={nft.content}
+                    deadline={nft.deadline}
+                    currentBid={nft.currentBid}
                   />
+                  </Link>
                 </SwiperSlide>
               ))}
             </CustomSwiper>
