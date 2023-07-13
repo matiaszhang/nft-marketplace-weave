@@ -1,11 +1,7 @@
-import { faArrowTrendUp, faEllipsis, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "../components/elements/Button";
-import Typography from "../components/elements/Typography";
-import Accordion from "../components/elements/Accordion";
-import Card from "../components/elements/Card";
-import ListItem from "../components/elements/ListItem";
 import classNames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowTrendUp, faEllipsis, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { Button, Typography, Accordion, Card, ListItem } from "../components/elements";
 import nftDummy from "../utils/Nft_Dummy_Data";
 import NftProps from "../components/NftExplore/NftProps";
 
