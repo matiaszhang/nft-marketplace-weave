@@ -5,8 +5,8 @@ import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-
 
 const ContactInformation = () => {
   return (
-    <div className="flex flex-row justify-between gap-[100px]">
-      <div className="flex flex-col grow gap-5">
+    <div className="flex flex-col sm:flex-row justify-center sm:justify-between gap-[100px]">
+      <div className="flex flex-col basis-full gap-5">
         <Typography className="mb-4" type="h5">
           Contact McCoy
         </Typography>
@@ -14,10 +14,10 @@ const ContactInformation = () => {
         <Input label="Name" placeholder="Enter your full name" />
         <Textarea label="Message" placeholder="Enter the details of your information here" rows={4} />
       </div>
-      <div className="flex flex-col gap-2 grow max-w-[550px]">
+      <div className="flex flex-col gap-2 basis-full">
         <div className="flex flex-col gap-2">
           <Typography type="h4">Contact Information</Typography>
-          <p className="text-2xl text-white/[0.7]">
+          <p className="text-lg sm:text-xl lg:text-2xl text-white/[0.7]">
             Fill up this form to reach out to McCoy and you will be contacted within 24 hours.
           </p>
         </div>

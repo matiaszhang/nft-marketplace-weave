@@ -1,11 +1,11 @@
-import { Button } from "../../elements";
-import nftDummy from "../../../utils/Nft_Dummy_Data";
-import NftProps from "../../NftExplore/NftProps";
+import { Button } from "components/elements";
+import nftDummy from "utils/Nft_Dummy_Data";
+import NftProps from "components/NftExplore/NftProps";
 
 const AllNFTs = () => {
   return (
     <div className="flex flex-col items-center gap-10">
-      <div className="grid grid-cols-3 gap-8 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 laptop:grid-cols-3 gap-8 items-center">
         {nftDummy.slice(0, 6).map((items) => (
           <NftProps
             key={items.id}
