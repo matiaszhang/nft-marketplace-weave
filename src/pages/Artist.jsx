@@ -5,6 +5,7 @@ import AllNFTs from "components/artist/AllNFTs";
 import Testimonials from "components/artist/Testimonials";
 import ContactInformation from "components/artist/ContactInformation";
 import Updates from "components/artist/Updates";
+import Activities from "components/artist/Activities";
 
 const Artist = () => {
   return (
@@ -36,7 +37,7 @@ const Artist = () => {
             <AllNFTs />
           </TabContent>
           <TabContent label="Activities" index={1}>
-            <></>
+            <Activities />
           </TabContent>
           <TabContent label="Testimonials" index={2}>
             <Testimonials />
