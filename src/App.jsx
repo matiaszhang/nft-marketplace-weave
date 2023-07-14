@@ -1,4 +1,3 @@
-<<<<<<< HEAD:src/App.js
 import { Outlet, Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -7,19 +6,11 @@ import Explore from "./pages/explore";
 import Navbar from "./components/Navbar";
 import {NFTDetails, detailsLoader} from "./pages/Details";
 import Footer from "./components/Footer";
-=======
-import { Outlet, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
-import Home from "pages/Home";
-import About from "pages/About";
-import Create from "pages/Create";
-import Navbar from "components/Navbar";
-import { NFTDetails, detailsLoader } from "pages/Details";
-import Artist from "pages/Artist";
-import Explore from "pages/Explore";
-import Footer from "components/Footer";
->>>>>>> 20d77caf4d0ef5c571294208dbfcd7625c514883:src/App.jsx
+
+
 
 import "./App.css";
+import Artist from "./pages/Artist";
 
 
 export default function App() {
