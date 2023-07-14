@@ -1,7 +1,9 @@
 import { useDropzone } from "react-dropzone";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { NftContext } from "../store/NftContext";
+import Modal from "../components/elements/Modal/modal";
 
 export default function Create(props) {
   const [title, setTitle] = useState("");
@@ -10,16 +12,19 @@ export default function Create(props) {
   const [nft, setNft] = useState("");
   const [category, setCategory] = useState("category");
 
+  const { setModal, setLoading } = useContext(NftContext);
+
   //function for adding image to input
   const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
     // Disable click and keydown behavior
     noClick: true,
     noKeyboard: true,
   });
+  
 
   //files to select
 
-  const files = acceptedFiles.map((file) => (
+  const Files = acceptedFiles.map((file) => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
@@ -45,7 +50,10 @@ export default function Create(props) {
         setDescription(event.target.value);
         break;
       case "nft":
-        setNft(event.target.value);
+        if (event.target.files && event.target.files.length > 0) {
+          setNft(event.target.files[0]);
+          console.log(event.target.files[0]);
+        }
         break;
       default:
         break;
@@ -53,29 +61,44 @@ export default function Create(props) {
   };
 
   //handle submit
+  const resetForm = () => {
+    setTitle("");
+    setPrice("");
+    setDescription("");
+    setNft("");
+    setCategory("category");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (!title || !price || !description || !nft || !category) {
+      console.log(title);
+      console.log(price);
+      console.log(description);
+      console.log(nft);
+      console.log(category);
+
       toast.error("Please fill all required fields");
     } else {
-      //do something
+      setModal("scale-100");
+      setLoading({ show: true, msg: "Nft..." });
 
-      // Clear form fields after successful submission
-      setTitle("");
-      setPrice("");
-      setDescription("");
-      setNft("");
-      setCategory("category");
+      try {
+        // Do something with the form data
 
-      toast.success("Nft successfully minted!");
+        resetForm();
+
+        toast.success("Nft successfully minted!");
+      } catch (error) {
+        console.log(error);
+        toast.error("An error occurred while minting the Nft");
+      }
     }
   };
 
   return (
     <div>
-      
       <div
         className="bg-gradient-to-r from-fuchsia-900
          to-slate-950"
@@ -186,7 +209,7 @@ export default function Create(props) {
                   className="block text-white 
                   text-sm pb-2
                   font-semibold leading-snug"
-                  for="picture"
+                  htmlFor="picture"
                 >
                   Add NFT
                 </label>
@@ -196,15 +219,19 @@ export default function Create(props) {
               <div className="bg-white rounded-md flex flex-col  ">
                 <input
                   name="nft"
-                  value={nft}
+                  value={nft.name || ""}
+                  id="picture"
                   onChange={handleChange}
+                  type="file"
                   className="
+                  
                   
                 border rounded w-full md:w-[600px] py-3 
                 px-3
                  text-gray-700 leading-tight 
                  focus:outline-none focus:shadow-outline"
                   {...getInputProps()}
+                  
                 />
                 {/*  
                 <div
@@ -230,7 +257,7 @@ export default function Create(props) {
                 </button>
               </div>
               <aside className="text-white">
-                <ul>{files}</ul>
+                <ul>{Files}</ul>
               </aside>
 
               {/* category input */}

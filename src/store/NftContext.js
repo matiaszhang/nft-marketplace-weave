@@ -3,17 +3,18 @@ import React, { useState, createContext } from "react";
 export const NftContext = createContext();
 
 export function NftProvider(props) {
-  //this nfts, setNfts is for demo details and can be
-  //changed, but the rest is related to the project
+
+
 
   const [nft, setNft] = useState();
+  const [db, setDb] = useState(null);
   const [modal, setModal] = useState("scale-0");
-  const [updateModal, setUpdateModal] = useState("scale-0");
+  const [initDb, setInitDb] = useState(false);
   const [showModal, setShowModal] = useState("scale-0");
   const [nftDetails, setNFTDetails] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: "", color: "" });
   const [loading, setLoading] = useState({ show: false, msg: "" });
-  const [connectedAccount, setConnectedAccount] = useState("");
+  const [user, setUser] = useState(null);
 
   return (
     <div>
@@ -25,11 +26,17 @@ export function NftProvider(props) {
           setModal,
           nftDetails,
           setNFTDetails,
-          updateModal,
+          db,
+          setDb,
+          initDb,
+          setInitDb,
           showModal,
           alert,
+          setAlert,
           loading,
-          connectedAccount,
+          setLoading,
+          user,
+          setUser
         }}
       >
         {props.children}

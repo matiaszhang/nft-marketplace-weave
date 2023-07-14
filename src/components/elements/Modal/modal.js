@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { NftContext } from "../../../store/NftContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function Modal({ children }) {
   const { modal, setModal } = useContext(NftContext);
@@ -23,14 +25,8 @@ export default function Modal({ children }) {
           w-11/12 md:w-2/5 h-7/12 p-6"
         >
           <form className="flex flex-col">
-            <div className="flex justify-end">
-              <button
-                type="button"
-                onClick={closeModal}
-                className="text-black border-0 bg-transparent focus:outline-none"
-              >
-                close
-              </button>
+            <div onClick={closeModal} style={{ color: "black" }} className="flex justify-end">
+              <FontAwesomeIcon icon={faTimes} />
             </div>
 
             {children}

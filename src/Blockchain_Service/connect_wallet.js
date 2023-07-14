@@ -1,16 +1,16 @@
 import SDK from "weavedb-sdk";
 import { ethers } from "ethers";
 import { isNil } from "ramda";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import lf from "localforage";
+import { NftContext } from "../store/NftContext";
 
 function WalletConnect() {
   const contractTxId = "9QG_4AHNo6sOuHQaH8h-7NVJpmZ3LWnStnDJrssDdUg";
   const sonarLink = `https://sonar.warp.cc/?#/app/contract/${contractTxId}`;
 
-  const [db, setDb] = useState(null);
-  const [initDb, setInitDb] = useState(false);
-  const [user, setUser] = useState(null);
+  const {db, setDb, initDb, setInitDb, user, setUser} = useContext(NftContext)
+
 
   const checkUser = async () => {
     const wallet_address = await lf.getItem(`temp_address:current`);
@@ -125,7 +125,7 @@ function WalletConnect() {
            hover:bg-pink-900 py-2 px-4 rounded-lg"
             onClick={handleLoginClick}
           >
-            {!initDb ? "please wait.." : "Connect Wallet"}
+            {initDb ? "please wait.." : "Connect Wallet"}
           </button>
         )}
       </div>

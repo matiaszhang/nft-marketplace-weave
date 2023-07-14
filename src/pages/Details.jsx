@@ -20,11 +20,12 @@ import { useParams } from "react-router-dom";
 import Modal from "../components/elements/Modal/modal";
 
 export const NFTDetails = () => {
-  const { setModal } = useContext(NftContext);
+  const { setModal, user } = useContext(NftContext);
 
   const openModal = () => {
     setModal("scale-100");
   };
+  
 
   const { id } = useParams();
   const details = nftDummy.find((item) => item.id === parseInt(id));
@@ -73,7 +74,9 @@ export const NFTDetails = () => {
                   </p>
                 </div>
               </div>
+              
               <div className="flex flex-col sm:flex-row gap-2">
+              
                 <Button
                   onClick={openModal}
                   variant="primary"
@@ -81,9 +84,11 @@ export const NFTDetails = () => {
                 >
                   Place bid
                 </Button>
-                <Button variant="outline" className="basis-full h-[60px]">
-                  Buyout Price <span>20 ETH</span>
+                
+                <Button variant="primary" className="basis-full h-[60px]">
+                  Close Auction
                 </Button>
+                
 
                 <Modal>
                   <Typography
@@ -102,7 +107,7 @@ export const NFTDetails = () => {
                   {/** placeing a bid */}
                   <div className="text-black pt-5  flex  justify-between">
                     <p className="text-slate-700 text-base font-semibold leading-snug">Current Bid</p>
-                    <p className="text-slate-900 text-base font-semibold leading-snug">7.8 ETH</p>
+                    <p className="text-slate-900 text-base font-semibold leading-snug">{details.currentBid}</p>
                   </div>
                   <div className="text-black pt-2 pb-5  flex  justify-between">
                     <p className="text-slate-700 text-base font-semibold leading-snug">Minimum Markup</p>
@@ -120,6 +125,10 @@ export const NFTDetails = () => {
                   </Button>
                 </Modal>
               </div>
+
+              
+
+              
             </div>
           </Card>
         </div>
