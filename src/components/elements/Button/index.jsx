@@ -9,8 +9,8 @@ const Button = ({ variant = "primary", className, children, icon, onClick, size 
           "bg-gradientPrimary hover:bg-gradientSecondary bg-origin-border": variant === "primary",
           "bg-transparent hover:text-gray-400": variant === "secondary",
           "bg-transparent border-white hover:border-gray-400": variant === "outline",
-          "py-2.5 px-5": size == "md",
-          "py-1.5 px-4": size == "sm",
+          "py-2.5 px-5": size === "md",
+          "py-1.5 px-4": size === "sm",
         },
         "flex flex-row gap-2 text-white rounded-lg text-md sm:text-xl items-center border-2 border-transparent",
         className
