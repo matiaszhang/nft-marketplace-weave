@@ -6,6 +6,7 @@ module.exports = {
       backgroundImage: {
         gradientPrimary:
           "linear-gradient(137deg, #B6116B 0%, #3B1578 100%), linear-gradient(156deg, #FF53C0FF 0%, #FF53C000 50%)",
+        gradientPrimaryOutline: "linear-gradient(#181027, #181027), linear-gradient(100deg, #5d2f69, #3A2B61)",
         gradientSecondary:
           "linear-gradient(137deg, #CE619D 0%, #3B1578 100%, #3B1578 100%, #B089BA 100%), linear-gradient(137deg, #CE619D 0%, #3B1578 100%, #3B1578 100%, #B089BA 100%)",
         gradientDark: "linear-gradient(137deg, #980F5A 0%, #511162 100%)",
