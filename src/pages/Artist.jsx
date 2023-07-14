@@ -32,7 +32,7 @@ const Artist = () => {
             <FontAwesomeIcon className="cursor-pointer" icon={faEllipsis} size="lg" />
           </div>
         </div>
-        <Tab tabTitles={["All NFTs", "Activities", "Testimonials", "Contact Information", "Updates"]}>
+        <Tab>
           <TabContent label="All NFTs" index={0}>
             <AllNFTs />
           </TabContent>
