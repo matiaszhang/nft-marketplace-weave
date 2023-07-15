@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { NftContext } from "../../store/NftContext";
+import { Button } from ".";
 
 export default function SignInOptions() {
   const { modal, setModal } = useContext(NftContext);
@@ -15,14 +16,9 @@ export default function SignInOptions() {
   return (
     <>
       <div>
-        <button
-          onClick={openModal}
-          className="text-white text-sm font-semibold 
-          bg-gradient-to-br cursor-pointer from-pink-700 to-violet-950 
-           hover:bg-pink-900 py-2 px-2 sm:py-2 sm:px-4 rounded-lg"
-        >
+        <Button variant="primary" onClick={openModal}>
           Join WeaveNFT
-        </button>
+        </Button>
       </div>
       <div
         className={`fixed z-30 top-0 right-0 
@@ -39,11 +35,7 @@ export default function SignInOptions() {
           <form className="flex flex-col">
             <div className="flex flex-row justify-between items-center">
               <p className="font-semibold text-gray-400">Connect Wallet</p>
-              <button
-                type="button"
-                onClick={closeModal}
-                className="border-0 bg-transparent focus:outline-none"
-              >
+              <button type="button" onClick={closeModal} className="border-0 bg-transparent focus:outline-none">
                 close
               </button>
             </div>

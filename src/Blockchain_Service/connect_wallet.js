@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import { isNil } from "ramda";
 import React, { useEffect, useState } from "react";
 import lf from "localforage";
+import { Button } from "components/elements";
 
 function WalletConnect() {
   const contractTxId = "9QG_4AHNo6sOuHQaH8h-7NVJpmZ3LWnStnDJrssDdUg";
@@ -15,9 +16,7 @@ function WalletConnect() {
   const checkUser = async () => {
     const wallet_address = await lf.getItem(`temp_address:current`);
     if (!isNil(wallet_address)) {
-      const identity = await lf.getItem(
-        `temp_address:${contractTxId}:${wallet_address}`
-      );
+      const identity = await lf.getItem(`temp_address:${contractTxId}:${wallet_address}`);
       if (!isNil(identity)) {
         setUser({
           wallet: wallet_address,
@@ -45,9 +44,7 @@ function WalletConnect() {
     const signer = await provider.getSigner();
     await provider.send("eth_requestAccounts", []);
     const wallet_address = await signer.getAddress();
-    let identity = await lf.getItem(
-      `temp_address:${contractTxId}:${wallet_address}`
-    );
+    let identity = await lf.getItem(`temp_address:${contractTxId}:${wallet_address}`);
 
     let tx;
     let err;
@@ -71,10 +68,7 @@ function WalletConnect() {
       identity.tx = tx;
       identity.linked_address = wallet_address;
       await lf.setItem("temp_address:current", wallet_address);
-      await lf.setItem(
-        `temp_address:${contractTxId}:${wallet_address}`,
-        JSON.parse(JSON.stringify(identity))
-      );
+      await lf.setItem(`temp_address:${contractTxId}:${wallet_address}`, JSON.parse(JSON.stringify(identity)));
       setUser({
         wallet: wallet_address,
         privateKey: identity.privateKey,
@@ -112,21 +106,13 @@ function WalletConnect() {
         <br />
         {/*<p>{initDb ? "WeaveDB is Ready" : "WeaveDB SDK is not initialized"}</p>*/}
         {!isNil(user) ? (
-          <button
-            className="text-white text-sm border-4 border-pink-700 rounded-lg py-2 px-4"
-            onClick={logout}
-          >
+          <button className="text-white text-sm border-4 border-pink-700 rounded-lg py-2 px-4" onClick={logout}>
             {user.wallet.slice(0, 5)}...{user.wallet.slice(-5)}
           </button>
         ) : (
-          <button
-            className="text-white text-sm font-semibold 
-          bg-gradient-to-br from-pink-700 to-violet-950 
-           hover:bg-pink-900 py-2 px-4 rounded-lg"
-            onClick={handleLoginClick}
-          >
+          <Button variant="primary" onClick={handleLoginClick}>
             {!initDb ? "please wait.." : "Connect Wallet"}
-          </button>
+          </Button>
         )}
       </div>
     </div>

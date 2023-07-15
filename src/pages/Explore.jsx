@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Button } from "components/elements";
 import NFTCard from "components/nftCard";
 import { dummyNFTs } from "constant/dummyData";
 import { ReactComponent as Grid } from "assets/icons/grid.svg";

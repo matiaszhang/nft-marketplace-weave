@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import CustomSwiper from "../components/elements/Swiper";
 import { SwiperSlide } from "swiper/react";
 import SignInOptions from "../components/elements/SignInOptions";
+import { Button } from "components/elements";
 
 function Home() {
-  
-  const backgroundImageUrl = "./images/Vector%2013.png";
+  const backgroundImageUrl = "images/HomeBg.png";
 
   const containerStyle = {
     backgroundImage: `url(${backgroundImageUrl})`,
@@ -17,22 +17,15 @@ function Home() {
   return (
     <div>
       {/* first section starts */}
-
       <div className=" bg-clip-content bg-cover " style={containerStyle}>
-        <div
-          className="sm:grid grid-cols-2 md:px-10
-        z-10"
-        >
-          <div className="container py-4 px-8 mx-auto">
-            <h1
-              className="text-slate-900  font-bold  
-        text-[28px] sm:text-[48px]"
-            >
+        <div className="sm:grid grid-cols-2 md:px-10 py-20 z-10">
+          <div className="container flex flex-col gap-9 px-8 mx-auto">
+            <h1 className="text-slate-900  font-bold text-[28px] sm:text-[58px]/[76px]">
               Unlock Your Artistic Potential <br />
               in the Decentralized <br />
               <span className="border-double border-4 rounded-lg border-fuchsia-900">NFT</span> Universe
             </h1>
-            <p className="py-[36px] text-slate-900 text-[14px] sm:text-[24px] font-normal leading-loose">
+            <p className="text-slate-900 text-[14px] sm:text-[24px] font-normal leading-loose">
               Showcase, sell and trade unique digital assets <br /> with transparency and security.{" "}
             </p>
             <div className="flex flex-row space-x-6">
@@ -50,16 +43,16 @@ function Home() {
                 Join WeaveNFT
               </button> */}
               <Link to="/about">
-                <button
-                  className="text-slate-900 text-sm font-semibold 
-           border-2  border-fuchsia-900 py-2 px-4 rounded-lg"
+                <Button
+                  variant="secondary"
+                  className="border border-[#3B1578] text-[#3B1578] hover:text-[#3B1578] font-semibold"
                 >
                   Learn More
-                </button>
+                </Button>
               </Link>
             </div>
-            <div className=" flex flex-row py-[36px] gap-10">
-              <div className="w-[168px] h-[95.52px] border-r-[1px] border-fuchsia-900">
+            <div className="flex flex-row gap-10 items-center">
+              <div className="flex flex-col justify-center w-[168px] h-[95.52px] border-r-[1px] border-fuchsia-900">
                 <span className="text-slate-900 text-[28px] sm:text-[38px] font-bold leading-10">
                   169k
                   <br />
@@ -67,7 +60,7 @@ function Home() {
                 <span className="text-slate-900 px-4 text-[15px] sm:text-[20px] font-normal leading-7">Users</span>
               </div>
 
-              <div className="w-[168px] h-[95.52px] border-r-[1px] border-fuchsia-900">
+              <div className="flex flex-col justify-center w-[168px] h-[95.52px] border-r-[1px] border-fuchsia-900">
                 <span className="text-slate-900 text-[28px] sm:text-[38px] font-bold leading-10">
                   22k
                   <br />
@@ -75,7 +68,7 @@ function Home() {
                 <span className="text-slate-900 px-2 text-[15px] sm:text-[20px] font-normal leading-7">Artist </span>
               </div>
 
-              <div className="w-[168px] h-[95.52px] border-r-[1px] border-fuchsia-900">
+              <div className="flex flex-col justify-center w-[168px] h-[95.52px] border-r-[1px] border-fuchsia-900">
                 <span className="text-slate-900 text-[28px] sm:text-[38px] font-bold leading-10">
                   40k
                   <br />
@@ -86,10 +79,7 @@ function Home() {
           </div>
 
           {/* images design */}
-          <div
-            className="cursor-pointer 
-          sm:px-10 flex justify-self-end md:pt-6"
-          >
+          <div className="cursor-pointer sm:px-10 flex justify-self-end md:pt-6">
             <div className="container mx-auto py-4  rounded-lg w-[300px] h-[455px] sm:w-[423px] sm:h-[555px]">
               <div className="relative">
                 <div className="z-20 absolute inset-0 w-[70px] h-[70px] sm:w-[157px] sm:h-[157px]">
@@ -103,55 +93,30 @@ function Home() {
                   <img src="./images/Frame 13.png" alt="trending NFT" />
                 </div>
               </div>
-              <div
-                className="border-2 border-white border-solid w-[280px] h-[156px] sm:w-[423px] sm:h-[186px] 
-              bg-gradient-to-r
-           from-fuchsia-900 to-slate-950 
-          rounded backdrop-blur-[100px] bg-opacity-50"
-              >
+              <div className="border-2 border-white border-solid w-[280px] h-[156px] sm:w-[423px] sm:h-[186px] bg-gradient-to-r from-fuchsia-900 to-slate-950 rounded backdrop-blur-[100px] bg-opacity-50">
                 <div>
-                  <div
-                    className="flex justify-between px-[24px]
-               pt-[26px] pb-[20px] "
-                  >
+                  <div className="flex justify-between px-[24px] pt-[26px] pb-[20px] ">
                     <div>
-                      <p
-                        className=" text-white text-[16px]
-             sm:text-[20px] font-normal leading-7"
-                      >
-                        Ends in
-                      </p>
-                      <span
-                        className="text-white text-[12px] 
-              sm:text-[16px] font-semibold leading-snug"
-                      >
-                        04:40:56
-                      </span>
+                      <p className="text-white text-[16px] sm:text-[20px] font-normal leading-7">Ends in</p>
+                      <span className="text-white text-[12px] sm:text-[16px] font-semibold leading-snug">04:40:56</span>
                     </div>
 
                     <div>
-                      <p
-                        className=" text-white text-[16px]
-             sm:text-[20px] font-normal leading-7"
-                      >
-                        Current bid
-                      </p>
-                      <span
-                        className="text-white text-[12px] 
-              sm:text-[16px] font-semibold leading-snug"
-                      >
-                        0.32ETH
-                      </span>
+                      <p className=" text-white text-[16px] sm:text-[20px] font-normal leading-7">Current bid</p>
+                      <span className="text-white text-[12px] sm:text-[16px] font-semibold leading-snug">0.32ETH</span>
                     </div>
                   </div>
                   <div className="flex justify-center sm:pt-[10px]">
-                    <button
+                    <Button className="w-[250px] sm:w-[380px] justify-center" variant="primary">
+                      Place Bid
+                    </Button>
+                    {/* <button
                       className="w-[250px] sm:w-[380px] h-[45px] sm:h-[60px] text-white  text-[16px] sm:text-[20px] 
                   bg-gradient-to-br from-pink-700 to-violet-950
                 font-semibold leading-7  rounded-lg"
                     >
                       Place bid
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </div>
