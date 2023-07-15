@@ -36,9 +36,9 @@ const Explore = () => {
         </ToggleButtonGroup>
       </div>
       <div
-        className={classNames(`grid grid-cols-${grid - 3} md:grid-cols-${grid - 2} lg:grid-cols-${grid} gap-5`, {
+        className={classNames(`grid gap-5`, {
           "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4": grid === 4,
-          "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5": grid === 5,
+          "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5": grid === 5,
         })}
       >
         {dummyNFTs.map((nft) => (
