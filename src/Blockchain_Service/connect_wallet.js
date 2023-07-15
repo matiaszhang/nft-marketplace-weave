@@ -2,7 +2,7 @@ import Identicon from 'react-identicons';
 import SDK from "weavedb-sdk";
 import { ethers } from "ethers";
 import { isNil } from "ramda";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import lf from "localforage";
 
 import { NftContext } from "../store/NftContext";

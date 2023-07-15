@@ -6,6 +6,7 @@ import CustomSwiper from "../components/elements/Swiper";
 import { SwiperSlide } from "swiper/react";
 import { Button } from "components/elements";
 import WalletConnect from "../Blockchain_Service/connect_wallet";
+import Subscriber from "../components/elements/Subcribe";
 
 function Home() {
   const backgroundImageUrl = "images/HomeBg.png";
@@ -33,7 +34,10 @@ function Home() {
               <Link to="/about">
                 <Button
                   variant="secondary"
-                  className="border border-[#3B1578] text-[#3B1578] hover:text-[#3B1578] font-semibold"
+                  className="border border-[#3B1578] 
+                  text-[#3B1578]
+                   hover:text-[#3B1578] 
+                   font-semibold"
                 >
                   Learn More
                 </Button>
@@ -458,34 +462,7 @@ function Home() {
         className="bg-gradient-to-r from-fuchsia-900
          to-slate-950 "
       >
-        <div className="px-8 py-[120px] container mx-auto">
-          <h2 className="text-center text-white text-[23px] sm:text-[44px] font-bold leading-10">
-            Subscribe to our mailing list
-          </h2>
-          <p className="pt-[32px] text-center text-white text-opacity-80  sm:text-[18px] font-normal leading-7">
-            Stay informed about the latest feature releases, NFT drops, and valuable tips <br /> and tricks for
-            navigating the WeaveNFT Marketplace. 
-          </p>
-          <div className="flex justify-center align-center pt-[30px]">
-            <div className="flex">
-              <input
-                type="text"
-                className="mr-2 px-[10px] sm:px-4 py-2 border 
-                border-gray-300 rounded-l-md 
-                focus:outline-none focus:border-blue-500"
-                placeholder="Email Address"
-              />
-              <button
-                className=" px-2 sm:px-4 py-2 bg-gradient-to-br 
-              from-pink-700 to-violet-950 text-white
-               rounded-r-md hover:bg-blue-600 
-               focus:outline-none"
-              >
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
+        <Subscriber />
       </div>
 
       {/** Eight section */}

@@ -17,6 +17,7 @@
     "bignumber.js": "^9.1.1",
     "browserify-zlib": "^0.2.0",
     "classnames": "^2.3.2",
+    "emailjs-com": "^3.2.0",
     "eth-crypto": "^2.6.0",
     "ethers": "^6.6.2",
     "localforage": "^1.10.0",
