@@ -9,8 +9,9 @@ export default function Create(props) {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [nft, setNft] = useState("");
-  const [category, setCategory] = useState("category");
+  const [fileUrl, setFileUrl] = useState("");
+
+  const [category, setCategory] = useState("");
 
   const { setModal, setLoading } = useContext(NftContext);
 
@@ -51,7 +52,7 @@ export default function Create(props) {
         break;
       case "nft":
         if (event.target.files && event.target.files.length > 0) {
-          setNft(event.target.files[0]);
+          setFileUrl(event.target.files[0]);
           console.log(event.target.files[0]);
         }
         break;
@@ -65,18 +66,18 @@ export default function Create(props) {
     setTitle("");
     setPrice("");
     setDescription("");
-    setNft("");
-    setCategory("category");
+    setFileUrl("");
+    setCategory("");
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!title || !price || !description || !nft || !category) {
+    if (!title || !price || !description || !fileUrl || !category) {
       console.log(title);
       console.log(price);
       console.log(description);
-      console.log(nft);
+      console.log(fileUrl);
       console.log(category);
 
       toast.error("Please fill all required fields");
@@ -219,13 +220,12 @@ export default function Create(props) {
               <div className="bg-white rounded-md flex flex-col  ">
                 <input
                   name="nft"
-                  value={nft.name || ""}
+                  value={fileUrl.name || ""}
                   id="picture"
                   onChange={handleChange}
                   type="file"
+                  accept="image/png, image/gif, image/jpeg, image/webp, audio/mpeg, audio/wav, video/mp4, video/webm"
                   className="
-                  
-                  
                 border rounded w-full md:w-[600px] py-3 
                 px-3
                  text-gray-700 leading-tight 
@@ -279,13 +279,14 @@ export default function Create(props) {
                   id="Category"
                   type="text"
                   value={category}
+                  placeholder="Select the category of your project"
                   onChange={handleCategoryChange}
                 >
-                  <option>Select the category of your project</option>
-                  <option value="picture Nft">picture Nft</option>
-                  <option value="Music Nft">Music Nft</option>
-                  <option value="Video Nft">Video Nft</option>
-                  <option value="Fractional ownership">
+                  
+                  <option value="">picture Nft</option>
+                  <option value="">Music Nft</option>
+                  <option value="">Video Nft</option>
+                  <option value="">
                     Fractional ownership
                   </option>
                 </select>

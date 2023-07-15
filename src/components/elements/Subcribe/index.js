@@ -27,9 +27,9 @@ export default function Subscriber() {
           "service_1v8l5j4",
           "template_twj7zn9",
           {
-            to_email: "recipient@example.com",
+            to_email: "devkoxy@gmail.com",
             from_name: address,
-            message: "Hello, this is a test email!",
+            message: "Hello, i am a subscriber from weaveDB!",
           },
           "EK04mlc-t5tm-hZjF"
         );

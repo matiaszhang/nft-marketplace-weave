@@ -57,21 +57,9 @@ const Navbar = () => {
             <FaTimes className="text-2xl" />
           </button>
 
-          <WalletConnect />
+          <WalletConnect>Connect  Wallet </WalletConnect>
 
-          <WalletConnect>Connect Wallet</WalletConnect>
-          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/">
-            Home
-          </a>
-          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/about">
-            About Us
-          </a>
-          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/Create">
-            Create
-          </a>
-          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/explore">
-            explore
-          </a>
+          
           
 
           <Link to="/">
