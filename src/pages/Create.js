@@ -10,16 +10,30 @@ export default function Create(props) {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [fileUrl, setFileUrl] = useState("");
-
+  const [imgBase64, setImgBase64] =  useState("");
   const [category, setCategory] = useState("");
 
   const { setModal, setLoading } = useContext(NftContext);
 
   //function for adding image to input
+
   const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
-    // Disable click and keydown behavior
     noClick: true,
     noKeyboard: true,
+    onDrop: (acceptedFiles) => {
+      if (acceptedFiles && acceptedFiles.length > 0) {
+        const file = acceptedFiles[0];
+        const reader = new FileReader();
+
+        reader.onload = (readerEvent) => {
+          const base64 = readerEvent.target.result;
+          setImgBase64(base64);
+          setFileUrl(file);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
   });
   
 
@@ -220,8 +234,9 @@ export default function Create(props) {
               <div className="bg-white rounded-md flex flex-col  ">
                 <input
                   name="nft"
-                  value={fileUrl.name || ""}
+                  value=""
                   id="picture"
+                  
                   onChange={handleChange}
                   type="file"
                   accept="image/png, image/gif, image/jpeg, image/webp, audio/mpeg, audio/wav, video/mp4, video/webm"
@@ -283,10 +298,10 @@ export default function Create(props) {
                   onChange={handleCategoryChange}
                 >
                   
-                  <option value="">picture Nft</option>
-                  <option value="">Music Nft</option>
-                  <option value="">Video Nft</option>
-                  <option value="">
+                  <option value="edit this later">picture Nft</option>
+                  <option value="edit this lateer">Music Nft</option>
+                  <option value="edit this later">Video Nft</option>
+                  <option value="edit this later">
                     Fractional ownership
                   </option>
                 </select>
