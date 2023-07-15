@@ -20,10 +20,14 @@ import { useParams } from "react-router-dom";
 import Modal from "../components/elements/Modal/modal";
 
 export const NFTDetails = () => {
-  const { setModal, user } = useContext(NftContext);
+  const { setModal, setShowModal, user } = useContext(NftContext);
 
   const openModal = () => {
     setModal("scale-100");
+  };
+
+  const closeAuction = () => {
+    setShowModal("scale-100");
   };
   
 
@@ -80,12 +84,12 @@ export const NFTDetails = () => {
                 <Button
                   onClick={openModal}
                   variant="primary"
-                  className="basis-full h-[60px]"
+                  className="basis-full !flex justify-center h-[60px]"
                 >
                   Place bid
                 </Button>
                 
-                <Button variant="primary" className="basis-full h-[60px]">
+                <Button onClick={closeAuction} variant="primary" className="!flex justify-center basis-full h-[60px]">
                   Close Auction
                 </Button>
                 
@@ -120,10 +124,11 @@ export const NFTDetails = () => {
                   <p className="py-3 flex justify-end  py-2 text-slate-900 text-base font-semibold leading-snug">Available balance: <span>739.65 ETH</span></p>
 
                   {/**button */}
-                  <Button>
+                  <Button className="!flex justify-center" >
                   Bid Now
                   </Button>
                 </Modal>
+                
               </div>
 
               
