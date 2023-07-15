@@ -3,18 +3,14 @@ import { ethers } from "ethers";
 import { isNil } from "ramda";
 import React, { useContext, useEffect, useState } from "react";
 import lf from "localforage";
-<<<<<<< HEAD
 import { NftContext } from "../store/NftContext";
-=======
 import { Button } from "components/elements";
->>>>>>> origin/main
 
 function WalletConnect() {
   const contractTxId = "9QG_4AHNo6sOuHQaH8h-7NVJpmZ3LWnStnDJrssDdUg";
   const sonarLink = `https://sonar.warp.cc/?#/app/contract/${contractTxId}`;
 
-  const {db, setDb, initDb, setInitDb, user, setUser} = useContext(NftContext)
-
+  const { db, setDb, initDb, setInitDb, user, setUser } = useContext(NftContext);
 
   const checkUser = async () => {
     const wallet_address = await lf.getItem(`temp_address:current`);
@@ -113,20 +109,9 @@ function WalletConnect() {
             {user.wallet.slice(0, 5)}...{user.wallet.slice(-5)}
           </button>
         ) : (
-<<<<<<< HEAD
-          <button
-            className="text-white text-sm font-semibold 
-          bg-gradient-to-br from-pink-700 to-violet-950 
-           hover:bg-pink-900 py-2 px-4 rounded-lg"
-            onClick={handleLoginClick}
-          >
-            {initDb ? "please wait.." : "Connect Wallet"}
-          </button>
-=======
           <Button variant="primary" onClick={handleLoginClick}>
             {!initDb ? "please wait.." : "Connect Wallet"}
           </Button>
->>>>>>> origin/main
         )}
       </div>
     </div>

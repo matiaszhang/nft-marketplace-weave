@@ -1,24 +1,13 @@
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowTrendUp,
-  faEllipsis,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  Button,
-  Typography,
-  Accordion,
-  Card,
-  ListItem,
-} from "../components/elements";
+import { faArrowTrendUp, faEllipsis, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { Button, Typography, Accordion, Card, ListItem } from "../components/elements";
 import nftDummy from "../utils/Nft_Dummy_Data";
-<<<<<<< HEAD
-import NftProps from "../components/NftExplore/NftProps";
 import { useContext } from "react";
 import { NftContext } from "../store/NftContext";
 import { useParams } from "react-router-dom";
 import Modal from "../components/elements/Modal/modal";
+import NFTCard from "components/nftCard";
 
 export const NFTDetails = () => {
   const { setModal, setShowModal, user } = useContext(NftContext);
@@ -30,15 +19,7 @@ export const NFTDetails = () => {
   const closeAuction = () => {
     setShowModal("scale-100");
   };
-  
 
-=======
-
-import { useParams } from "react-router-dom";
-import NFTCard from "components/nftCard";
-
-export const NFTDetails = () => {
->>>>>>> origin/main
   const { id } = useParams();
   const details = nftDummy.find((item) => item.id === parseInt(id));
 
@@ -78,27 +59,18 @@ export const NFTDetails = () => {
                   <p className="text-base/[22px] text-end">{details.currentBid}</p>
                 </div>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-2">
-              
-                <Button
-                  onClick={openModal}
-                  variant="primary"
-                  className="basis-full !flex justify-center h-[60px]"
-                >
+                <Button onClick={openModal} variant="primary" className="basis-full !flex justify-center h-[60px]">
                   Place bid
                 </Button>
-                
+
                 <Button onClick={closeAuction} variant="primary" className="!flex justify-center basis-full h-[60px]">
                   Close Auction
                 </Button>
-                
 
                 <Modal>
-                  <Typography
-                    type="h7"
-                    className="text-center !text-slate-900 font-normal leading-snug"
-                  >
+                  <Typography type="h7" className="text-center !text-slate-900 font-normal leading-snug">
                     Place Bid <span>{details.title}</span>
                   </Typography>
                   <p
@@ -118,22 +90,16 @@ export const NFTDetails = () => {
                     <p className="text-slate-900 text-base font-semibold leading-snug">0 ETH</p>
                   </div>
 
-                  <hr style={{ borderColor: 'gray' }} />
+                  <hr style={{ borderColor: "gray" }} />
 
-
-                  <p className="py-3 flex justify-end  py-2 text-slate-900 text-base font-semibold leading-snug">Available balance: <span>739.65 ETH</span></p>
+                  <p className="py-3 flex justify-end text-slate-900 text-base font-semibold leading-snug">
+                    Available balance: <span>739.65 ETH</span>
+                  </p>
 
                   {/**button */}
-                  <Button className="!flex justify-center" >
-                  Bid Now
-                  </Button>
+                  <Button className="!flex justify-center">Bid Now</Button>
                 </Modal>
-                
               </div>
-
-              
-
-              
             </div>
           </Card>
         </div>
