@@ -94,15 +94,12 @@ export const NFTDetails = () => {
 
                   <hr style={{ borderColor: "gray" }} />
 
-
-                  <p className="py-3 flex justify-end text-slate-900 text-base font-semibold leading-snug">
-
                   <p className="py-3 flex justify-end  py-2 text-slate-900 text-base font-semibold leading-snug">
                     Available balance: <span>739.65 ETH</span>
                   </p>
 
                   {/**button */}
-                  <Button className="!flex justify-center">Bid Now</Button>
+                  <Button variant="primary" className="!flex justify-center">Bid Now</Button>
                 </Modal>
               </div>
             </div>

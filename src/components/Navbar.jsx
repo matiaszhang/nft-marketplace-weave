@@ -34,9 +34,7 @@ const Navbar = () => {
           <Link to="/create">
             <Button variant="secondary">Create</Button>
           </Link>
-          <Link to="/contact">
-            <Button variant="secondary">Contact</Button>
-          </Link>
+          
         </div>
 
         <div className="hidden md:flex items-center md:pb-4">
@@ -89,9 +87,7 @@ const Navbar = () => {
             <Button variant="secondary">Create</Button>
           </Link>
 
-          <Link to="/contact">
-            <Button variant="secondary">Contact</Button>
-          </Link>
+          
 
 
         </div>
