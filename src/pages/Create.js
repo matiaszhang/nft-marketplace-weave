@@ -297,7 +297,7 @@ export default function Create(props) {
                   placeholder="Select the category of your project"
                   onChange={handleCategoryChange}
                 >
-                  
+                  <option value="edit this later">Select the category of your project</option>
                   <option value="edit this later">picture Nft</option>
                   <option value="edit this lateer">Music Nft</option>
                   <option value="edit this later">Video Nft</option>
