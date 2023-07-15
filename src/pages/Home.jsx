@@ -43,10 +43,7 @@ function Home() {
                 Join WeaveNFT
               </button> */}
               <Link to="/about">
-                <Button
-                  variant="secondary"
-                  className="border border-[#3B1578] text-[#3B1578] hover:text-[#3B1578] font-semibold"
-                >
+                <Button className="border border-[#3B1578] text-[#3B1578] hover:text-[#3B1578] font-semibold">
                   Learn More
                 </Button>
               </Link>
