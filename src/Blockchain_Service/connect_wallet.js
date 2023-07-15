@@ -3,13 +3,13 @@ import { ethers } from "ethers";
 import { isNil } from "ramda";
 import React, { useContext, useEffect, useState } from "react";
 import lf from "localforage";
-<<<<<<< HEAD
-import { NftContext } from "../store/NftContext";
-=======
-import { Button } from "components/elements";
->>>>>>> origin/main
 
-function WalletConnect() {
+import { NftContext } from "../store/NftContext";
+
+import { Button } from "components/elements";
+
+
+const WalletConnect = ({ children }) => {
   const contractTxId = "9QG_4AHNo6sOuHQaH8h-7NVJpmZ3LWnStnDJrssDdUg";
   const sonarLink = `https://sonar.warp.cc/?#/app/contract/${contractTxId}`;
 
@@ -109,24 +109,13 @@ function WalletConnect() {
         <br />
         {/*<p>{initDb ? "WeaveDB is Ready" : "WeaveDB SDK is not initialized"}</p>*/}
         {!isNil(user) ? (
-          <button className="text-white text-sm border-4 border-pink-700 rounded-lg py-2 px-4" onClick={logout}>
+          <button onClick={logout} className="text-white text-sm bg-fuchsia-900 rounded-lg py-2 px-4" onClick={logout}>
             {user.wallet.slice(0, 5)}...{user.wallet.slice(-5)}
           </button>
         ) : (
-<<<<<<< HEAD
-          <button
-            className="text-white text-sm font-semibold 
-          bg-gradient-to-br from-pink-700 to-violet-950 
-           hover:bg-pink-900 py-2 px-4 rounded-lg"
-            onClick={handleLoginClick}
-          >
-            {initDb ? "please wait.." : "Connect Wallet"}
-          </button>
-=======
           <Button variant="primary" onClick={handleLoginClick}>
-            {!initDb ? "please wait.." : "Connect Wallet"}
+            {children}
           </Button>
->>>>>>> origin/main
         )}
       </div>
     </div>

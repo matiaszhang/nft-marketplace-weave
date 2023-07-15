@@ -4,8 +4,8 @@ import Nfts from "../components/NftExplore/Nfts";
 import { Link } from "react-router-dom";
 import CustomSwiper from "../components/elements/Swiper";
 import { SwiperSlide } from "swiper/react";
-import SignInOptions from "../components/elements/SignInOptions";
 import { Button } from "components/elements";
+import WalletConnect from "../Blockchain_Service/connect_wallet";
 
 function Home() {
   const backgroundImageUrl = "images/HomeBg.png";
@@ -29,19 +29,7 @@ function Home() {
               Showcase, sell and trade unique digital assets <br /> with transparency and security.{" "}
             </p>
             <div className="flex flex-row space-x-6">
-              <div className="">
-                <SignInOptions />
-              </div>
-              {/* <button
-                className="text-white text-sm 
-                font-semibold 
-          bg-gradient-to-br from-pink-700 
-          to-violet-950 
-           hover:bg-pink-900 py-2 px-2
-            sm:py-2 sm:px-4 rounded-lg"
-              >
-                Join WeaveNFT
-              </button> */}
+              <WalletConnect > Join WeaveNft</WalletConnect>
               <Link to="/about">
                 <Button
                   variant="secondary"
@@ -155,7 +143,7 @@ function Home() {
             digital ownership and immerse yourself in the world <br /> of unique and valuable NFTs.
           </p>
           <div className="flex justify-center">
-            <SignInOptions />
+            < WalletConnect>Join WeaveNft</WalletConnect>
           </div>
         </div>
       </div>
