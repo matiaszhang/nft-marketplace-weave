@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTrendUp, faEllipsis, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { Button, Typography, Accordion, Card, ListItem } from "../components/elements";
 import nftDummy from "../utils/Nft_Dummy_Data";
+
+import NftProps from "../components/NftExplore/NftProps";
 import { useContext } from "react";
 import { NftContext } from "../store/NftContext";
 import { useParams } from "react-router-dom";
@@ -92,7 +94,10 @@ export const NFTDetails = () => {
 
                   <hr style={{ borderColor: "gray" }} />
 
+
                   <p className="py-3 flex justify-end text-slate-900 text-base font-semibold leading-snug">
+
+                  <p className="py-3 flex justify-end  py-2 text-slate-900 text-base font-semibold leading-snug">
                     Available balance: <span>739.65 ETH</span>
                   </p>
 
@@ -137,9 +142,9 @@ export const NFTDetails = () => {
           <Typography type="h6">More from this creator</Typography>
           <div className="grid grid-cols-1 lg:grid-cols-2 laptop:grid-cols-3 gap-5">
             {nftDummy.slice(0, 3).map((items) => (
-              <NFTCard
+              <NftProps
                 key={items.id}
-                hero={items.imgSrc}
+                img={items.imgSrc}
                 title={items.title}
                 active={items.active}
                 content={items.content}

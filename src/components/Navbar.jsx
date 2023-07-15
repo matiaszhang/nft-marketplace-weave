@@ -40,7 +40,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center md:pb-4">
-          <WalletConnect />
+          <WalletConnect>Connect Wallet</WalletConnect>
         </div>
 
         <div className="md:hidden">
@@ -58,7 +58,24 @@ const Navbar = () => {
           <button className="text-white absolute top-4 right-4" onClick={toggleMenu}>
             <FaTimes className="text-2xl" />
           </button>
+
           <WalletConnect />
+
+          <WalletConnect>Connect Wallet</WalletConnect>
+          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/">
+            Home
+          </a>
+          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/about">
+            About Us
+          </a>
+          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/Create">
+            Create
+          </a>
+          <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/explore">
+            explore
+          </a>
+          
+
           <Link to="/">
             <Button variant="secondary">Home</Button>
           </Link>
@@ -71,9 +88,12 @@ const Navbar = () => {
           <Link to="/create">
             <Button variant="secondary">Create</Button>
           </Link>
+
           <Link to="/contact">
             <Button variant="secondary">Contact</Button>
           </Link>
+
+
         </div>
       )}
     </header>

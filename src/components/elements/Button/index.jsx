@@ -1,18 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 
-const Button = ({ variant = "primary", className, children, icon, onClick, size = "md" }) => {
+const Button = ({ variant, className, children, icon, onClick, size = "md" }) => {
   return (
     <button
       className={classNames(
         {
-          "bg-gradientPrimary hover:bg-gradientSecondary bg-origin-border": variant === "primary",
-          "bg-transparent hover:text-gray-400": variant === "secondary",
-          "bg-transparent border-white hover:border-gray-400": variant === "outline",
+          "border-2 border-transparent bg-gradientPrimary text-white hover:bg-gradientSecondary bg-origin-border":
+            variant === "primary",
+          "border-2 border-transparent  text-white hover:text-gray-400": variant === "secondary",
+          "border-2 text-white border-white hover:border-gray-400": variant === "outline",
           "py-2.5 px-5": size === "md",
           "py-1.5 px-4": size === "sm",
         },
-        "flex flex-row gap-2 text-white rounded-lg text-md sm:text-xl items-center border-2 border-transparent",
+        "flex flex-row gap-2 rounded-lg text-md sm:text-xl items-center bg-transparent",
         className
       )}
       style={{ backgroundClip: "padding-box, border-box" }}
