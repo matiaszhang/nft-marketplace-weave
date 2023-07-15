@@ -6,6 +6,6 @@ export { default as CustomSwiper } from "./Swiper";
 export { default as Typography } from "./Typography";
 export { default as Input } from "./Input";
 export { default as Tab } from "./Tab";
-export { TabContent as TabContent } from "./Tab";
+export { TabContent } from "./Tab";
 export { default as Textarea } from "./Textarea";
 export { default as Contact } from "./Contact";

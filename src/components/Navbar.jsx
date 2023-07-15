@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { FaBars, FaTimes } from "react-icons/fa";
 import WalletConnect from "../Blockchain_Service/connect_wallet";
+import { Button } from "./elements";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,6 +22,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex md:items-center">
+<<<<<<< HEAD
           <a className="text-white sm::text-[20px] font-semibold mr-7 hover:text-gray-500" href="/">
             Home
           </a>
@@ -33,6 +36,23 @@ const Navbar = () => {
           <a className="text-white sm::text-[20px] font-semibold hover:text-gray-500" href="/explore">
             Explore
           </a>
+=======
+          <Link to="/">
+            <Button variant="secondary">Home</Button>
+          </Link>
+          <Link to="/explore">
+            <Button variant="secondary">Explore</Button>
+          </Link>
+          <Link to="/about">
+            <Button variant="secondary">About us</Button>
+          </Link>
+          <Link to="/create">
+            <Button variant="secondary">Create</Button>
+          </Link>
+          <Link to="/contact">
+            <Button variant="secondary">Contact</Button>
+          </Link>
+>>>>>>> origin/main
         </div>
 
         <div className="hidden md:flex items-center md:pb-4">
@@ -55,6 +75,7 @@ const Navbar = () => {
             <FaTimes className="text-2xl" />
           </button>
           <WalletConnect />
+<<<<<<< HEAD
           <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/">
             Home
           </a>
@@ -67,6 +88,23 @@ const Navbar = () => {
           <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/explore">
             explore
           </a>
+=======
+          <Link to="/">
+            <Button variant="secondary">Home</Button>
+          </Link>
+          <Link to="/explore">
+            <Button variant="secondary">Explore</Button>
+          </Link>
+          <Link to="/about">
+            <Button variant="secondary">About us</Button>
+          </Link>
+          <Link to="/create">
+            <Button variant="secondary">Create</Button>
+          </Link>
+          <Link to="/contact">
+            <Button variant="secondary">Contact</Button>
+          </Link>
+>>>>>>> origin/main
         </div>
       )}
     </header>

@@ -6,7 +6,11 @@ const NFTCard = ({ hero, title, content, deadline, currentBid, size = "lg" }) =>
   const [isHover, setHover] = useState(false);
 
   return (
-    <div className="cursor-pointer mx-auto" onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <div
+      className="cursor-pointer mx-auto max-w-[400px]"
+      onMouseOver={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
       <div className="flex flex-col border-2 border-white rounded text-white">
         <div className="w-full overflow-hidden">
           <img src={hero} alt="trending nft" className={classNames({ "scale-110 transition-transform": isHover })} />
