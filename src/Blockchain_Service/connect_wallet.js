@@ -1,3 +1,4 @@
+import Identicon from 'react-identicons';
 import SDK from "weavedb-sdk";
 import { ethers } from "ethers";
 import { isNil } from "ramda";
@@ -109,7 +110,8 @@ const WalletConnect = ({ children }) => {
         <br />
         {/*<p>{initDb ? "WeaveDB is Ready" : "WeaveDB SDK is not initialized"}</p>*/}
         {!isNil(user) ? (
-          <button onClick={logout} className="text-white text-sm bg-fuchsia-900 rounded-lg py-2 px-4" onClick={logout}>
+          <button onClick={logout} className="flex justify-center gap-2 text-white text-sm bg-fuchsia-900 rounded-lg py-2 px-4" onClick={logout}>
+            <Identicon string={user.wallet} size={18} />
             {user.wallet.slice(0, 5)}...{user.wallet.slice(-5)}
           </button>
         ) : (
