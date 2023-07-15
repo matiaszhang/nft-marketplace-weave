@@ -31,10 +31,7 @@ function Home() {
             <div className="flex flex-row space-x-6">
               <WalletConnect > Join WeaveNft</WalletConnect>
               <Link to="/about">
-                <Button
-                  variant="secondary"
-                  className="border border-[#3B1578] text-[#3B1578] hover:text-[#3B1578] font-semibold"
-                >
+                <Button className="border border-[#3B1578] text-[#3B1578] hover:text-[#3B1578] font-semibold">
                   Learn More
                 </Button>
               </Link>

@@ -34,8 +34,6 @@ const Navbar = () => {
           <Link to="/create">
             <Button variant="secondary">Create</Button>
           </Link>
-          
-
         </div>
 
         <div className="hidden md:flex items-center md:pb-4">
@@ -58,7 +56,6 @@ const Navbar = () => {
             <FaTimes className="text-2xl" />
           </button>
           <WalletConnect>Connect Wallet</WalletConnect>
-
           <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/">
             Home
           </a>
@@ -71,7 +68,7 @@ const Navbar = () => {
           <a className="block text-white text-[15px] font-semibold my-4 hover:text-gray-500" href="/explore">
             explore
           </a>
-=======
+          =======
           <Link to="/">
             <Button variant="secondary">Home</Button>
           </Link>
@@ -84,8 +81,6 @@ const Navbar = () => {
           <Link to="/create">
             <Button variant="secondary">Create</Button>
           </Link>
-          
-
         </div>
       )}
     </header>

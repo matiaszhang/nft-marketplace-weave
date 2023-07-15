@@ -1,23 +1,14 @@
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowTrendUp,
-  faEllipsis,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  Button,
-  Typography,
-  Accordion,
-  Card,
-  ListItem,
-} from "../components/elements";
+import { faArrowTrendUp, faEllipsis, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { Button, Typography, Accordion, Card, ListItem } from "../components/elements";
 import nftDummy from "../utils/Nft_Dummy_Data";
 import NftProps from "../components/NftExplore/NftProps";
 import { useContext } from "react";
 import { NftContext } from "../store/NftContext";
 import { useParams } from "react-router-dom";
 import Modal from "../components/elements/Modal/modal";
+import NFTCard from "components/nftCard";
 
 export const NFTDetails = () => {
   const { setModal, setShowModal, user } = useContext(NftContext);
@@ -29,7 +20,6 @@ export const NFTDetails = () => {
   const closeAuction = () => {
     setShowModal("scale-100");
   };
-  
 
   const { id } = useParams();
   const details = nftDummy.find((item) => item.id === parseInt(id));
@@ -51,19 +41,13 @@ export const NFTDetails = () => {
               <img src="/images/logo_2.svg" alt="logo" />
               <p className="text-xl">Meticulously curated NFT collections</p>
             </div>
-            <FontAwesomeIcon
-              icon={faEllipsis}
-              size="lg"
-              className="cursor-pointer"
-            />
+            <FontAwesomeIcon icon={faEllipsis} size="lg" className="cursor-pointer" />
           </div>
           <div className="flex flex-col gap-1">
             <Typography type="h5">{details.title}</Typography>
             <h5 className="text-lg">Description</h5>
           </div>
-          <p className="text-md lg:text-lg laptop:text-xl text-justify font-['Open_Sans']">
-            {details.content}
-          </p>
+          <p className="text-md lg:text-lg laptop:text-xl text-justify font-['Open_Sans']">{details.content}</p>
           <Card className="flex flex-col">
             <div className="flex flex-col p-6 gap-5">
               <div className="flex flex-row justify-between items-center">
@@ -73,34 +57,21 @@ export const NFTDetails = () => {
                 </div>
                 <div className="flex flex-col gap-1">
                   <Typography type="h7">Current floor bid</Typography>
-                  <p className="text-base/[22px] text-end">
-                    {details.currentBid}
-                  </p>
+                  <p className="text-base/[22px] text-end">{details.currentBid}</p>
                 </div>
               </div>
-              
-              <div className="flex flex-col sm:flex-row gap-2">
 
-                
-                <Button
-                  onClick={openModal}
-                  variant="primary"
-                  className="basis-full !flex justify-center h-[60px]"
-                >
+              <div className="flex flex-col sm:flex-row gap-2">
+                <Button onClick={openModal} variant="primary" className="basis-full !flex justify-center h-[60px]">
                   Place bid
                 </Button>
-                
-                
+
                 <Button onClick={closeAuction} variant="primary" className="!flex justify-center basis-full h-[60px]">
                   Close Auction
                 </Button>
-                
 
                 <Modal>
-                  <Typography
-                    type="h7"
-                    className="text-center !text-slate-900 font-normal leading-snug"
-                  >
+                  <Typography type="h7" className="text-center !text-slate-900 font-normal leading-snug">
                     Place Bid <span>{details.title}</span>
                   </Typography>
                   <p
@@ -120,32 +91,22 @@ export const NFTDetails = () => {
                     <p className="text-slate-900 text-base font-semibold leading-snug">0 ETH</p>
                   </div>
 
-                  <hr style={{ borderColor: 'gray' }} />
+                  <hr style={{ borderColor: "gray" }} />
 
-
-                  <p className="py-3 flex justify-end  py-2 text-slate-900 text-base font-semibold leading-snug">Available balance: <span>739.65 ETH</span></p>
+                  <p className="py-3 flex justify-end  py-2 text-slate-900 text-base font-semibold leading-snug">
+                    Available balance: <span>739.65 ETH</span>
+                  </p>
 
                   {/**button */}
-                  <Button className="!flex justify-center" >
-                    Bid Now
-                  </Button>
+                  <Button className="!flex justify-center">Bid Now</Button>
                 </Modal>
-                
               </div>
-
-              
-
-              
             </div>
           </Card>
         </div>
       </div>
       <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-[50px] xl:gap-[100px]">
-        <Accordion
-          className="max-w-[617px] w-full lg:max-w-[523px]"
-          icon={faArrowTrendUp}
-          title="Bidding Activities"
-        >
+        <Accordion className="max-w-[617px] w-full lg:max-w-[523px]" icon={faArrowTrendUp} title="Bidding Activities">
           {Array.apply("", Array(4)).map((_, idx) => (
             <ListItem
               key={idx}
@@ -158,24 +119,15 @@ export const NFTDetails = () => {
             />
           ))}
         </Accordion>
-        <Accordion
-          className="max-w-[617px] w-full"
-          icon={faInfoCircle}
-          title="Details"
-        >
+        <Accordion className="max-w-[617px] w-full" icon={faInfoCircle} title="Details">
           {Array.apply("", Array(6)).map((_, idx) => (
             <div
               key={idx}
-              className={classNames(
-                "flex flex-row justify-between items-center p-6 text-white",
-                {
-                  "border-b": idx !== 5,
-                }
-              )}
+              className={classNames("flex flex-row justify-between items-center p-6 text-white", {
+                "border-b": idx !== 5,
+              })}
             >
-              <p className="text-lg sm:text-2xl text-[#F8F8FA]/[0.8]">
-                Current Owner
-              </p>
+              <p className="text-lg sm:text-2xl text-[#F8F8FA]/[0.8]">Current Owner</p>
               <p className="text-lg sm:text-2xl font-semibold">McCopy</p>
             </div>
           ))}

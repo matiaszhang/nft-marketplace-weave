@@ -1,17 +1,14 @@
-import { Outlet, Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Create from "./pages/Create";
-import Explore from "./pages/explore";
-import Navbar from "./components/Navbar";
-import {NFTDetails, detailsLoader} from "./pages/Details";
-import Footer from "./components/Footer";
-
-
+import { Outlet, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import Home from "pages/Home";
+import About from "pages/About";
+import Create from "pages/Create";
+import Navbar from "components/Navbar";
+import { NFTDetails, detailsLoader } from "pages/Details";
+import Artist from "pages/Artist";
+import Explore from "pages/Explore";
+import Footer from "components/Footer";
 
 import "./App.css";
-import Artist from "./pages/Artist";
-
 
 export default function App() {
   const router = createBrowserRouter(
