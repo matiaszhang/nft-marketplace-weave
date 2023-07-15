@@ -138,9 +138,9 @@ export const NFTDetails = () => {
           <Typography type="h6">More from this creator</Typography>
           <div className="grid grid-cols-1 lg:grid-cols-2 laptop:grid-cols-3 gap-5">
             {nftDummy.slice(0, 3).map((items) => (
-              <NFTCard
+              <NftProps
                 key={items.id}
-                hero={items.imgSrc}
+                img={items.imgSrc}
                 title={items.title}
                 active={items.active}
                 content={items.content}

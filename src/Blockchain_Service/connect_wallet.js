@@ -6,7 +6,7 @@ import lf from "localforage";
 import { NftContext } from "../store/NftContext";
 import { Button } from "components/elements";
 
-function WalletConnect() {
+const WalletConnect = ({ children }) => {
   const contractTxId = "9QG_4AHNo6sOuHQaH8h-7NVJpmZ3LWnStnDJrssDdUg";
   const sonarLink = `https://sonar.warp.cc/?#/app/contract/${contractTxId}`;
 
@@ -105,17 +105,17 @@ function WalletConnect() {
         <br />
         {/*<p>{initDb ? "WeaveDB is Ready" : "WeaveDB SDK is not initialized"}</p>*/}
         {!isNil(user) ? (
-          <button className="text-white text-sm border-4 border-pink-700 rounded-lg py-2 px-4" onClick={logout}>
+          <button onClick={logout} className="text-white text-sm bg-fuchsia-900 rounded-lg py-2 px-4">
             {user.wallet.slice(0, 5)}...{user.wallet.slice(-5)}
           </button>
         ) : (
           <Button variant="primary" onClick={handleLoginClick}>
-            {!initDb ? "please wait.." : "Connect Wallet"}
+            {children}
           </Button>
         )}
       </div>
     </div>
   );
-}
+};
 
 export default WalletConnect;
