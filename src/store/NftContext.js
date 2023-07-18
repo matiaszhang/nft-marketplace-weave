@@ -7,6 +7,7 @@ export function NftProvider(props) {
 
 
   const [nft, setNft] = useState();
+  const [tokenID, setTokenID] = useState();
   const [db, setDb] = useState(null);
   const [modal, setModal] = useState("scale-0");
   const [initDb, setInitDb] = useState(false);
@@ -22,6 +23,8 @@ export function NftProvider(props) {
         value={{
           nft,
           setNft,
+          tokenID,
+          setTokenID,
           modal,
           setModal,
           nftDetails,
@@ -31,6 +34,7 @@ export function NftProvider(props) {
           initDb,
           setInitDb,
           showModal,
+          setShowModal,
           alert,
           setAlert,
           loading,
