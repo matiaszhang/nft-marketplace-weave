@@ -1,10 +1,9 @@
 import { ethers } from "ethers";
 import CombinedWeaveAbi from "../../lib/combinedAbi";
 import { NftContext } from "../../store/NftContext";
-import { useContext } from "react";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 
-const provider = new ethers.JsonRpcProvider(process.env.EVM_RPC_URL);
+const provider = new ethers.providers.JsonRpcProvider(process.env.EVM_RPC_URL);
 const nftContractAddr = process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS;
 
 export default function MintAndApprove() {
@@ -43,5 +42,10 @@ export default function MintAndApprove() {
     handleMintAndApprove();
   }, []);
 
-  return null; // or you can return a loading spinner or any other UI while the mint and approve process is in progress
+  return (
+    <div>
+        <h1>Hello world</h1>
+      <button onClick={handleMintAndApprove}>Mint and Approve</button>
+    </div>
+  );
 }
