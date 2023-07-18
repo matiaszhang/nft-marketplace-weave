@@ -45,7 +45,7 @@ export default function MintAndApprove() {
   return (
     <div>
         <h1>Hello world</h1>
-      <button onClick={handleMintAndApprove}>Mint and Approve</button>
+        <button onClick={handleMintAndApprove}>Mint and Approve</button>
     </div>
   );
 }

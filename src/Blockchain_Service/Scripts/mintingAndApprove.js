@@ -38,10 +38,12 @@ export default function MintAndApprove() {
     }
   };
 
+  
+
   // Call the mint and approve function when the component mounts
   useEffect(() => {
     handleMintAndApprove();
   }, []);
 
-  return null; // or you can return a loading spinner or any other UI while the mint and approve process is in progress
+  return null; // or  loading spinner or any other UI while the mint and approve process is in progress
 }
