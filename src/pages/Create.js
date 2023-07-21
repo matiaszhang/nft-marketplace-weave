@@ -1,19 +1,32 @@
 import { useDropzone } from "react-dropzone";
 import { useContext, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import SDK from "weavedb-sdk";
 import "react-toastify/dist/ReactToastify.css";
 import { NftContext } from "../store/NftContext";
 import Modal from "../components/elements/Modal/modal";
+import { handleMintApproveAndCreateListing } from "../Blockchain_Service";
+import { ethers } from "ethers";
+import { WebBundlr } from "@bundlr-network/client";
+import fileReaderStream from "filereader-stream";
+import { getBundlr } from "../Blockchain_Service";
+
 
 export default function Create(props) {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [totalShares, setTotalShares] = useState("");
   const [fileUrl, setFileUrl] = useState("");
   const [imgBase64, setImgBase64] =  useState("");
   const [category, setCategory] = useState("");
 
+  
+
   const { setModal, setLoading } = useContext(NftContext);
+  const contractTxId = "9QG_4AHNo6sOuHQaH8h-7NVJpmZ3LWnStnDJrssDdUg";
+  const db = new SDK({ contractTxId: contractTxId });
+  
 
   //function for adding image to input
 
@@ -64,6 +77,9 @@ export default function Create(props) {
       case "description":
         setDescription(event.target.value);
         break;
+      case "totalShares":
+        setTotalShares(event.target.value);
+        break;
       case "nft":
         if (event.target.files && event.target.files.length > 0) {
           setFileUrl(event.target.files[0]);
@@ -80,17 +96,66 @@ export default function Create(props) {
     setTitle("");
     setPrice("");
     setDescription("");
+    setTotalShares("");
     setFileUrl("");
     setCategory("");
   };
+  
 
-  const handleSubmit = (event) => {
+  const handleNft_details = async () => {
+    const nft_details = { title: title, price: Number(price), description: description, totalShares: Number(totalShares) }
+    await db.init()
+    try {
+      const res = await db.add(
+        nft_details, "nft_collection")
+      console.log(res)
+    } catch (e) { 
+      console.error(e)
+    }
+  }
+
+  const handlrBundlrUpload = async () => {
+    
+    const bundlr = await getBundlr();
+
+    try {   
+      console.log(fileUrl);
+      const dataStream = fileReaderStream(fileUrl);
+      const Price = await bundlr.getPrice(fileUrl.size);
+      console.log("price:", Price);
+      const balance = await bundlr.getLoadedBalance();
+      console.log("balance:", balance);
+      if (Price.isGreaterThanOrEqualTo(balance)) {
+        console.log("Funding node.");
+        await bundlr.fund(Price);
+        console.log("funded")
+      } else {
+        console.log("Funding not needed, balance sufficient.");
+      }
+
+      const fileType = "image/png";
+      const response = await bundlr.upload(dataStream, {
+        tags: [{ name: "Content-Type", value: fileType }],
+      });
+      const res = await db.add({ bundlrId: response.id }, "nft_collection");
+
+      console.log(`File uploaded ==> https://arweave.net/${response.id}`);      
+      console.log(res);
+    } catch (error) {
+      console.log("Error uploading file: ", error);
+    }
+  }
+
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!title || !price || !description || !fileUrl || !category) {
+    if (!title || !price || !description || !totalShares|| !fileUrl || !category) {
       console.log(title);
       console.log(price);
       console.log(description);
+      console.log(totalShares);
       console.log(fileUrl);
       console.log(category);
 
@@ -101,10 +166,16 @@ export default function Create(props) {
 
       try {
         // Do something with the form data
+        
+        
+
+        await handleMintApproveAndCreateListing();
+        await handlrBundlrUpload()
+        await handleNft_details();
 
         resetForm();
 
-        toast.success("Nft successfully minted!");
+        await toast.success("Nft successfully minted!");
       } catch (error) {
         console.log(error);
         toast.error("An error occurred while minting the Nft");
@@ -171,7 +242,7 @@ export default function Create(props) {
                   className="block text-white 
                   text-sm pb-2
                   font-semibold leading-snug"
-                  for="price"
+                  htmlFor="price"
                 >
                   Price
                 </label>
@@ -196,7 +267,7 @@ export default function Create(props) {
                   className="block text-white 
                   text-sm pb-2
                   font-semibold leading-snug"
-                  for="description"
+                  htmlFor="description"
                 >
                   NFT Description
                 </label>
@@ -214,6 +285,32 @@ export default function Create(props) {
                   placeholder="Detail explanation of your NFT and how buyers will benefit will benefit"
                 />
               </div>
+
+              {/* totalShares input */}
+              <div className="pb-6 appearance-none">
+                <label
+                  className="block text-white 
+                  text-sm pb-2
+                  font-semibold leading-snug"
+                  htmlFor="description"
+                >
+                  Nft Total Shares
+                </label>
+                <input
+                  className="
+                border rounded w-full md:w-[600px] py-3 
+                px-3
+                 text-gray-700 leading-tight 
+                 focus:outline-none focus:shadow-outline"
+                  id="totalShares"
+                  type="number"
+                  name="totalShares"
+                  value={totalShares}
+                  onChange={handleChange}
+                  placeholder="input 1 or more"
+                />
+              </div>
+
 
               {/* picture / add nft input */}
               <div
@@ -239,7 +336,7 @@ export default function Create(props) {
                   
                   onChange={handleChange}
                   type="file"
-                  accept="image/png, image/gif, image/jpeg, image/webp, audio/mpeg, audio/wav, video/mp4, video/webm"
+                  accept="image/png"
                   className="
                 border rounded w-full md:w-[600px] py-3 
                 px-3
@@ -281,7 +378,7 @@ export default function Create(props) {
                   className="block text-white 
                   text-sm pb-2
                   font-semibold leading-snug"
-                  for="Category"
+                  htmlFor="Category"
                 >
                   Category
                 </label>

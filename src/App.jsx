@@ -9,7 +9,6 @@ import Explore from "pages/Explore";
 import Footer from "components/Footer";
 
 import "./App.css";
-import MintAndApprove from "./Blockchain_Service/Scripts/mintingAndApprove";
 
 export default function App() {
   const router = createBrowserRouter(
@@ -21,7 +20,6 @@ export default function App() {
         <Route path="/explore/nft/:id" loader={detailsLoader} element={<NFTDetails />} />
         <Route path="/explore/Artist" element={<Artist />} />
         <Route path="/explore" element={<Explore />} />
-        <Route path="texting" element={<MintAndApprove />} />
       </Route>
     )
   );

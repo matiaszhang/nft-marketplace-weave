@@ -44,6 +44,8 @@ const WalletConnect = ({ children }) => {
     const signer = await provider.getSigner();
     await provider.send("eth_requestAccounts", []);
     const wallet_address = await signer.getAddress();
+
+    
     let identity = await lf.getItem(`temp_address:${contractTxId}:${wallet_address}`);
 
     let tx;
