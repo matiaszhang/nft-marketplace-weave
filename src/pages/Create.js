@@ -20,6 +20,7 @@ export default function Create(props) {
   const [fileUrl, setFileUrl] = useState("");
   const [imgBase64, setImgBase64] =  useState("");
   const [category, setCategory] = useState("");
+  const [bundlrId, setBundlrId] = useState("")
 
   
 
@@ -98,12 +99,15 @@ export default function Create(props) {
     setDescription("");
     setTotalShares("");
     setFileUrl("");
+    setBundlrId("")
     setCategory("");
+
   };
   
 
   const handleNft_details = async () => {
-    const nft_details = { title: title, price: Number(price), description: description, totalShares: Number(totalShares) }
+    const nft_details = { title: title, price: Number(price), 
+      description: description, totalShares: Number(totalShares), bundlrId: bundlrId }
     await db.init()
     try {
       const res = await db.add(
@@ -137,10 +141,15 @@ export default function Create(props) {
       const response = await bundlr.upload(dataStream, {
         tags: [{ name: "Content-Type", value: fileType }],
       });
-      const res = await db.add({ bundlrId: response.id }, "nft_collection");
+      console.log("bundlr uploaded file:", response.id);
+      
+      const res = await db.add(
+        {bundlrId: response.id}, "nft_collection")
+      console.log(res)
+      
 
       console.log(`File uploaded ==> https://arweave.net/${response.id}`);      
-      console.log(res);
+     
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
@@ -158,7 +167,7 @@ export default function Create(props) {
       console.log(totalShares);
       console.log(fileUrl);
       console.log(category);
-
+      
       toast.error("Please fill all required fields");
     } else {
       setModal("scale-100");
