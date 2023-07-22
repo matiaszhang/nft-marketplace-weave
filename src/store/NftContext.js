@@ -16,6 +16,7 @@ export function NftProvider(props) {
   const [alert, setAlert] = useState({ show: false, msg: "", color: "" });
   const [loading, setLoading] = useState({ show: false, msg: "" });
   const [user, setUser] = useState(null);
+  const [bundlrId, setBundlrId ] = useState("")
 
   return (
     <div>
@@ -25,6 +26,8 @@ export function NftProvider(props) {
           setNft,
           tokenID,
           setTokenID,
+          bundlrId,
+          setBundlrId,
           modal,
           setModal,
           nftDetails,

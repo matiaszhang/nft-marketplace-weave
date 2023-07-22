@@ -1,16 +1,18 @@
 import { useDropzone } from "react-dropzone";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import SDK from "weavedb-sdk";
 import "react-toastify/dist/ReactToastify.css";
 import { NftContext } from "../store/NftContext";
 import Modal from "../components/elements/Modal/modal";
-import { handleMintApproveAndCreateListing } from "../Blockchain_Service";
+import {
+  handleCreateListing,
+  handleMintAndApprove,
+} from "../Blockchain_Service";
 import { ethers } from "ethers";
 import { WebBundlr } from "@bundlr-network/client";
 import fileReaderStream from "filereader-stream";
 import { getBundlr } from "../Blockchain_Service";
-
 
 export default function Create(props) {
   const [title, setTitle] = useState("");
@@ -18,16 +20,14 @@ export default function Create(props) {
   const [description, setDescription] = useState("");
   const [totalShares, setTotalShares] = useState("");
   const [fileUrl, setFileUrl] = useState("");
-  const [imgBase64, setImgBase64] =  useState("");
+  const [imgBase64, setImgBase64] = useState("");
   const [category, setCategory] = useState("");
-  const [bundlrId, setBundlrId] = useState("")
-
-  
+  const [bundlrId, setBundlrId] = useState("");
 
   const { setModal, setLoading } = useContext(NftContext);
-  const contractTxId = "9QG_4AHNo6sOuHQaH8h-7NVJpmZ3LWnStnDJrssDdUg";
+
+  const contractTxId = "mrWXmYuvBJaYGiROWIKxeL6Nz8hj2NwyoN7qJkr24KQ";
   const db = new SDK({ contractTxId: contractTxId });
-  
 
   //function for adding image to input
 
@@ -49,7 +49,6 @@ export default function Create(props) {
       }
     },
   });
-  
 
   //files to select
 
@@ -99,30 +98,27 @@ export default function Create(props) {
     setDescription("");
     setTotalShares("");
     setFileUrl("");
-    setBundlrId("")
+    setBundlrId("");
     setCategory("");
-
   };
-  
 
   const handleNft_details = async () => {
-    const nft_details = { title: title, price: Number(price), 
-      description: description, totalShares: Number(totalShares), bundlrId: bundlrId }
-    await db.init()
+    const nft_details = { title: title, description: description, price: Number(price), totalShares: Number(totalShares) };
+
+    await db.init();
+
     try {
-      const res = await db.add(
-        nft_details, "nft_collection")
-      console.log(res)
-    } catch (e) { 
-      console.error(e)
+      const res = await db.add(nft_details, "nft_collection");
+      console.log(res);
+    } catch (e) {
+      console.error(e);
     }
-  }
+  };
 
   const handlrBundlrUpload = async () => {
-    
     const bundlr = await getBundlr();
 
-    try {   
+    try {
       console.log(fileUrl);
       const dataStream = fileReaderStream(fileUrl);
       const Price = await bundlr.getPrice(fileUrl.size);
@@ -131,8 +127,9 @@ export default function Create(props) {
       console.log("balance:", balance);
       if (Price.isGreaterThanOrEqualTo(balance)) {
         console.log("Funding node.");
+
         await bundlr.fund(Price);
-        console.log("funded")
+        console.log("funded");
       } else {
         console.log("Funding not needed, balance sufficient.");
       }
@@ -142,32 +139,32 @@ export default function Create(props) {
         tags: [{ name: "Content-Type", value: fileType }],
       });
       console.log("bundlr uploaded file:", response.id);
-      
-      const res = await db.add(
-        {bundlrId: response.id}, "nft_collection")
-      console.log(res)
-      
 
-      console.log(`File uploaded ==> https://arweave.net/${response.id}`);      
-     
+      const res = await db.add({ bundlrId: response.id }, "nft_collection");
+      console.log(res);
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
-  }
-
-
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!title || !price || !description || !totalShares|| !fileUrl || !category) {
+    if (
+      !title ||
+      !price ||
+      !description ||
+      !totalShares ||
+      !fileUrl ||
+      !category
+    ) {
       console.log(title);
       console.log(price);
       console.log(description);
       console.log(totalShares);
       console.log(fileUrl);
       console.log(category);
-      
+
       toast.error("Please fill all required fields");
     } else {
       setModal("scale-100");
@@ -175,11 +172,8 @@ export default function Create(props) {
 
       try {
         // Do something with the form data
-        
-        
 
-        await handleMintApproveAndCreateListing();
-        await handlrBundlrUpload()
+        await handlrBundlrUpload();
         await handleNft_details();
 
         resetForm();
@@ -320,7 +314,6 @@ export default function Create(props) {
                 />
               </div>
 
-
               {/* picture / add nft input */}
               <div
                 {...getRootProps({ className: "dropzone" })}
@@ -342,7 +335,6 @@ export default function Create(props) {
                   name="nft"
                   value=""
                   id="picture"
-                  
                   onChange={handleChange}
                   type="file"
                   accept="image/png"
@@ -352,7 +344,6 @@ export default function Create(props) {
                  text-gray-700 leading-tight 
                  focus:outline-none focus:shadow-outline"
                   {...getInputProps()}
-                  
                 />
                 {/*  
                 <div
@@ -403,13 +394,13 @@ export default function Create(props) {
                   placeholder="Select the category of your project"
                   onChange={handleCategoryChange}
                 >
-                  <option value="edit this later">Select the category of your project</option>
+                  <option value="edit this later">
+                    Select the category of your project
+                  </option>
                   <option value="edit this later">picture Nft</option>
                   <option value="edit this lateer">Music Nft</option>
                   <option value="edit this later">Video Nft</option>
-                  <option value="edit this later">
-                    Fractional ownership
-                  </option>
+                  <option value="edit this later">Fractional ownership</option>
                 </select>
               </div>
 

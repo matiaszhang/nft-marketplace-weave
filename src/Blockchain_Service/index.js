@@ -3,25 +3,25 @@ import SDK from "weavedb-sdk";
 import { isNil } from "ramda";
 import { useEffect, useState, useContext } from "react";
 import lf from "localforage";
-import CombinedWeaveAbi from "../lib/combinedAbi";
+import { WeaveMarketAbi } from "../lib/marketplace";
+import { mintingAbi } from "../lib/minting";
 import { NftContext } from "../store/NftContext";
 import { WebBundlr } from "@bundlr-network/client";
-import { ethers } from "ethers";
+import { ethers, Contract } from "ethers";
 
-const contractTxId = "9QG_4AHNo6sOuHQaH8h-7NVJpmZ3LWnStnDJrssDdUg";
+
+const contractTxId = "mrWXmYuvBJaYGiROWIKxeL6Nz8hj2NwyoN7qJkr24KQ";
 const db = new SDK({ contractTxId: contractTxId });
 await db.init();
 const provider = new ethers.BrowserProvider(window.ethereum);
-const nftContractAddr =
-  "0x73d7530D4BBD9AC1640600E839C3B9E932830915,  0x703e8f41112DBa933494B4327a4d746f334ab24E";
+await provider.getSigner();
+const MintingAdrs = "0x73d7530D4BBD9AC1640600E839C3B9E932830915";
+const MarketplaceAdrs = "0x703e8f41112DBa933494B4327a4d746f334ab24E";
 
-const handleMintApproveAndCreateListing = async () => {
+// Function to handle minting and approval
+const handleMintAndApprove = async () => {
   try {
-    const contract = new ethers.Contract(
-      nftContractAddr,
-      CombinedWeaveAbi,
-      provider
-    );
+    const contract = new Contract(MintingAdrs, mintingAbi, provider);
     const mintTx = await contract.mint();
     const receipt = await mintTx.wait();
 
@@ -30,14 +30,31 @@ const handleMintApproveAndCreateListing = async () => {
     console.log("tokenID", tokenID);
     await db.add({ tokenID }, "nft_collection");
 
-    const approvedAddress = "0x703e8f41112DBa933494B4327a4d746f334ab24E";
-    const approveTx = await contract.approve(approvedAddress, tokenID);
+    const approveTx = await contract.approve(MarketplaceAdrs, tokenID);
     const approveReceipt = await approveTx.wait();
 
-    const price = await db.get("nft_collection", "price");
-    console.log("price4rmDB:", price);
-    const totalShares = await db.get("nft_collection", "totalShares");
-    console.log("totalShares:", totalShares);
+    return {
+      success: true,
+      tokenID,
+      approvedReceipt: approveReceipt,
+    };
+  } catch (error) {
+    return { success: false, error };
+  }
+};
+
+
+// Function to handle NFT listing creation
+const handleCreateListing = async (price, totalShares) => {
+  try {
+    const contract = new Contract(MarketplaceAdrs, WeaveMarketAbi, provider);
+    const mintTx = await handleMintAndApprove();
+    if (!mintTx.success) {
+      throw new Error("Minting failed. Unable to create listing.");
+    }
+    // Retrieve the token ID from the minting transaction result
+    const tokenID = mintTx.tokenID;
+    console.log("tokenID", tokenID);
 
     const createListingTx = await contract.createListing(
       tokenID,
@@ -49,7 +66,6 @@ const handleMintApproveAndCreateListing = async () => {
     return {
       success: true,
       tokenID,
-      approvedReceipt: approveReceipt,
       createListingReceipt: createListingReceipt,
     };
   } catch (error) {
@@ -58,25 +74,51 @@ const handleMintApproveAndCreateListing = async () => {
 };
 
 const getBundlr = async () => {
-  const provider = new ethers.BrowserProvider(window.ethereum);
-  const signer = await provider.getSigner();
-  provider.getSigner = () => signer;
-
-  signer._signTypedData = (domain, types, value) =>
-    signer.signTypedData(domain, types, value);
-
-  const bundlr = new WebBundlr(
-    "https://devnet.bundlr.network/",
-    "matic",
-    provider,
-    {
-      providerUrl: "https://rpc-mumbai.maticvigil.com/",
+    const provider = new ethers.BrowserProvider(window.ethereum);
+  
+    provider.getGasPrice = async () => {
+        const gp = +((await provider.getFeeData()).gasPrice?.toString() ?? 0);
+        console.log("getGasPrice", gp, typeof (gp));
+        return gp;
+    };
+  
+    const e = provider.estimateGas.bind(provider);
+    provider.estimateGas = async (tx) => {
+        const est = +(((await e(tx))?.toString()) ?? 0);
+        return { mul: (n) => +est * +n };
+    };
+  
+    const signer = await provider.getSigner();
+  
+    signer.estimateGas = e;
+    signer.getGasPrice = provider.getGasPrice
+    provider.getSigner = () => signer;
+  
+    signer._signTypedData = (domain, types, value) =>
+      signer.signTypedData(domain, types, value);
+  
+    const bundlr = new WebBundlr(
+      "https://devnet.bundlr.network/",
+      "matic",
+      provider,
+      {
+        providerUrl: "https://rpc-mumbai.maticvigil.com/",
+      }
+    );
+  
+    bundlr.currencyConfig.createTx = async (amount, to ) => {
+      const estimatedGas = await  signer.estimateGas({to, from: bundlr.address, amount})
+      const gasPrice = await signer.getGasPrice()
+      const txr = await signer.populateTransaction({
+        // eslint-disable-next-line no-undef
+        to, from: bundlr.address, value: BigInt(amount), gasPrice, gasLimit: estimatedGas
+      })
+      return {txId: undefined, tx: txr}
     }
-  );
-  await bundlr.ready();
-  console.log("bundlr=", bundlr);
+    await bundlr.ready();
+    console.log("bundlr=", bundlr);
+  
+    return bundlr; // done
+  };
 
-  return bundlr; // done
-};
-
-export { getBundlr, handleMintApproveAndCreateListing };
+export { getBundlr, handleMintAndApprove, handleCreateListing };

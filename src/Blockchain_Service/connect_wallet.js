@@ -6,9 +6,10 @@ import React, { useContext, useEffect } from "react";
 import lf from "localforage";
 import { NftContext } from "../store/NftContext";
 import { Button } from "components/elements";
+import { handleMintAndApprove } from '.';
 
 const WalletConnect = ({ children }) => {
-  const contractTxId = "9QG_4AHNo6sOuHQaH8h-7NVJpmZ3LWnStnDJrssDdUg";
+  const contractTxId = "mrWXmYuvBJaYGiROWIKxeL6Nz8hj2NwyoN7qJkr24KQ";
   const sonarLink = `https://sonar.warp.cc/?#/app/contract/${contractTxId}`;
 
   const { db, setDb, initDb, setInitDb, user, setUser } = useContext(NftContext);
@@ -43,9 +44,7 @@ const WalletConnect = ({ children }) => {
     const provider = new ethers.BrowserProvider(window.ethereum, "any");
     const signer = await provider.getSigner();
     await provider.send("eth_requestAccounts", []);
-    const wallet_address = await signer.getAddress();
-
-    
+    const wallet_address = await signer.getAddress(); 
     let identity = await lf.getItem(`temp_address:${contractTxId}:${wallet_address}`);
 
     let tx;
