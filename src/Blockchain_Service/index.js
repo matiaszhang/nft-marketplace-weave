@@ -24,7 +24,7 @@ const handleMintAndApprove = async () => {
   
   try {
     const web3Provider = new ethers.BrowserProvider(
-        window.ethereum, "any"
+        window.ethereum
       );
 
     const signer = await web3Provider.getSigner();
@@ -34,12 +34,10 @@ const handleMintAndApprove = async () => {
     console.log(mintTx)
     const receipt = await mintTx.wait();
     console.log(receipt)
-
+    console.log(receipt.logs[0])
     // Retrieving the token ID from the mint transaction receipt
-    const tokenID = receipt.events[0].args.tokenID.toNumber();
+    const tokenID = receipt.logs[0].topics[3]
     console.log("tokenID", tokenID);
-    await db.add({ tokenID }, "nft_collection");
-
     const approveTx = await contract.approve(MarketplaceAdrs, tokenID);
     const approveReceipt = await approveTx.wait();
 
@@ -57,29 +55,24 @@ const handleMintAndApprove = async () => {
 // Function to handle NFT listing creation
 const handleCreateListing = async (price, totalShares) => {
   try {
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    await provider.getSigner();
-    const contract = new Contract(MarketplaceAdrs, WeaveMarketAbi, provider);
+    const web3Provider = new ethers.BrowserProvider(
+        window.ethereum
+      );
+
+    const signer = await web3Provider.getSigner();
+    const contract = new Contract(MarketplaceAdrs, WeaveMarketAbi, signer);
     const mintTx = await handleMintAndApprove();
     if (!mintTx.success) {
       throw new Error("Minting failed. Unable to create listing.");
     }
-    // Retrieve the token ID from the minting transaction result
-    const tokenID = mintTx.tokenID;
-    console.log("tokenID", tokenID);
-
+    
     const createListingTx = await contract.createListing(
-      tokenID,
+      mintTx.tokenID,
       price,
       totalShares
     );
-    const createListingReceipt = await createListingTx.wait();
-
-    return {
-      success: true,
-      tokenID,
-      createListingReceipt: createListingReceipt,
-    };
+    await createListingTx.wait()
+    return mintTx.tokenID
   } catch (error) {
     return { success: false, error };
   }

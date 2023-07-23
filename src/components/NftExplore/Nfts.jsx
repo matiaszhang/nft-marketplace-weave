@@ -5,8 +5,12 @@ import nftDummy from "../../utils/Nft_Dummy_Data";
 import { Link } from "react-router-dom";
 import "swiper/css";
 import NftCollection from "./Header/NftCollection";
+import SDK from "weavedb-sdk";
 
-
+const contractTxId = "mrWXmYuvBJaYGiROWIKxeL6Nz8hj2NwyoN7qJkr24KQ";
+const db = new SDK({ contractTxId: contractTxId });
+await db.init();
+const Nft = await db.get("nft_collection")
 
 export default function Nfts() {
   
@@ -23,17 +27,16 @@ export default function Nfts() {
               spaceBetween={1}
               loop={true}
             >
-              {nftDummy.map((nft) => (
-                <SwiperSlide key={nft.id}>
-                  <Link to={`/explore/nft/${nft.id}`}>
+              {Nft.map((nft) => (
+                <SwiperSlide key={nft.tokenID}>
+                  <Link to={`/explore/nft/${nft.tokenID}`}>
                     <NftProps
-                      key={nft.id}
-                      img={nft.imgSrc}
+                      tokenID={nft.tokenID}
+                      uploadUrl={nft.uploadUrl}
                       title={nft.title}
-                      active={nft.active}
-                      content={nft.content}
-                      deadline={nft.deadline}
-                      currentBid={nft.currentBid}
+                      description={nft.descriptio}
+                      price={nft.price}
+                      totalShares={nft.totalShares}
                     />
                   </Link>
                 </SwiperSlide>

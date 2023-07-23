@@ -106,14 +106,15 @@ export default function Create(props) {
     setCategory("");
   };
 
-  const handleNft_details = async () => {
+  const handleNft_details = async (tokenID, bundlrUploadUrl) => {
     const docId = nanoid();
 
     const nft_details = {
       title: title,
       description: description,
       price: Number(price),
-      bundlrId: bundlrId,
+      uploadUrl: bundlrUploadUrl,
+      tokenID,
       totalShares: Number(totalShares),
     };
 
@@ -128,7 +129,7 @@ export default function Create(props) {
     }
   };
 
-  const handlrBundlrUpload = async () => {
+  const handlrBundlrUpload = async (fileUrl) => {
     const bundlr = await getBundlr();
 
     try {
@@ -152,8 +153,6 @@ export default function Create(props) {
         tags: [{ name: "Content-Type", value: fileType }],
       });
       console.log("bundlr uploaded file:", response.id);
-
-      await lf.setItem("bundlr", response.id);
 
       console.log("Content ID successfully saved to local storage.");
 
@@ -206,8 +205,7 @@ export default function Create(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    /*await  handleMintAndApprove()*/
-
+  
     if (
       !title ||
       !price ||
@@ -235,9 +233,13 @@ export default function Create(props) {
         
     
         
-
-        await handlrBundlrUpload();
-        await getContentIdFromLocalStorage()
+       
+        const bundlrUploadUrl = await handlrBundlrUpload(fileUrl);
+        const tokenID  = await  handleCreateListing(price, totalShares)
+        
+        console.log(tokenID)
+        await handleNft_details(tokenID, bundlrUploadUrl)
+        
 
         setLoading(false);
         resetForm();
