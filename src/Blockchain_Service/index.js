@@ -11,7 +11,8 @@ import { ethers, Contract } from "ethers";
 import detectEthereumProvider from '@metamask/detect-provider'
 
 
-const contractTxId = "mrWXmYuvBJaYGiROWIKxeL6Nz8hj2NwyoN7qJkr24KQ";
+
+const contractTxId = "I5Li4OV9ALC1g-Le4UA4nmq_VNaWKLDaLvAshb1jjuM";
 const db = new SDK({ contractTxId: contractTxId });
 await db.init();
 

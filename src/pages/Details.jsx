@@ -10,6 +10,12 @@ import { NftContext } from "../store/NftContext";
 import { useParams } from "react-router-dom";
 import Modal from "../components/elements/Modal/modal";
 import NFTCard from "components/nftCard";
+import SDK from "weavedb-sdk";
+
+const contractTxId = "I5Li4OV9ALC1g-Le4UA4nmq_VNaWKLDaLvAshb1jjuM";
+const db = new SDK({ contractTxId: contractTxId });
+await db.init();
+const Nft = await db.get("nft_collection")
 
 export const NFTDetails = () => {
   const { setModal, setShowModal, user } = useContext(NftContext);
@@ -23,7 +29,7 @@ export const NFTDetails = () => {
   };
 
   const { id } = useParams();
-  const details = nftDummy.find((item) => item.id === parseInt(id));
+  const details = Nft.find((nft) => nft.tokenID === parseInt(id));
 
   if (!details) {
     return <h1>Loading...</h1>;
@@ -33,7 +39,7 @@ export const NFTDetails = () => {
     <div className="flex flex-col text-white p-[50px] xl:p-[70px] laptop:p-[100px] gap-[50px] xl:gap-[100px] h-full">
       <div className="flex flex-col lg:flex-row justify-center items-center gap-[50px] xl:gap-[100px] h-full">
         <div className="max-w-[523px] w-full h-[617px] lg:h-full bg-cover bg-center border-x-2 border-white-500 rounded-lg">
-          <img src={details.imgSrc} alt="just for tet" />
+          <img src={details.uploadUrl} alt="just for tet" />
         </div>
 
         <div className="flex flex-col gap-6 max-w-[617px] w-full">
@@ -54,11 +60,11 @@ export const NFTDetails = () => {
               <div className="flex flex-row justify-between items-center">
                 <div className="flex flex-col gap-1">
                   <Typography type="h7">Ends in</Typography>
-                  <p className="text-base/[22px]">{details.deadline}</p>
+                  <p className="text-base/[22px]">{details.totalShares}</p>
                 </div>
                 <div className="flex flex-col gap-1">
                   <Typography type="h7">Current floor bid</Typography>
-                  <p className="text-base/[22px] text-end">{details.currentBid}</p>
+                  <p className="text-base/[22px] text-end">{details.price}</p>
                 </div>
               </div>
 
@@ -85,7 +91,7 @@ export const NFTDetails = () => {
                   {/** placeing a bid */}
                   <div className="text-black pt-5  flex  justify-between">
                     <p className="text-slate-700 text-base font-semibold leading-snug">Current Bid</p>
-                    <p className="text-slate-900 text-base font-semibold leading-snug">{details.currentBid}</p>
+                    <p className="text-slate-900 text-base font-semibold leading-snug">{details.price}</p>
                   </div>
                   <div className="text-black pt-2 pb-5  flex  justify-between">
                     <p className="text-slate-700 text-base font-semibold leading-snug">Minimum Markup</p>
@@ -138,15 +144,14 @@ export const NFTDetails = () => {
         <div className="flex flex-col gap-8">
           <Typography type="h6">More from this creator</Typography>
           <div className="grid grid-cols-1 lg:grid-cols-2 laptop:grid-cols-3 gap-5">
-            {nftDummy.slice(0, 3).map((items) => (
+            {Nft.slice(0, 3).map((nft) => (
               <NftProps
-                key={items.id}
-                img={items.imgSrc}
-                title={items.title}
-                active={items.active}
-                content={items.content}
-                deadline={items.deadline}
-                currentBid={items.currentBid}
+                tokenID={nft.tokenID}
+                uploadUrl={nft.uploadUrl}
+                title={nft.title}
+                description={nft.description}
+                totalShares={nft.totalShares}
+                price={nft.price}
               />
             ))}
           </div>
@@ -158,14 +163,20 @@ export const NFTDetails = () => {
 
 export const detailsLoader = async () => {
   try {
-    const res = await fetch("../utils/Nft_Dummy_Data");
-    if (!res.ok) {
+    console.log("Initializing the database...");
+    await db.init();
+    console.log("Fetching data from the database...");
+    const res = await db.get("nft_collection");
+    if (!res) {
       throw new Error("Failed to fetch data");
     }
-    const details = await res.json();
+    console.log("Parsing JSON data...");
+    console.log("Data successfully loaded:", res);
+    const details = await res
     return details;
+    
   } catch (error) {
-    console.log(error);
+    console.error("Error:", error);
     return null;
   }
 };

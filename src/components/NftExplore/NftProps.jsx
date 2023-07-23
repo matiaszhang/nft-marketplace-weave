@@ -3,7 +3,7 @@ function NftProps(props) {
     <div className="cursor-pointer flex justify-center">
       <div className="container flex flex-col items-center content-center mx-auto rounded-lg ">
         <div className=" border-2 border-white border-solid rounded w-[240px]  sm:w-[393px] sm:h-[339px]">
-          <img src={props.img} alt="trending NFT" />
+          <img src={props.uploadUrl} alt="trending NFT" />
         </div>
         <div
           className="border-2 border-white border-solid
@@ -27,7 +27,7 @@ function NftProps(props) {
                   px-[24px] sm:text-[12px] font-normal leading-snug"
             >
               {" "}
-              {props.content}
+              {props.description}
             </p>
             <div
               className="flex justify-between px-[24px]
@@ -38,13 +38,13 @@ function NftProps(props) {
                   className=" text-white text-[12px]
              sm:text-[20px] font-normal leading-5 sm:leading-7"
                 >
-                  {props.deadline}
+                  {props.totalShares}
                 </p>
                 <span
                   className="text-white text-[10px] 
               sm:text-[16px] font-semibold leading-snug"
                 >
-                  {props.currentBid}
+                  {props.price}
                 </span>
               </div>
 

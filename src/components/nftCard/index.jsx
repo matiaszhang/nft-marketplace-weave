@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { Card, Typography } from "components/elements";
 import { useState } from "react";
 
-const NFTCard = ({ hero, title, content, deadline, currentBid, size = "lg" }) => {
+const NFTCard = ({ uploadUrl, title, description, totalShares, price, size = "lg" }) => {
   const [isHover, setHover] = useState(false);
 
   return (
@@ -13,22 +13,22 @@ const NFTCard = ({ hero, title, content, deadline, currentBid, size = "lg" }) =>
     >
       <div className="flex flex-col border-2 border-white rounded text-white">
         <div className="w-full overflow-hidden">
-          <img src={hero} alt="trending nft" className={classNames({ "scale-110 transition-transform": isHover })} />
+          <img src={uploadUrl} alt="trending nft" className={classNames({ "scale-110 transition-transform": isHover })} />
         </div>
         <Card className="rounded-none ">
           <div className="flex flex-col p-6 gap-3">
             <Typography type={size === "lg" ? "h6" : "h7"}>{title}</Typography>
             {size === "lg" && (
-              <p className="text-base/[22px] text-justify textarea-ellipsis text-white/[0.8]">{content}</p>
+              <p className="text-base/[22px] text-justify textarea-ellipsis text-white/[0.8]">{description}</p>
             )}
             <div className="flex flex-row justify-between mt-2">
               <div className="flex flex-col gap-1 text-start">
-                <p className="text-xl">Ends in</p>
-                <p className="text-base/[22px] text-[#C495DC]">{deadline}</p>
+                <p className="text-xl">TotalShares Available</p>
+                <p className="text-base/[22px] text-[#C495DC]">{totalShares}</p>
               </div>
               <div className="flex flex-col gap-1 text-end">
                 <p className="text-xl">Current Bid</p>
-                <p className="text-base/[22px] text-[#C495DC]">{currentBid}</p>
+                <p className="text-base/[22px] text-[#C495DC]">{price}</p>
               </div>
             </div>
           </div>
