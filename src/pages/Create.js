@@ -9,6 +9,7 @@ import {
   handleCreateListing,
   handleMintAndApprove,
 } from "../Blockchain_Service";
+import lf from "localforage";
 import { ethers } from "ethers";
 import { WebBundlr } from "@bundlr-network/client";
 import fileReaderStream from "filereader-stream";
@@ -23,6 +24,8 @@ export default function Create(props) {
   const [imgBase64, setImgBase64] = useState("");
   const [category, setCategory] = useState("");
   const [bundlrId, setBundlrId] = useState("");
+
+  const [formData, setFormData] = useState({title: "", price: 0, description: "", totalShares: 0, fileUrl: ""})
 
   const { setModal, setLoading } = useContext(NftContext);
 
@@ -50,21 +53,6 @@ export default function Create(props) {
     },
   });
 
-  //files to select
-
-  const Files = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ));
-
-  //handle changes or category
-
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
-
-  //handle change for the rest inputs
 
   const handleChange = (event) => {
     switch (event.target.name) {
@@ -90,6 +78,25 @@ export default function Create(props) {
         break;
     }
   };
+  
+
+  //files to select
+
+  const Files = acceptedFiles.map((file) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ));
+
+  //handle changes or category
+
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+  };
+
+  //handle change for the rest inputs
+
+  
 
   //handle submit
   const resetForm = () => {
@@ -103,11 +110,14 @@ export default function Create(props) {
   };
 
   const handleNft_details = async () => {
-    const nft_details = { title: title, description: description, price: Number(price), totalShares: Number(totalShares) };
+    const nft_details = { title: title, description: description, price: Number(price), bundlrId: bundlrId, totalShares: Number(totalShares) };
 
     await db.init();
 
+    
+
     try {
+      
       const res = await db.add(nft_details, "nft_collection");
       console.log(res);
     } catch (e) {
@@ -140,12 +150,46 @@ export default function Create(props) {
       });
       console.log("bundlr uploaded file:", response.id);
 
-      const res = await db.add({ bundlrId: response.id }, "nft_collection");
-      console.log(res);
+      
+      await lf.setItem('bundlr', response.id);
+      
+      console.log('Content ID successfully saved to local storage.');
+
+      console.log(`Upload success content URI= https://arweave.net/${response.id}`);
+      return `https://arweave.net/${response.id}`;
+
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
   };
+
+
+  const getContentIdFromLocalStorage = async () => {
+    try {
+       
+      const imageId = await lf.getItem('bundlr');
+      if (imageId) {
+        // Content ID exists in local storage
+        console.log('Content ID retrieved from local storage:', imageId);
+        const nft_details = { title: title, description: description, price: Number(price), imageId: imageId, totalShares: Number(totalShares) };
+
+        await db.init();
+
+        const res = await db.add(nft_details, "nft_collection");
+        console.log(res);
+        
+        return imageId;
+      } else {
+        
+        console.log('Content ID not found in local storage.');
+        return null;
+      }
+    } catch (error) {
+      console.log('Error retrieving Content ID from local storage:', error);
+      return null;
+    }
+  };
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -164,6 +208,8 @@ export default function Create(props) {
       console.log(totalShares);
       console.log(fileUrl);
       console.log(category);
+      console.log(category);
+      
 
       toast.error("Please fill all required fields");
     } else {
@@ -174,8 +220,9 @@ export default function Create(props) {
         // Do something with the form data
 
         await handlrBundlrUpload();
-        await handleNft_details();
-
+        await getContentIdFromLocalStorage()
+        
+        
         resetForm();
 
         await toast.success("Nft successfully minted!");

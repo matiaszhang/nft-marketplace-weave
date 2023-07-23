@@ -9,7 +9,7 @@ import { Button } from "components/elements";
 import { handleMintAndApprove } from '.';
 
 const WalletConnect = ({ children }) => {
-  const contractTxId = "mrWXmYuvBJaYGiROWIKxeL6Nz8hj2NwyoN7qJkr24KQ";
+  const contractTxId = "wMG6aVW9lJmDF7QW30pi2hR74FSHs1BZW7e31TnlYYU";
   const sonarLink = `https://sonar.warp.cc/?#/app/contract/${contractTxId}`;
 
   const { db, setDb, initDb, setInitDb, user, setUser } = useContext(NftContext);
