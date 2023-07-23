@@ -24,10 +24,12 @@ export default function Create(props) {
   const [imgBase64, setImgBase64] = useState("");
   const [category, setCategory] = useState("");
   const [bundlrId, setBundlrId] = useState("");
+  const [loading, setLoading] = useState("")
+  
 
   const [formData, setFormData] = useState({title: "", price: 0, description: "", totalShares: 0, fileUrl: ""})
 
-  const { setModal, setLoading } = useContext(NftContext);
+  const { setModal} = useContext(NftContext);
 
   const contractTxId = "mrWXmYuvBJaYGiROWIKxeL6Nz8hj2NwyoN7qJkr24KQ";
   const db = new SDK({ contractTxId: contractTxId });
@@ -218,14 +220,16 @@ export default function Create(props) {
 
       try {
         // Do something with the form data
+        setLoading(true);
 
         await handlrBundlrUpload();
         await getContentIdFromLocalStorage()
         
-        
+
+        setLoading(false);
         resetForm();
 
-        await toast.success("Nft successfully minted!");
+        toast.success("Nft successfully minted!");
       } catch (error) {
         console.log(error);
         toast.error("An error occurred while minting the Nft");
@@ -463,8 +467,10 @@ export default function Create(props) {
                   type="submit"
                   className="text-white 
                 cursor-pointer"
+                disabled={loading}
                 >
-                  Mint
+                  {loading ? 'Minting..pls wait' : 'Mint'}
+                 
                 </button>
               </div>
               <ToastContainer />
