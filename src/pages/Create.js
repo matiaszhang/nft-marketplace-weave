@@ -5,15 +5,12 @@ import SDK from "weavedb-sdk";
 import "react-toastify/dist/ReactToastify.css";
 import { NftContext } from "../store/NftContext";
 import Modal from "../components/elements/Modal/modal";
-import {
-  handleCreateListing,
-  handleMintAndApprove,
-} from "../Blockchain_Service";
 import lf from "localforage";
 import { ethers } from "ethers";
 import { WebBundlr } from "@bundlr-network/client";
 import fileReaderStream from "filereader-stream";
-import { getBundlr } from "../Blockchain_Service";
+import { getBundlr, handleCreateListing, handleMintAndApprove } from "../Blockchain_Service";
+import { nanoid } from "nanoid";
 
 export default function Create(props) {
   const [title, setTitle] = useState("");
@@ -24,12 +21,11 @@ export default function Create(props) {
   const [imgBase64, setImgBase64] = useState("");
   const [category, setCategory] = useState("");
   const [bundlrId, setBundlrId] = useState("");
-  const [loading, setLoading] = useState("")
+  const [loading, setLoading] = useState("");
+  const [deadline, setDeadline] = useState(""); // State to hold the deadline input
   
 
-  const [formData, setFormData] = useState({title: "", price: 0, description: "", totalShares: 0, fileUrl: ""})
-
-  const { setModal} = useContext(NftContext);
+  const { setModal, user } = useContext(NftContext);
 
   const contractTxId = "mrWXmYuvBJaYGiROWIKxeL6Nz8hj2NwyoN7qJkr24KQ";
   const db = new SDK({ contractTxId: contractTxId });
@@ -55,7 +51,6 @@ export default function Create(props) {
     },
   });
 
-
   const handleChange = (event) => {
     switch (event.target.name) {
       case "title":
@@ -70,6 +65,9 @@ export default function Create(props) {
       case "totalShares":
         setTotalShares(event.target.value);
         break;
+      case "deadline":
+        setDeadline(event.target.value);
+        break;
       case "nft":
         if (event.target.files && event.target.files.length > 0) {
           setFileUrl(event.target.files[0]);
@@ -80,7 +78,6 @@ export default function Create(props) {
         break;
     }
   };
-  
 
   //files to select
 
@@ -98,8 +95,6 @@ export default function Create(props) {
 
   //handle change for the rest inputs
 
-  
-
   //handle submit
   const resetForm = () => {
     setTitle("");
@@ -112,15 +107,21 @@ export default function Create(props) {
   };
 
   const handleNft_details = async () => {
-    const nft_details = { title: title, description: description, price: Number(price), bundlrId: bundlrId, totalShares: Number(totalShares) };
+    const docId = nanoid();
+
+    const nft_details = {
+      title: title,
+      description: description,
+      price: Number(price),
+      bundlrId: bundlrId,
+      totalShares: Number(totalShares),
+    };
 
     await db.init();
 
-    
-
     try {
-      
       const res = await db.add(nft_details, "nft_collection");
+      console.log("docId", docId);
       console.log(res);
     } catch (e) {
       console.error(e);
@@ -152,49 +153,60 @@ export default function Create(props) {
       });
       console.log("bundlr uploaded file:", response.id);
 
-      
-      await lf.setItem('bundlr', response.id);
-      
-      console.log('Content ID successfully saved to local storage.');
+      await lf.setItem("bundlr", response.id);
 
-      console.log(`Upload success content URI= https://arweave.net/${response.id}`);
+      console.log("Content ID successfully saved to local storage.");
+
+      console.log(
+        `Upload success content URI= https://arweave.net/${response.id}`
+      );
       return `https://arweave.net/${response.id}`;
-
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
   };
 
-
   const getContentIdFromLocalStorage = async () => {
     try {
-       
-      const imageId = await lf.getItem('bundlr');
+      const docId = nanoid();
+
+      const imageId = await lf.getItem("bundlr");
       if (imageId) {
+        console.log("docId", docId);
         // Content ID exists in local storage
-        console.log('Content ID retrieved from local storage:', imageId);
-        const nft_details = { title: title, description: description, price: Number(price), imageId: imageId, totalShares: Number(totalShares) };
+        console.log("Content ID retrieved from local storage:", imageId);
+        const nft_details = {
+          title: title,
+          description: description,
+          price: Number(price),
+          imageId: imageId,
+          totalShares: Number(totalShares),
+        };
 
         await db.init();
 
-        const res = await db.add(nft_details, "nft_collection");
+        const res = await db.add(
+          { nft_details },
+          "nft_collection",
+          docId,
+          user
+        );
         console.log(res);
-        
+
         return imageId;
       } else {
-        
-        console.log('Content ID not found in local storage.');
+        console.log("Content ID not found in local storage.");
         return null;
       }
     } catch (error) {
-      console.log('Error retrieving Content ID from local storage:', error);
+      console.log("Error retrieving Content ID from local storage:", error);
       return null;
     }
   };
-  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    /*await  handleMintAndApprove()*/
 
     if (
       !title ||
@@ -211,7 +223,6 @@ export default function Create(props) {
       console.log(fileUrl);
       console.log(category);
       console.log(category);
-      
 
       toast.error("Please fill all required fields");
     } else {
@@ -221,10 +232,12 @@ export default function Create(props) {
       try {
         // Do something with the form data
         setLoading(true);
+        
+    
+        
 
         await handlrBundlrUpload();
         await getContentIdFromLocalStorage()
-        
 
         setLoading(false);
         resetForm();
@@ -236,6 +249,31 @@ export default function Create(props) {
       }
     }
   };
+
+  const projectDeadlineInHours = 24; // Replace this with your project deadline in hours
+  const projectDeadlineInMillis = projectDeadlineInHours * 60 * 60 * 1000;
+  const [remainingTime, setRemainingTime] = useState(projectDeadlineInMillis);
+
+
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRemainingTime((prevRemainingTime) => Math.max(0, prevRemainingTime - 1000));
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  function formatTime(time) {
+    const hours = Math.floor(time / (1000 * 60 * 60));
+    const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((time % (1000 * 60)) / 1000);
+
+    return `${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+  }
+
 
   return (
     <div>
@@ -365,6 +403,32 @@ export default function Create(props) {
                 />
               </div>
 
+              {/* deadline input */}
+              <div className="pb-6 appearance-none">
+                <label
+                  className="block text-white 
+                  text-sm pb-2
+                  font-semibold leading-snug"
+                  htmlFor="description"
+                >
+                  Nft Deadline
+                </label>
+                <input
+                  className="
+                border rounded w-full md:w-[600px] py-3 
+                px-3
+                 text-gray-700 leading-tight 
+                 focus:outline-none focus:shadow-outline"
+                  id="deadline"
+                  type="datetime-local"
+                  value={deadline}
+                  name="deadline"
+                  onChange={handleChange}
+                  placeholder="input 1 or more"
+                />
+                
+              </div>
+
               {/* picture / add nft input */}
               <div
                 {...getRootProps({ className: "dropzone" })}
@@ -467,10 +531,9 @@ export default function Create(props) {
                   type="submit"
                   className="text-white 
                 cursor-pointer"
-                disabled={loading}
+                  disabled={loading}
                 >
-                  {loading ? 'Minting..pls wait' : 'Mint'}
-                 
+                  {loading ? "Minting..pls wait" : "Mint"}
                 </button>
               </div>
               <ToastContainer />

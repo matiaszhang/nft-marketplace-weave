@@ -1,13 +1,15 @@
 import { SwiperSlide } from "swiper/react";
 import CustomSwiper from "../elements/Swiper";
+import NftProps from "./NftProps";
 import nftDummy from "../../utils/Nft_Dummy_Data";
 import { Link } from "react-router-dom";
-import NftCollection from "./Header/NftCollection";
-import NFTCard from "components/nftCard";
-
 import "swiper/css";
+import NftCollection from "./Header/NftCollection";
+
+
 
 export default function Nfts() {
+  
   return (
     <div>
       <div className="bg-[#130B2B]">
@@ -15,13 +17,18 @@ export default function Nfts() {
           <NftCollection />
 
           <div className="relative">
-            <CustomSwiper slidesPerView={3} slidesPerGroup={1} spaceBetween={1} loop={true}>
+            <CustomSwiper
+              slidesPerView={3}
+              slidesPerGroup={1}
+              spaceBetween={1}
+              loop={true}
+            >
               {nftDummy.map((nft) => (
                 <SwiperSlide key={nft.id}>
                   <Link to={`/explore/nft/${nft.id}`}>
-                    <NFTCard
+                    <NftProps
                       key={nft.id}
-                      hero={nft.imgSrc}
+                      img={nft.imgSrc}
                       title={nft.title}
                       active={nft.active}
                       content={nft.content}

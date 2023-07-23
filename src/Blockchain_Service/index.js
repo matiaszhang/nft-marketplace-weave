@@ -8,22 +8,32 @@ import { mintingAbi } from "../lib/minting";
 import { NftContext } from "../store/NftContext";
 import { WebBundlr } from "@bundlr-network/client";
 import { ethers, Contract } from "ethers";
+import detectEthereumProvider from '@metamask/detect-provider'
 
 
 const contractTxId = "mrWXmYuvBJaYGiROWIKxeL6Nz8hj2NwyoN7qJkr24KQ";
 const db = new SDK({ contractTxId: contractTxId });
 await db.init();
-const provider = new ethers.BrowserProvider(window.ethereum);
-await provider.getSigner();
+
 const MintingAdrs = "0x73d7530D4BBD9AC1640600E839C3B9E932830915";
 const MarketplaceAdrs = "0x703e8f41112DBa933494B4327a4d746f334ab24E";
 
 // Function to handle minting and approval
 const handleMintAndApprove = async () => {
+
+  
   try {
-    const contract = new Contract(MintingAdrs, mintingAbi, provider);
+    const web3Provider = new ethers.BrowserProvider(
+        window.ethereum, "any"
+      );
+
+    const signer = await web3Provider.getSigner();
+    const contract = new Contract(MintingAdrs, mintingAbi, signer);
+    console.log("contract", contract)
     const mintTx = await contract.mint();
+    console.log(mintTx)
     const receipt = await mintTx.wait();
+    console.log(receipt)
 
     // Retrieving the token ID from the mint transaction receipt
     const tokenID = receipt.events[0].args.tokenID.toNumber();
@@ -47,6 +57,8 @@ const handleMintAndApprove = async () => {
 // Function to handle NFT listing creation
 const handleCreateListing = async (price, totalShares) => {
   try {
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    await provider.getSigner();
     const contract = new Contract(MarketplaceAdrs, WeaveMarketAbi, provider);
     const mintTx = await handleMintAndApprove();
     if (!mintTx.success) {

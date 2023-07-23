@@ -99,7 +99,7 @@ export const NFTDetails = () => {
                   </p>
 
                   {/**button */}
-                  <Button variant="primary" className="!flex justify-center">Bid Now</Button>
+                  <Button  className="!flex justify-center">Bid Now</Button>
                 </Modal>
               </div>
             </div>
