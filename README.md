@@ -58,6 +58,21 @@ To address the problems faced by existing NFT marketplaces, WeaveNFT Marketplace
 
 Through these initiatives, we aim to create a vibrant, inclusive, and sustainable NFT marketplace that benefits artists, collectors, and the wider blockchain community.
 
+**Link to our figma File:** 
+https://www.figma.com/file/1D1LFhtbzprghiH9fQtfpO/WEAVEARTNFT?type=design&node-id=11-971
 
+**Link to our Nft Deployed Minting Contract:**
+
+https://mumbai.polygonscan.com/address/0x73d7530D4BBD9AC1640600E839C3B9E932830915
+
+**Link to our Nft marketplace Contract:**
+
+
+https://mumbai.polygonscan.com/address/0x73d7530D4BBD9AC1640600E839C3B9E932830915
+
+**Link to our ContractTx on Sonar:**
+
+
+https://sonar.warp.cc/?#/app/contract/I5Li4OV9ALC1g-Le4UA4nmq_VNaWKLDaLvAshb1jjuM?network=mainnet
 
 
