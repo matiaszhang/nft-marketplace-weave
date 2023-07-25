@@ -27,7 +27,7 @@ export default function Create(props) {
 
   const { setModal, user } = useContext(NftContext);
 
-  const contractTxId = "I5Li4OV9ALC1g-Le4UA4nmq_VNaWKLDaLvAshb1jjuM";
+  const contractTxId = "U2OR33r74nnR1C3alI-JEpbRqSisAiKIEbXECgaJSyA";
   const db = new SDK({ contractTxId: contractTxId });
 
   //function for adding image to input
@@ -211,8 +211,7 @@ export default function Create(props) {
       !price ||
       !description ||
       !totalShares ||
-      !fileUrl ||
-      !category
+      !fileUrl
     ) {
       console.log(title);
       console.log(price);
@@ -245,6 +244,7 @@ export default function Create(props) {
         resetForm();
 
         toast.success("Nft successfully minted!");
+        
       } catch (error) {
         console.log(error);
         toast.error("An error occurred while minting the Nft");
@@ -515,8 +515,6 @@ export default function Create(props) {
                     Select the category of your project
                   </option>
                   <option value="edit this later">picture Nft</option>
-                  <option value="edit this lateer">Music Nft</option>
-                  <option value="edit this later">Video Nft</option>
                   <option value="edit this later">Fractional ownership</option>
                 </select>
               </div>

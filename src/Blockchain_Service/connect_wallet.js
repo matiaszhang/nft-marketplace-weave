@@ -9,7 +9,7 @@ import { Button } from "components/elements";
 import { handleMintAndApprove } from '.';
 
 const WalletConnect = ({ children }) => {
-  const contractTxId = "I5Li4OV9ALC1g-Le4UA4nmq_VNaWKLDaLvAshb1jjuM";
+  const contractTxId = "U2OR33r74nnR1C3alI-JEpbRqSisAiKIEbXECgaJSyA";
   const sonarLink = `https://sonar.warp.cc/?#/app/contract/${contractTxId}`;
 
   const { db, setDb, initDb, setInitDb, user, setUser } = useContext(NftContext);
@@ -41,7 +41,7 @@ const WalletConnect = ({ children }) => {
   };
 
   const login = async () => {
-    const provider = new ethers.BrowserProvider(window.ethereum, "any");
+    const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
     const signer = await provider.getSigner();
     await provider.send("eth_requestAccounts", []);
     const wallet_address = await signer.getAddress(); 

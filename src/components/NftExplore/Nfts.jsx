@@ -6,7 +6,7 @@ import "swiper/css";
 import NftCollection from "./Header/NftCollection";
 import SDK from "weavedb-sdk";
 
-const contractTxId = "I5Li4OV9ALC1g-Le4UA4nmq_VNaWKLDaLvAshb1jjuM";
+const contractTxId = "U2OR33r74nnR1C3alI-JEpbRqSisAiKIEbXECgaJSyA";
 const db = new SDK({ contractTxId: contractTxId });
 await db.init();
 const Nft = await db.get("nft_collection")

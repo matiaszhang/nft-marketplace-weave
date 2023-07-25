@@ -12,7 +12,7 @@ import detectEthereumProvider from '@metamask/detect-provider'
 
 
 
-const contractTxId = "I5Li4OV9ALC1g-Le4UA4nmq_VNaWKLDaLvAshb1jjuM";
+const contractTxId = "U2OR33r74nnR1C3alI-JEpbRqSisAiKIEbXECgaJSyA";
 const db = new SDK({ contractTxId: contractTxId });
 await db.init();
 
@@ -24,7 +24,7 @@ const handleMintAndApprove = async () => {
 
   
   try {
-    const web3Provider = new ethers.BrowserProvider(
+    const web3Provider = new ethers.providers.Web3Provider(
         window.ethereum
       );
 
@@ -56,7 +56,7 @@ const handleMintAndApprove = async () => {
 // Function to handle NFT listing creation
 const handleCreateListing = async (price, totalShares) => {
   try {
-    const web3Provider = new ethers.BrowserProvider(
+    const web3Provider = new ethers.providers.Web3Provider(
         window.ethereum
       );
 
@@ -80,51 +80,50 @@ const handleCreateListing = async (price, totalShares) => {
 };
 
 const getBundlr = async () => {
-    const provider = new ethers.BrowserProvider(window.ethereum);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
   
-    provider.getGasPrice = async () => {
-        const gp = +((await provider.getFeeData()).gasPrice?.toString() ?? 0);
-        console.log("getGasPrice", gp, typeof (gp));
-        return gp;
-    };
+    //   provider.getGasPrice = async () => {
+    //     const gp = +((await provider.getFeeData()).gasPrice?.toString() ?? 0);
+    //     console.log("getGasPrice", gp, typeof gp);
+    //     return gp;
+    //   };
   
-    const e = provider.estimateGas.bind(provider);
-    provider.estimateGas = async (tx) => {
-        const est = +(((await e(tx))?.toString()) ?? 0);
-        return { mul: (n) => +est * +n };
-    };
+    //   const e = provider.estimateGas.bind(provider);
+    //   provider.estimateGas = async (tx) => {
+    //     const est = +((await e(tx))?.toString() ?? 0);
+    //     return { mul: (n) => +est * +n };
+    //   };
   
-    const signer = await provider.getSigner();
+    //   const signer = await provider.getSigner();
   
-    signer.estimateGas = e;
-    signer.getGasPrice = provider.getGasPrice
-    provider.getSigner = () => signer;
+    //   signer.estimateGas = e;
+    //   signer.getGasPrice = provider.getGasPrice;
+    //   provider.getSigner = () => signer;
   
-    signer._signTypedData = (domain, types, value) =>
-      signer.signTypedData(domain, types, value);
+    //   signer._signTypedData = (domain, types, value) => signer.signTypedData(domain, types, value);
   
-    const bundlr = new WebBundlr(
-      "https://devnet.bundlr.network/",
-      "matic",
-      provider,
-      {
-        providerUrl: "https://rpc-mumbai.maticvigil.com/",
-      }
-    );
+    const bundlr = new WebBundlr("https://devnet.bundlr.network/", "matic", provider, {
+      providerUrl: "https://rpc-mumbai.maticvigil.com/",
+    });
   
-    bundlr.currencyConfig.createTx = async (amount, to ) => {
-      const estimatedGas = await  signer.estimateGas({to, from: bundlr.address, amount})
-      const gasPrice = await signer.getGasPrice()
-      const txr = await signer.populateTransaction({
-        // eslint-disable-next-line no-undef
-        to, from: bundlr.address, value: BigInt(amount), gasPrice, gasLimit: estimatedGas
-      })
-      return {txId: undefined, tx: txr}
-    }
+    //   bundlr.currencyConfig.createTx = async (amount, to) => {
+    //     const estimatedGas = await signer.estimateGas({ to, from: bundlr.address, amount });
+    //     const gasPrice = await signer.getGasPrice();
+    //     const txr = await signer.populateTransaction({
+    //       // eslint-disable-next-line no-undef
+    //       to,
+    //       from: bundlr.address,
+    //       value: BigInt(amount),
+    //       gasPrice,
+    //       gasLimit: estimatedGas,
+    //     });
+    //     return { txId: undefined, tx: txr };
+    //   };
     await bundlr.ready();
     console.log("bundlr=", bundlr);
   
     return bundlr; // done
   };
+
 
 export { getBundlr, handleMintAndApprove, handleCreateListing };

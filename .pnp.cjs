@@ -28,6 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["react-app-rewired", "virtual:2725012aee4d5bcd0f6e8b84191c0411cd7ac399e8febc46f4c03825f28ac1bc8115fc6381aa4fb9cc406342586737d5d156f29ab0ea5a1a32e42a7edf562bee#npm:2.2.1"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -36,9 +37,42 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["WeaveNft_Marketplace", "workspace:."]\
+            ["WeaveNft_Marketplace", "workspace:."],\
+            ["react-app-rewired", "virtual:2725012aee4d5bcd0f6e8b84191c0411cd7ac399e8febc46f4c03825f28ac1bc8115fc6381aa4fb9cc406342586737d5d156f29ab0ea5a1a32e42a7edf562bee#npm:2.2.1"]\
           ],\
           "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["react-app-rewired", [\
+        ["npm:2.2.1", {\
+          "packageLocation": "./.yarn/cache/react-app-rewired-npm-2.2.1-372a52d640-0b330c2b46.zip/node_modules/react-app-rewired/",\
+          "packageDependencies": [\
+            ["react-app-rewired", "npm:2.2.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:2725012aee4d5bcd0f6e8b84191c0411cd7ac399e8febc46f4c03825f28ac1bc8115fc6381aa4fb9cc406342586737d5d156f29ab0ea5a1a32e42a7edf562bee#npm:2.2.1", {\
+          "packageLocation": "./.yarn/__virtual__/react-app-rewired-virtual-b78d2c780a/0/cache/react-app-rewired-npm-2.2.1-372a52d640-0b330c2b46.zip/node_modules/react-app-rewired/",\
+          "packageDependencies": [\
+            ["react-app-rewired", "virtual:2725012aee4d5bcd0f6e8b84191c0411cd7ac399e8febc46f4c03825f28ac1bc8115fc6381aa4fb9cc406342586737d5d156f29ab0ea5a1a32e42a7edf562bee#npm:2.2.1"],\
+            ["@types/react-scripts", null],\
+            ["react-scripts", null],\
+            ["semver", "npm:5.7.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-scripts",\
+            "react-scripts"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["semver", [\
+        ["npm:5.7.2", {\
+          "packageLocation": "./.yarn/cache/semver-npm-5.7.2-938ee91eaa-fb4ab5e0dd.zip/node_modules/semver/",\
+          "packageDependencies": [\
+            ["semver", "npm:5.7.2"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]]\
     ]\
