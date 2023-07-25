@@ -1,8 +1,8 @@
-resolve: {
-  fallback: {
-    constants: false;
-    crypto: false;
-    crypto: require.resolve("crypto-browserify");
-    stream: require.resolve("stream-browserify");
+{
+  {
+    false;
+    false;
+    require.resolve("crypto-browserify");
+    require.resolve("stream-browserify");
   }
 }
