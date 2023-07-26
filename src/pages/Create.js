@@ -98,7 +98,6 @@ export default function Create(props) {
     setDescription("");
     setTotalShares("");
     setFileUrl("");
-    setBundlrId("");
     setCategory("");
   };
 
@@ -117,7 +116,7 @@ export default function Create(props) {
     await db.init();
 
     try {
-      const res = await db.add(nft_details, "nft_collection");
+      const res = await db.add(nft_details, "NFT_COLLECTION");
       console.log("docId", docId);
       console.log(res);
     } catch (e) {

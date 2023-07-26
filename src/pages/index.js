@@ -4,7 +4,7 @@ import { mergeLeft, isEmpty, isNil } from "ramda";
 import { SigningKey, getBytes, hashMessage, BrowserProvider } from "ethers";
 
 export async function connectWithWeaveDB() {
-  const contractTxId = "9QG_4AHNo6sOuHQaH8h-7NVJpmZ3LWnStnDJrssDdUg";
+  const contractTxId = "oV9mUqEV0RhBqWb0ShpNaqEmDUs6yXX3wo2_UVRO1TU";
   const sdk = new SDK({ contractTxId });
   await sdk.init();
   return sdk;

@@ -12,11 +12,11 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@lit-protocol/lit-node-client": "^2.1.124",
-    "@metamask/detect-provider": "^2.0.0",
+    "@lit-protocol/lit-node-client": "^2.2.47",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "14.4.3",
+    "@walletconnect/ethereum-provider": "^2.9.1",
     "bignumber.js": "^9.1.1",
     "browserify-zlib": "^0.2.0",
     "classnames": "^2.3.2",
@@ -75,6 +75,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "assert": "^2.0.0",
     "autoprefixer": "^10.4.14",
     "buffer": "^6.0.3",

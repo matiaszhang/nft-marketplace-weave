@@ -17,7 +17,7 @@ await db.init();
 const Nft = await db.get("nft_collection")
 
 export const NFTDetails = () => {
-  const { setModal, setShowModal} = useContext(NftContext);
+  const { setModal, setShowModal } = useContext(NftContext);
 
   const openModal = () => {
     setModal("scale-100");

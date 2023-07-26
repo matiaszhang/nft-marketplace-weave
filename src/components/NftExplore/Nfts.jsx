@@ -9,7 +9,7 @@ import SDK from "weavedb-sdk";
 const contractTxId = "U2OR33r74nnR1C3alI-JEpbRqSisAiKIEbXECgaJSyA";
 const db = new SDK({ contractTxId: contractTxId });
 await db.init();
-const Nft = await db.get("nft_collection")
+const Nft = await db.get("NFT_COLLECTION")
 
 export default function Nfts() {
   
