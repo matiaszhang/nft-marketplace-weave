@@ -1,14 +1,8 @@
-import Identicon from "react-identicons";
 import SDK from "weavedb-sdk";
-import { isNil } from "ramda";
-import { useEffect, useState, useContext } from "react";
-import lf from "localforage";
 import { WeaveMarketAbi } from "../lib/marketplace";
 import { mintingAbi } from "../lib/minting";
-import { NftContext } from "../store/NftContext";
 import { WebBundlr } from "@bundlr-network/client";
 import { ethers, Contract } from "ethers";
-import detectEthereumProvider from '@metamask/detect-provider'
 
 
 

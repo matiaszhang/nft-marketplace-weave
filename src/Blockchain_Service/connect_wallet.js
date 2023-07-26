@@ -1,4 +1,3 @@
-import Identicon from 'react-identicons';
 import SDK from "weavedb-sdk";
 import { ethers } from "ethers";
 import { isNil } from "ramda";
@@ -6,13 +5,13 @@ import React, { useContext, useEffect } from "react";
 import lf from "localforage";
 import { NftContext } from "../store/NftContext";
 import { Button } from "components/elements";
-import { handleMintAndApprove } from '.';
+
 
 const WalletConnect = ({ children }) => {
   const contractTxId = "U2OR33r74nnR1C3alI-JEpbRqSisAiKIEbXECgaJSyA";
-  const sonarLink = `https://sonar.warp.cc/?#/app/contract/${contractTxId}`;
+  //const sonarLink = `https://sonar.warp.cc/?#/app/contract/${contractTxId}`;
 
-  const { db, setDb, initDb, setInitDb, user, setUser } = useContext(NftContext);
+  const { db, setDb, setInitDb, user, setUser } = useContext(NftContext);
 
   const checkUser = async () => {
     const wallet_address = await lf.getItem(`temp_address:current`);
@@ -48,9 +47,9 @@ const WalletConnect = ({ children }) => {
     let identity = await lf.getItem(`temp_address:${contractTxId}:${wallet_address}`);
 
     let tx;
-    let err;
+
     if (isNil(identity)) {
-      ({ tx, identity, err } = await db.createTempAddress(wallet_address));
+      ({ tx, identity } = await db.createTempAddress(wallet_address));
       const linked = await db.getAddressLink(identity.address);
       if (isNil(linked)) {
         alert("something went wrong");
@@ -108,7 +107,6 @@ const WalletConnect = ({ children }) => {
         {/*<p>{initDb ? "WeaveDB is Ready" : "WeaveDB SDK is not initialized"}</p>*/}
         {!isNil(user) ? (
           <button onClick={logout} className="flex justify-center gap-2 text-white text-sm bg-fuchsia-900 rounded-lg py-4 px-4">
-            <Identicon string={user.wallet} size={18} />
             {user.wallet.slice(0, 5)}...{user.wallet.slice(-5)}
           </button>
         ) : (

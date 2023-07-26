@@ -2,14 +2,13 @@ import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTrendUp, faEllipsis, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { Button, Typography, Accordion, Card, ListItem } from "../components/elements";
-import nftDummy from "../utils/Nft_Dummy_Data";
 
 import NftProps from "../components/NftExplore/NftProps";
 import { useContext } from "react";
 import { NftContext } from "../store/NftContext";
 import { useParams } from "react-router-dom";
 import Modal from "../components/elements/Modal/modal";
-import NFTCard from "components/nftCard";
+
 import SDK from "weavedb-sdk";
 
 const contractTxId = "U2OR33r74nnR1C3alI-JEpbRqSisAiKIEbXECgaJSyA";
@@ -18,7 +17,7 @@ await db.init();
 const Nft = await db.get("nft_collection")
 
 export const NFTDetails = () => {
-  const { setModal, setShowModal, user } = useContext(NftContext);
+  const { setModal, setShowModal} = useContext(NftContext);
 
   const openModal = () => {
     setModal("scale-100");

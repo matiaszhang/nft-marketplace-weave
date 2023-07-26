@@ -4,12 +4,8 @@ import { toast, ToastContainer } from "react-toastify";
 import SDK from "weavedb-sdk";
 import "react-toastify/dist/ReactToastify.css";
 import { NftContext } from "../store/NftContext";
-import Modal from "../components/elements/Modal/modal";
-import lf from "localforage";
-import { ethers } from "ethers";
-import { WebBundlr } from "@bundlr-network/client";
 import fileReaderStream from "filereader-stream";
-import { getBundlr, handleCreateListing, handleMintAndApprove } from "../Blockchain_Service";
+import { getBundlr, handleCreateListing } from "../Blockchain_Service";
 import { nanoid } from "nanoid";
 
 export default function Create(props) {
@@ -18,14 +14,14 @@ export default function Create(props) {
   const [description, setDescription] = useState("");
   const [totalShares, setTotalShares] = useState("");
   const [fileUrl, setFileUrl] = useState("");
-  const [imgBase64, setImgBase64] = useState("");
+  const [ImgBase64, setImgBase64] = useState("");
   const [category, setCategory] = useState("");
-  const [bundlrId, setBundlrId] = useState("");
+  const [setBundlrId] = useState("");
   const [loading, setLoading] = useState("");
   const [deadline, setDeadline] = useState(""); // State to hold the deadline input
   
 
-  const { setModal, user } = useContext(NftContext);
+  const { setModal} = useContext(NftContext);
 
   const contractTxId = "U2OR33r74nnR1C3alI-JEpbRqSisAiKIEbXECgaJSyA";
   const db = new SDK({ contractTxId: contractTxId });
@@ -165,44 +161,7 @@ export default function Create(props) {
     }
   };
 
-  const getContentIdFromLocalStorage = async () => {
-    try {
-      const docId = nanoid();
-
-      const imageId = await lf.getItem("bundlr");
-      if (imageId) {
-        console.log("docId", docId);
-        // Content ID exists in local storage
-        console.log("Content ID retrieved from local storage:", imageId);
-        const nft_details = {
-          title: title,
-          description: description,
-          price: Number(price),
-          imageId: imageId,
-          totalShares: Number(totalShares),
-        };
-
-        await db.init();
-
-        const res = await db.add(
-          { nft_details },
-          "nft_collection",
-          docId,
-          user
-        );
-        console.log(res);
-
-        return imageId;
-      } else {
-        console.log("Content ID not found in local storage.");
-        return null;
-      }
-    } catch (error) {
-      console.log("Error retrieving Content ID from local storage:", error);
-      return null;
-    }
-  };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
   
@@ -252,30 +211,11 @@ export default function Create(props) {
     }
   };
 
-  const projectDeadlineInHours = 24; // Replace this with your project deadline in hours
-  const projectDeadlineInMillis = projectDeadlineInHours * 60 * 60 * 1000;
-  const [remainingTime, setRemainingTime] = useState(projectDeadlineInMillis);
 
 
+  
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setRemainingTime((prevRemainingTime) => Math.max(0, prevRemainingTime - 1000));
-    }, 1000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  function formatTime(time) {
-    const hours = Math.floor(time / (1000 * 60 * 60));
-    const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((time % (1000 * 60)) / 1000);
-
-    return `${hours} hours, ${minutes} minutes, ${seconds} seconds`;
-  }
-
+  
 
   return (
     <div>
