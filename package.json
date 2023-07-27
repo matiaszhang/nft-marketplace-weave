@@ -7,6 +7,7 @@
     "@babel/preset-env": "^7.22.9",
     "@babel/register": "^7.22.5",
     "@bundlr-network/client": "0.11.9",
+    "@emailjs/browser": "3.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
@@ -21,7 +22,6 @@
     "browserify-zlib": "^0.2.0",
     "classnames": "^2.3.2",
     "dotenv": "^16.3.1",
-    "@emailjs/browser": "3.11.0",
     "eth-crypto": "^2.6.0",
     "ethers": "5.7.2",
     "filereader-stream": "^2.0.0",
@@ -73,6 +73,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "assert": "^2.0.0",
     "autoprefixer": "^10.4.14",
     "buffer": "^6.0.3",
