@@ -59,7 +59,7 @@ function NftProps(props) {
                   className="text-white text-[10px] 
               sm:text-[16px] font-semibold leading-snug flex justify-center"
                 >
-                 {props.price}
+                 {props.price} MATIC
                 </span>
               </div>
             </div>

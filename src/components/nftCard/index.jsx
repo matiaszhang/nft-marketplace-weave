@@ -28,7 +28,7 @@ const NFTCard = ({ uploadUrl, title, description, totalShares, price, size = "lg
               </div>
               <div className="flex flex-col gap-1 text-end">
                 <p className="text-xl">Current Bid</p>
-                <p className="text-base/[22px] text-[#C495DC]">{price}</p>
+                <p className="text-base/[22px] text-[#C495DC]">{price} MATIC</p>
               </div>
             </div>
           </div>
