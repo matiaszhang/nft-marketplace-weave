@@ -38,28 +38,28 @@ function NftProps(props) {
                   className=" text-white text-[12px]
              sm:text-[20px] font-normal leading-5 sm:leading-7"
                 >
-                  {props.totalShares}
+                  TotalShares Available
                 </p>
                 <span
                   className="text-white text-[10px] 
-              sm:text-[16px] font-semibold leading-snug"
+              sm:text-[16px] font-semibold leading-snug flex justify-center"
                 >
-                  {props.price}
+                  {props.totalShares}
                 </span>
               </div>
 
               <div>
                 <p
                   className=" text-white text-[12px]
-             sm:text-[20px] font-normal leading-5 sm:leading-7"
+             sm:text-[20px] font-normal leading-5 sm:leading-7 "
                 >
                   Current bid
                 </p>
                 <span
                   className="text-white text-[10px] 
-              sm:text-[16px] font-semibold leading-snug"
+              sm:text-[16px] font-semibold leading-snug flex justify-center"
                 >
-                  0.32ETH
+                 {props.price}
                 </span>
               </div>
             </div>
