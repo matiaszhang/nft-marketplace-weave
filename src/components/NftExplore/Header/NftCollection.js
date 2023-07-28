@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function NftCollection() {
     return(
         <>
@@ -9,9 +11,9 @@ export default function NftCollection() {
                     <h3 className="text-white text-[16px] sm:text-[28px] font-bold leading-9">
                     Meticulously curated NFT collections
                     </h3>
-                    <p className="text-white text-opacity-80 text-[8px] sm:text-[20px] font-semibold leading-9">
+                    <Link to="/explore" className="text-white text-opacity-80 text-[8px] sm:text-[20px] font-semibold leading-9">
                     View all collections
-                    </p>
+                    </Link>
                 </div>
             </div>
         </>

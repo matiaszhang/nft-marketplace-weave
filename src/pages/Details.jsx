@@ -2,22 +2,50 @@ import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTrendUp, faEllipsis, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { Button, Typography, Accordion, Card, ListItem } from "../components/elements";
-
 import NftProps from "../components/NftExplore/NftProps";
 import { useContext } from "react";
 import { NftContext } from "../store/NftContext";
 import { useParams } from "react-router-dom";
 import Modal from "../components/elements/Modal/modal";
-
+import React, { useEffect, useState } from "react";
 import SDK from "weavedb-sdk";
 
 const contractTxId = "U2OR33r74nnR1C3alI-JEpbRqSisAiKIEbXECgaJSyA";
 const db = new SDK({ contractTxId: contractTxId });
 await db.init();
-const Nft = await db.get("nft_collection")
+const Nft = await db.get("NFT_COLLECTION")
 
 export const NFTDetails = () => {
+
+
+  const [nftData, setNftData] = useState(null);
   const { setModal, setShowModal } = useContext(NftContext);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const db = new SDK({ contractTxId: contractTxId });
+        const details = await detailsLoader(db);
+        console.log("nftData:", details); // Log the fetched data
+        if (!details) {
+          throw new Error("Failed to fetch data");
+        }
+        setNftData(details);
+      } catch (error) {
+        console.error("Error:", error);
+        setNftData(null);
+      }
+    };
+  
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    // This will run every time nftData changes.
+    console.log("nftData has been updated:", nftData);
+  }, [nftData]);
+  
 
   const openModal = () => {
     setModal("scale-100");
@@ -27,8 +55,9 @@ export const NFTDetails = () => {
     setShowModal("scale-100");
   };
 
-  const { id } = useParams();
-  const details = Nft.find((nft) => nft.tokenID === parseInt(id));
+  const { tokenID } = useParams();
+  const details = nftData ? nftData.find((nft) => nft.tokenID === parseInt(tokenID)) : null;
+  console.log("details data", details);
 
   if (!details) {
     return <h1>Loading...</h1>;
@@ -160,20 +189,18 @@ export const NFTDetails = () => {
   );
 };
 
-export const detailsLoader = async () => {
+export const detailsLoader = async (db) => {
   try {
     console.log("Initializing the database...");
     await db.init();
     console.log("Fetching data from the database...");
-    const res = await db.get("nft_collection");
+    const res = await db.get("NFT_COLLECTION");
     if (!res) {
       throw new Error("Failed to fetch data");
     }
     console.log("Parsing JSON data...");
     console.log("Data successfully loaded:", res);
-    const details = await res
-    return details;
-    
+    return res;
   } catch (error) {
     console.error("Error:", error);
     return null;

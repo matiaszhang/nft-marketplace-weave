@@ -17,7 +17,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/Create" element={<Create />} />
-        <Route path="/explore/nft/:id" loader={detailsLoader} element={<NFTDetails />} />
+        <Route path="/explore/nft/:tokenID" loader={detailsLoader} element={<NFTDetails />} />
         <Route path="/explore/Artist" element={<Artist />} />
         <Route path="/explore" element={<Explore />} />
       </Route>
