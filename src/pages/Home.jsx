@@ -14,7 +14,7 @@ function Home() {
   return (
     <div>
       {/* first section starts */}
-      <div className=" bg-clip-content bg-cover " style={{ backgroundImage: 'url( "./images/HomeBg.png")' }}>
+      <div className=" bg-clip-content bg-cover " style={{ backgroundImage: 'url( "/images/HomeBg.png")' }}>
         <div className="sm:grid grid-cols-2 md:px-10 py-20 z-10">
           <div className="container flex flex-col gap-9 px-8 mx-auto">
             <h1 className="text-slate-900  font-bold text-[28px] sm:text-[58px]/[76px]">
