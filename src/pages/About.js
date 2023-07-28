@@ -26,7 +26,7 @@ function About() {
           </h1>
         </div>
 
-        <div className=" bg-zinc-300 bg-opacity-70">
+        <div className=" bg-zinc-300 bg-opacity-100">
           <div className=" flex flex-col items-center justify-center py-[88px] ">
             <img
               src="../images/logoHeader.png"
