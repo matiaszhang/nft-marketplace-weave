@@ -70,7 +70,7 @@ https://mumbai.polygonscan.com/address/0x73d7530D4BBD9AC1640600E839C3B9E93283091
 
 https://mumbai.polygonscan.com/address/0x73d7530D4BBD9AC1640600E839C3B9E932830915
 
-**Link to our ContractTx on Sonar:**
+**Link to our DataBase ContractTx on Sonar:**
 
 
 https://sonar.warp.cc/?#/app/contract/I5Li4OV9ALC1g-Le4UA4nmq_VNaWKLDaLvAshb1jjuM?network=mainnet
