@@ -7,10 +7,28 @@ import { NFTDetails, detailsLoader } from "pages/Details";
 import Artist from "pages/Artist";
 import Explore from "pages/Explore";
 import Footer from "components/Footer";
+import { useState,  useEffect } from "react";
+
 
 import "./App.css";
+import Preloader from "components/pre";
 
 export default function App() {
+  const [load, upadateLoad] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      upadateLoad(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+
+  
+  
+
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
@@ -26,7 +44,10 @@ export default function App() {
 
   return (
     <div className="app">
-      <RouterProvider router={router} />
+       {load ? <Preloader /> : null}
+       <div className={`${load ? 'hidden' : ''}`}>
+        <RouterProvider router={router} />
+      </div>
     </div>
   );
 }
